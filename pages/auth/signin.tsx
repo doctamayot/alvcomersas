@@ -8,7 +8,7 @@ import {
     //eslint-disable-next-line react-hooks/rules-of-hooks
     const { data: session, status } = useSession();
   
-    console.log(session);
+    
   
     return (
       <>
