@@ -18,11 +18,11 @@ export default NextAuth({
   },
 
   callbacks: {
-    async signIn({ user, account, profile, email, credentials }) {
+    // async signIn({ user, account, profile, email, credentials }) {
 
-        user.role="Cliente"
-        return true
-      },
+    //     user.role="Cliente"
+    //     return true
+    //   },
     
     async session({ session, token, user }:any) {        
         // session.user.role ="Cliente"
@@ -30,5 +30,5 @@ export default NextAuth({
     },
   },
   secret: process.env.SECRET, // SECRET env variable
-  adapter: MongoDBAdapter(clientPromise),
+  //adapter: MongoDBAdapter(clientPromise),
 });
