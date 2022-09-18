@@ -30,5 +30,5 @@ export default NextAuth({
     },
   },
   secret: process.env.SECRET, // SECRET env variable
-  //adapter: MongoDBAdapter(clientPromise),
+  adapter: MongoDBAdapter(clientPromise),
 });
