@@ -17,11 +17,8 @@ function SignIn() {
     })();
   }, []);
 
-  console.log(prov);
-
   return (
     <>
-      hola
       {Object.values(prov).map((provider: any) => (
         <div key={provider.name}>
           <button

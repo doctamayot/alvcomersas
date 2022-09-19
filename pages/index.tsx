@@ -9,6 +9,7 @@ const Home: NextPage = () => {
   const { data: session, status } = useSession();
 
   console.log(session);
+  console.log(status);
 
   return (
     <div className={styles.container}>
