@@ -25,7 +25,9 @@ function SignIn() {
       {Object.values(prov).map((provider: any) => (
         <div key={provider.name}>
           <button
-            onClick={() => SignIntoProvider(provider.id, { callbackUrl: "/" })}
+            onClick={() =>
+              SignIntoProvider(provider.name, { callbackUrl: "/" })
+            }
           >
             Sign in with {provider.name}
           </button>

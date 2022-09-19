@@ -1,34 +1,67 @@
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
-import clientPromise from "../../../lib/mongodb";
+//import CredentialsProvider from "next-auth/providers/credentials";
 import { MongoDBAdapter } from "@next-auth/mongodb-adapter";
+import clientPromise from "../../../lib/mongodb";
 
 export default NextAuth({
-  // Configure one or more authentication providers
   providers: [
     GoogleProvider({
-      clientId: process.env.GOOGLE_CLIENT_ID as string,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
+      clientId: process.env.GOOGLE_ID as string,
+      clientSecret: process.env.GOOGLE_SECRET as string,
     }),
-    // ...add more providers here
-  ],
-
-  pages: {
-    signIn: "/auth/signin",
-  },
-
-  callbacks: {
-    // async signIn({ user, account, profile, email, credentials }) {
-
-    //     user.role="Cliente"
-    //     return true
+    // Email & Password
+    // CredentialsProvider({
+    //   id: "credentials",
+    //   name: "Credentials",
+    //   credentials: {
+    //     email: {
+    //       label: "Email",
+    //       type: "text",
+    //     },
+    //     password: {
+    //       label: "Password",
+    //       type: "password",
+    //     },
     //   },
+    //   async authorize(credentials) {
+    //     await dbConnect();
 
-    async session({ session, token, user }: any) {
-      // session.user.role ="Cliente"
-      return session;
-    },
+    //     // Find user with the email
+    //     const user = await User.findOne({
+    //       email: credentials?.email,
+    //     });
+
+    //     // Email Not found
+    //     if (!user) {
+    //       throw new Error("Email is not registered");
+    //     }
+
+    //     // Check hased password with DB hashed password
+    //     const isPasswordCorrect = await compare(
+    //       credentials!.password,
+    //       user.hashedPassword
+    //     );
+
+    //     // Incorrect password
+    //     if (!isPasswordCorrect) {
+    //       throw new Error("Password is incorrect");
+    //     }
+
+    //     return user;
+    //   },
+    // }),
+  ],
+  pages: {
+    signIn: "/auth",
   },
-  secret: process.env.SECRET, // SECRET env variable
+  debug: process.env.NODE_ENV === "development",
   adapter: MongoDBAdapter(clientPromise),
+  session: {
+    strategy: "jwt",
+  },
+  jwt: {
+    secret: process.env.SECRET,
+  },
+  secret: process.env.SECRET,
 });
