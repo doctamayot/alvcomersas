@@ -24,7 +24,13 @@ function SignIn() {
       hola
       {Object.values(prov).map((provider: any) => (
         <div key={provider.name}>
-          <button onClick={() => SignIntoProvider(provider.id)}>
+          <button
+            onClick={() =>
+              SignIntoProvider(provider.id, {
+                callbackUrl: `${process.env.HOSTNAME}/`,
+              })
+            }
+          >
             Sign in with {provider.name}
           </button>
         </div>
