@@ -1,7 +1,7 @@
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
-import clientPromise from "../../../lib/mongodb"
-import { MongoDBAdapter } from "@next-auth/mongodb-adapter"
+import clientPromise from "../../../lib/mongodb";
+import { MongoDBAdapter } from "@next-auth/mongodb-adapter";
 
 export default NextAuth({
   // Configure one or more authentication providers
@@ -23,9 +23,9 @@ export default NextAuth({
     //     user.role="Cliente"
     //     return true
     //   },
-    
-    async session({ session, token, user }:any) {        
-        // session.user.role ="Cliente"
+
+    async session({ session, token, user }: any) {
+      // session.user.role ="Cliente"
       return session;
     },
   },
