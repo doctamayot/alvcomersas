@@ -27,7 +27,7 @@ function SignIn() {
           <button
             onClick={() =>
               SignIntoProvider(provider.id, {
-                callbackUrl: `${process.env.HOSTNAME}/`,
+                callbackUrl: `/`,
               })
             }
           >
