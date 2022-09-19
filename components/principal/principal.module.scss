@@ -1,0 +1,37 @@
+.each-slide > div {
+
+  @media only screen and (max-width: 600px) {
+    height: 100vh;
+   
+  }
+  @media only screen and (min-width: 600px) {
+    height: 100vh;
+
+  }
+
+  @media only screen and (min-width: 900px) {
+    height: 100vh;
+  }
+
+  @media only screen and (min-width: 1200px) {
+    height: 100vh;
+  }
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+    width: 100%;
+    
+    
+    
+  }
+  
+  .each-slide span {
+    padding: 20px;
+    font-size: 20px;
+    background: "transparent";
+    text-align: center;
+  }
+
+  
+  
