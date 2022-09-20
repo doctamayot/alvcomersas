@@ -8,7 +8,11 @@ export const Historia = () => {
     <>
       <Typography
         variant="h2"
-        sx={{ marginTop: "50px", fontSize: "35px", textAlign: "center" }}
+        sx={{
+          marginTop: { xs: "50px", xl: "100px" },
+          fontSize: "35px",
+          textAlign: "center",
+        }}
       >
         ALVCOMER S.A.S.
       </Typography>
@@ -20,7 +24,12 @@ export const Historia = () => {
         //direction={{ xs: "column-reverse", md: "row" }}
       >
         <Grid item xs={12} md={6}>
-          <Box sx={{ padding: "40px 20px 0 20px", marginTop: { md: "150px" } }}>
+          <Box
+            sx={{
+              padding: "40px 20px 0 20px",
+              marginTop: { md: "150px", xl: "20px" },
+            }}
+          >
             <Image src={foto} alt="hugp" width={5431} height={3052} />
           </Box>
         </Grid>
