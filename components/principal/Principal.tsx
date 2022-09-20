@@ -13,24 +13,20 @@ const zoomOutProperties = {
 };
 
 const fondos = [
-  { url: "/static/images/jarro_red_pr.jpg" },
-  { url: "/static/images/pulidora.jpg" },
-  { url: "/static/images/lamina.jpg" },
-  { url: "/static/images/herrajes.jpg" },
-  { url: "/static/images/botas.jpg" },
+  { url: "/static/images/jarro_red_pr.webp" },
+  { url: "/static/images/pulidora.webp" },
+  { url: "/static/images/lamina.webp" },
+  { url: "/static/images/herrajes.webp" },
+  { url: "/static/images/botas.webp" },
 ];
 
 const fondoscel = [
-  { url: "/static/images/jarroredver.jpg" },
-  { url: "/static/images/pulidoraver.jpg" },
-  { url: "/static/images/lamina.jpg" },
-  { url: "/static/images/herrajes.jpg" },
+  { url: "/static/images/jarroredver.webp" },
+  { url: "/static/images/pulidoraver.webp" },
+  { url: "/static/images/lamina.webp" },
+  { url: "/static/images/herrajes.webp" },
 ];
 
-// const mapea = () => {
-//   fondos.map((i) => console.log(i.url));
-// };
-// mapea();
 export const Principal = () => {
   return (
     <>
@@ -59,11 +55,6 @@ export const Principal = () => {
           </div>
         ))}
       </Fade>
-      {/* <Fade {...zoomOutProperties}>
-        {fondos.map((i, index) => (
-          <Image src={i.url} width={6000} height={4000} alt="DDD" key={index} />
-        ))}
-      </Fade> */}
     </>
   );
 };
