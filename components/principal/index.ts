@@ -1,1 +1,1 @@
-export * from "./principal";
+export * from "./Principal";
