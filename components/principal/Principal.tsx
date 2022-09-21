@@ -1,7 +1,11 @@
 import { Fade } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
-import Image from "next/image";
+import { PrincipalLayout } from "../layouts";
 import styles from "./principal.module.scss";
+
+import { useSession } from "next-auth/react";
+import { Loading } from "../ui";
+
 const zoomOutProperties = {
   duration: 1000,
   transitionDuration: 3000,
@@ -28,8 +32,16 @@ const fondoscel = [
 ];
 
 export const Principal = () => {
+  const { data: session, status } = useSession();
+
+  if (status === "loading") {
+    return <Loading />;
+  }
   return (
-    <>
+    <PrincipalLayout
+      title="Alvcomer sas"
+      description="Página principal de Alvcomer"
+    >
       <Fade {...zoomOutProperties}>
         {fondos.map((i, index) => (
           <div className={styles["each-slide"]} key={index}>
@@ -55,6 +67,6 @@ export const Principal = () => {
           </div>
         ))}
       </Fade>
-    </>
+    </PrincipalLayout>
   );
 };
