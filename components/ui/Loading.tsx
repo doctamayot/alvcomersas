@@ -21,7 +21,7 @@ export const Loading = () => {
         textAlign="center"
       >
         <Typography
-          sx={{ fontFamily: "Montserrat, sans-serif" }}
+          sx={{ fontFamily: "Montserrat, sans-serif", color: "#fff" }}
           variant="h6"
           fontSize={30}
           fontWeight="200"
