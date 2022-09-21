@@ -28,7 +28,10 @@ export const Loading = () => {
         >
           Cargando....
         </Typography>
-        <CircularProgress sx={{ marginTop: "30px" }} thickness={2} />
+        <CircularProgress
+          sx={{ marginTop: "30px", color: "#fff" }}
+          thickness={2}
+        />
       </Box>
     </PrincipalLayout>
   );
