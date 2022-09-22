@@ -25,7 +25,7 @@ import { SaveOutlined, UploadOutlined } from "@mui/icons-material";
 import { PrincipalLayout } from "../../../components/layouts";
 import { IProducto } from "../../../interfaces/productos";
 import { dbProducts } from "../../../database";
-import { tesloApi } from "../../../api";
+//import { tesloApi } from "../../../api";
 import Product from "../../../models/Product";
 
 const validCategories = [
@@ -118,28 +118,28 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
     setValue("tags", updatedTags, { shouldValidate: true });
   };
 
-  const onFilesSelected = async ({ target }: any) => {
-    if (!target.files || target.files.length === 0) {
-      return;
-    }
+  // const onFilesSelected = async ({ target }: any) => {
+  //   if (!target.files || target.files.length === 0) {
+  //     return;
+  //   }
 
-    try {
-      console.log(target.files);
-      for (const file of target.files) {
-        const formData = new FormData();
-        formData.append("file", file);
-        const { data } = await tesloApi.post<{ message: string }>(
-          "/admin/upload",
-          formData
-        );
-        setValue("images", [...getValues("images"), data.message], {
-          shouldValidate: true,
-        });
-      }
-    } catch (error) {
-      console.log({ error });
-    }
-  };
+  //   try {
+  //     console.log(target.files);
+  //     for (const file of target.files) {
+  //       const formData = new FormData();
+  //       formData.append("file", file);
+  //       const { data } = await tesloApi.post<{ message: string }>(
+  //         "/admin/upload",
+  //         formData
+  //       );
+  //       setValue("images", [...getValues("images"), data.message], {
+  //         shouldValidate: true,
+  //       });
+  //     }
+  //   } catch (error) {
+  //     console.log({ error });
+  //   }
+  // };
 
   const onDeleteImage = (image: string) => {
     setValue(
@@ -149,35 +149,35 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
     );
   };
 
-  const onSubmit = async (form: FormData) => {
-    if (form.images.length < 2) return alert("Mínimo 2 imagenes");
-    setIsSaving(true);
+  // const onSubmit = async (form: FormData) => {
+  //   if (form.images.length < 2) return alert("Mínimo 2 imagenes");
+  //   setIsSaving(true);
 
-    try {
-      const { data } = await tesloApi({
-        url: "/admin/products",
-        method: form._id ? "PUT" : "POST", // si tenemos un _id, entonces actualizar, si no crear
-        data: form,
-      });
+  //   try {
+  //     const { data } = await tesloApi({
+  //       url: "/admin/products",
+  //       method: form._id ? "PUT" : "POST", // si tenemos un _id, entonces actualizar, si no crear
+  //       data: form,
+  //     });
 
-      console.log({ data });
-      if (!form._id) {
-        router.replace(`/admin/products/${form.slug}`);
-      } else {
-        setIsSaving(false);
-      }
-    } catch (error) {
-      console.log(error);
-      setIsSaving(false);
-    }
-  };
+  //     console.log({ data });
+  //     if (!form._id) {
+  //       router.replace(`/admin/products/${form.slug}`);
+  //     } else {
+  //       setIsSaving(false);
+  //     }
+  //   } catch (error) {
+  //     console.log(error);
+  //     setIsSaving(false);
+  //   }
+  // };
 
   return (
     <PrincipalLayout
       title={"Producto"}
       description={`Editando: ${product.titulo}`}
     >
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form>
         <Box
           display="flex"
           justifyContent="end"
@@ -335,7 +335,7 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
                 multiple
                 accept="image/png, image/gif, image/jpeg"
                 style={{ display: "none" }}
-                onChange={onFilesSelected}
+                // onChange={onFilesSelected}
               />
 
               <Chip
