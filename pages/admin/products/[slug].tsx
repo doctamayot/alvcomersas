@@ -23,8 +23,7 @@ import {
 } from "@mui/material";
 import { SaveOutlined, UploadOutlined } from "@mui/icons-material";
 
-import useSWR, { SWRConfiguration } from "swr";
-import { tesloApi } from "../../../api";
+import useSWR from "swr";
 
 import { PrincipalLayout } from "../../../components/layouts";
 import { IProducto } from "../../../interfaces/productos";
