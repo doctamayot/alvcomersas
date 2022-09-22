@@ -1,8 +1,8 @@
 //react
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 //Next
 import { useRouter } from "next/router";
-import { useSession, signOut } from "next-auth/react";
+import { useSession, signOut, getProviders, signIn } from "next-auth/react";
 //MUI
 import {
   Box,
@@ -41,6 +41,15 @@ export const MenuLateral = () => {
   const [searchTerm, setSearchTerm] = useState("");
 
   const { data: session, status }: any = useSession();
+
+  const [prov, setProv] = useState<any>({});
+
+  useEffect(() => {
+    (async () => {
+      const providers = await getProviders();
+      setProv(providers as any);
+    })();
+  }, []);
 
   // console.log(status);
 
@@ -151,7 +160,10 @@ export const MenuLateral = () => {
               <ListItemText primary={"Salir"} />
             </ListItem>
           ) : (
-            <ListItem button onClick={() => navigateTo("/auth/login")}>
+            <ListItem
+              button
+              onClick={() => signIn(prov.google.id, { callbackUrl: "/" })}
+            >
               <ListItemIcon>
                 <VpnKeyOutlined />
               </ListItemIcon>
