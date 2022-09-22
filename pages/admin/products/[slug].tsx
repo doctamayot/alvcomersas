@@ -31,6 +31,7 @@ import { IProducto } from "../../../interfaces/productos";
 import { dbProducts } from "../../../database";
 //import { tesloApi } from "../../../api";
 import Product from "../../../models/Product";
+import { tesloApi } from "../../../axios";
 
 const validCategories = [
   "Equipo Militar o Camping",
@@ -135,20 +136,16 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
       for (const file of target.files) {
         const formData = new FormData();
         formData.append("file", file);
-        const { data } = await axios({
-          method: "post",
-          url: "/api/admin/upload",
-          data: formData,
-          headers: { "Content-Type": "multipart/form-data" },
-        });
-
-        // setValue("images", [...getValues("images"), data.message], {
-        //   shouldValidate: true,
+        // const { data } = await axios({
+        //   method: "post",
+        //   url: "/api/admin/upload",
+        //   data: formData,
+        //   headers: { "Content-Type": "multipart/form-data" },
         // });
-        // eslint-disable-next-line react-hooks/rules-of-hooks
-        // const { data } = useSWR(`/api/admin/upload`);
-        // const fetcher = url => axios.get(url).then(res => res.data)
-        // const { data } = useSWR('/api/admin/upload', fetcher)
+        const { data } = await tesloApi.post<{ message: string }>(
+          "/admin/upload",
+          formData
+        );
 
         setValue("images", [...getValues("images"), data.message], {
           shouldValidate: true,
@@ -172,18 +169,18 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
     setIsSaving(true);
 
     try {
-      // const { data } = await tesloApi({
-      //   url: "/admin/products",
-      //   method: form._id ? "PUT" : "POST", // si tenemos un _id, entonces actualizar, si no crear
-      //   data: form,
-      // });
-
-      const { data } = await axios({
-        method: form._id ? "PUT" : "POST",
-        url: "/api/admin/products",
+      const { data } = await tesloApi({
+        url: "/admin/products",
+        method: form._id ? "PUT" : "POST", // si tenemos un _id, entonces actualizar, si no crear
         data: form,
-        //headers: { "Content-Type": "multipart/form-data" },
       });
+
+      // const { data } = await axios({
+      //   method: form._id ? "PUT" : "POST",
+      //   url: "/api/admin/products",
+      //   data: form,
+      //   headers: { "Content-Type": "multipart/form-data" },
+      // });
 
       console.log({ data });
       if (!form._id) {
