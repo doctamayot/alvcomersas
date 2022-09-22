@@ -98,7 +98,6 @@ export const Navbar = () => {
             display: { xs: "none", md: "block" },
             marginLeft: "80px",
           }}
-          className="fadeIn"
         >
           <NextLink href="/" passHref>
             <Link>
