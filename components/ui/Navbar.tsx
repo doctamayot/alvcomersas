@@ -333,7 +333,7 @@ export const Navbar = () => {
         {session ? (
           <Box
             onClick={() => signOut()}
-            sx={{ display: { xs: "none", md: "flex" } }}
+            sx={{ display: { xs: "flex" } }}
             alignItems="center"
           >
             <IconButton sx={{ display: { xs: "flex" }, color: "#fff" }}>
