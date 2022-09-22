@@ -21,7 +21,10 @@ import {
   RadioGroup,
   TextField,
 } from "@mui/material";
-import { SaveOutlined, UploadOutlined } from "@mui/icons-material";
+//import { SaveOutlined, UploadOutlined } from "@mui/icons-material";
+
+import SaveOutlined from "@mui/icons-material/SaveOutlined";
+import UploadOutlined from "@mui/icons-material/UploadOutlined";
 
 import { PrincipalLayout } from "../../../components/layouts";
 import { IProducto } from "../../../interfaces/productos";
