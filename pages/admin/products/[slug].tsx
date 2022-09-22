@@ -1,8 +1,7 @@
-import { FC, useEffect, useRef, useState } from "react";
+import { ChangeEvent, FC, useEffect, useRef, useState } from "react";
 import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
-import axios from "axios";
 
 import {
   Box,
@@ -21,17 +20,13 @@ import {
   RadioGroup,
   TextField,
 } from "@mui/material";
-//import { SaveOutlined, UploadOutlined } from "@mui/icons-material";
-
-import SaveOutlined from "@mui/icons-material/SaveOutlined";
-import UploadOutlined from "@mui/icons-material/UploadOutlined";
+import { SaveOutlined, UploadOutlined } from "@mui/icons-material";
 
 import { PrincipalLayout } from "../../../components/layouts";
 import { IProducto } from "../../../interfaces/productos";
 import { dbProducts } from "../../../database";
-//import { tesloApi } from "../../../api";
-import Product from "../../../models/Product";
 import { tesloApi } from "../../../axios";
+import Product from "../../../models/Product";
 
 const validCategories = [
   "Equipo Militar o Camping",
@@ -123,9 +118,6 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
     setValue("tags", updatedTags, { shouldValidate: true });
   };
 
-  // const { data, error } = useSWR(`/api/admin/upload`);
-  // console.log(data);
-
   const onFilesSelected = async ({ target }: any) => {
     if (!target.files || target.files.length === 0) {
       return;
@@ -136,17 +128,10 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
       for (const file of target.files) {
         const formData = new FormData();
         formData.append("file", file);
-        // const { data } = await axios({
-        //   method: "post",
-        //   url: "/api/admin/upload",
-        //   data: formData,
-        //   headers: { "Content-Type": "multipart/form-data" },
-        // });
         const { data } = await tesloApi.post<{ message: string }>(
           "/admin/upload",
           formData
         );
-
         setValue("images", [...getValues("images"), data.message], {
           shouldValidate: true,
         });
@@ -174,13 +159,6 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
         method: form._id ? "PUT" : "POST", // si tenemos un _id, entonces actualizar, si no crear
         data: form,
       });
-
-      // const { data } = await axios({
-      //   method: form._id ? "PUT" : "POST",
-      //   url: "/api/admin/products",
-      //   data: form,
-      //   headers: { "Content-Type": "multipart/form-data" },
-      // });
 
       console.log({ data });
       if (!form._id) {
