@@ -155,7 +155,7 @@ export const Navbar = () => {
                     backgroundColor: "transparent",
                     fontFamily: "Montserrat, sans-serif",
                     fontSize: "16.2px",
-                    color: "#fff",
+                    color: "#000",
                   }}
                 >
                   Todos
@@ -172,7 +172,7 @@ export const Navbar = () => {
                     backgroundColor: "transparent",
                     fontFamily: "Montserrat, sans-serif",
                     fontSize: "16.2px",
-                    color: "#fff",
+                    color: "#000",
                   }}
                 >
                   Equipo Militar o Camping
@@ -189,7 +189,7 @@ export const Navbar = () => {
                     backgroundColor: "transparent",
                     fontFamily: "Montserrat, sans-serif",
                     fontSize: "16.2px",
-                    color: "#fff",
+                    color: "#000",
                   }}
                 >
                   Herrajes
@@ -206,7 +206,7 @@ export const Navbar = () => {
                     backgroundColor: "transparent",
                     fontFamily: "Montserrat, sans-serif",
                     fontSize: "16.2px",
-                    color: "#fff",
+                    color: "#000",
                   }}
                 >
                   Institucional
@@ -239,7 +239,7 @@ export const Navbar = () => {
                     backgroundColor: "transparent",
                     fontFamily: "Montserrat, sans-serif",
                     fontSize: "16.2px",
-                    color: "#fff",
+                    color: "#000",
                   }}
                 >
                   Servicio de Troquelado y embutido
