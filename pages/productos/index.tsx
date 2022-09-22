@@ -6,6 +6,7 @@ import { useProducts } from "../../hooks";
 const Productos = () => {
   const { products, isLoading } = useProducts("/products");
   const titulo = "Todos";
+  console.log(products);
   return (
     <PrincipalLayout
       title="Acero Inoxidable"
