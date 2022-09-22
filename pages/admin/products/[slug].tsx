@@ -23,8 +23,6 @@ import {
 } from "@mui/material";
 import { SaveOutlined, UploadOutlined } from "@mui/icons-material";
 
-import useSWR from "swr";
-
 import { PrincipalLayout } from "../../../components/layouts";
 import { IProducto } from "../../../interfaces/productos";
 import { dbProducts } from "../../../database";
@@ -121,8 +119,8 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
     setValue("tags", updatedTags, { shouldValidate: true });
   };
 
-  const { data, error } = useSWR(`/api/admin/upload`);
-  console.log(data);
+  // const { data, error } = useSWR(`/api/admin/upload`);
+  // console.log(data);
 
   const onFilesSelected = async ({ target }: any) => {
     if (!target.files || target.files.length === 0) {
