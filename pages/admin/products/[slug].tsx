@@ -1,4 +1,4 @@
-import { ChangeEvent, FC, useEffect, useRef, useState } from "react";
+import { FC, useEffect, useRef, useState } from "react";
 import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
@@ -30,8 +30,6 @@ import { IProducto } from "../../../interfaces/productos";
 import { dbProducts } from "../../../database";
 //import { tesloApi } from "../../../api";
 import Product from "../../../models/Product";
-import { useProducts } from "../../../hooks";
-import { config } from "../../api/admin/upload";
 
 const validCategories = [
   "Equipo Militar o Camping",
@@ -142,7 +140,6 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
           data: formData,
           headers: { "Content-Type": "multipart/form-data" },
         });
-        console.log(data);
 
         // setValue("images", [...getValues("images"), data.message], {
         //   shouldValidate: true,
@@ -169,35 +166,42 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
     );
   };
 
-  // const onSubmit = async (form: FormData) => {
-  //   if (form.images.length < 2) return alert("Mínimo 2 imagenes");
-  //   setIsSaving(true);
+  const onSubmit = async (form: FormData) => {
+    if (form.images.length < 2) return alert("Mínimo 2 imagenes");
+    setIsSaving(true);
 
-  //   try {
-  //     const { data } = await tesloApi({
-  //       url: "/admin/products",
-  //       method: form._id ? "PUT" : "POST", // si tenemos un _id, entonces actualizar, si no crear
-  //       data: form,
-  //     });
+    try {
+      // const { data } = await tesloApi({
+      //   url: "/admin/products",
+      //   method: form._id ? "PUT" : "POST", // si tenemos un _id, entonces actualizar, si no crear
+      //   data: form,
+      // });
 
-  //     console.log({ data });
-  //     if (!form._id) {
-  //       router.replace(`/admin/products/${form.slug}`);
-  //     } else {
-  //       setIsSaving(false);
-  //     }
-  //   } catch (error) {
-  //     console.log(error);
-  //     setIsSaving(false);
-  //   }
-  // };
+      const { data } = await axios({
+        method: form._id ? "PUT" : "POST",
+        url: "/api/admin/products",
+        data: form,
+        //headers: { "Content-Type": "multipart/form-data" },
+      });
+
+      console.log({ data });
+      if (!form._id) {
+        router.replace(`/admin/products/${form.slug}`);
+      } else {
+        setIsSaving(false);
+      }
+    } catch (error) {
+      console.log(error);
+      setIsSaving(false);
+    }
+  };
 
   return (
     <PrincipalLayout
       title={"Producto"}
       description={`Editando: ${product.titulo}`}
     >
-      <form>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <Box
           display="flex"
           justifyContent="end"
