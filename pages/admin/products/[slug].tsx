@@ -2,6 +2,7 @@ import { ChangeEvent, FC, useEffect, useRef, useState } from "react";
 import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
+import axios from "axios";
 
 import {
   Box,
@@ -22,11 +23,16 @@ import {
 } from "@mui/material";
 import { SaveOutlined, UploadOutlined } from "@mui/icons-material";
 
+import useSWR, { SWRConfiguration } from "swr";
+import { tesloApi } from "../../../api";
+
 import { PrincipalLayout } from "../../../components/layouts";
 import { IProducto } from "../../../interfaces/productos";
 import { dbProducts } from "../../../database";
 //import { tesloApi } from "../../../api";
 import Product from "../../../models/Product";
+import { useProducts } from "../../../hooks";
+import { config } from "../../api/admin/upload";
 
 const validCategories = [
   "Equipo Militar o Camping",
@@ -118,28 +124,43 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
     setValue("tags", updatedTags, { shouldValidate: true });
   };
 
-  // const onFilesSelected = async ({ target }: any) => {
-  //   if (!target.files || target.files.length === 0) {
-  //     return;
-  //   }
+  const { data, error } = useSWR(`/api/admin/upload`);
+  console.log(data);
 
-  //   try {
-  //     console.log(target.files);
-  //     for (const file of target.files) {
-  //       const formData = new FormData();
-  //       formData.append("file", file);
-  //       const { data } = await tesloApi.post<{ message: string }>(
-  //         "/admin/upload",
-  //         formData
-  //       );
-  //       setValue("images", [...getValues("images"), data.message], {
-  //         shouldValidate: true,
-  //       });
-  //     }
-  //   } catch (error) {
-  //     console.log({ error });
-  //   }
-  // };
+  const onFilesSelected = async ({ target }: any) => {
+    if (!target.files || target.files.length === 0) {
+      return;
+    }
+
+    try {
+      console.log(target.files);
+      for (const file of target.files) {
+        const formData = new FormData();
+        formData.append("file", file);
+        const { data } = await axios({
+          method: "post",
+          url: "/api/admin/upload",
+          data: formData,
+          headers: { "Content-Type": "multipart/form-data" },
+        });
+        console.log(data);
+
+        // setValue("images", [...getValues("images"), data.message], {
+        //   shouldValidate: true,
+        // });
+        // eslint-disable-next-line react-hooks/rules-of-hooks
+        // const { data } = useSWR(`/api/admin/upload`);
+        // const fetcher = url => axios.get(url).then(res => res.data)
+        // const { data } = useSWR('/api/admin/upload', fetcher)
+
+        setValue("images", [...getValues("images"), data.message], {
+          shouldValidate: true,
+        });
+      }
+    } catch (error) {
+      console.log({ error });
+    }
+  };
 
   const onDeleteImage = (image: string) => {
     setValue(
@@ -335,7 +356,7 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
                 multiple
                 accept="image/png, image/gif, image/jpeg"
                 style={{ display: "none" }}
-                // onChange={onFilesSelected}
+                onChange={onFilesSelected}
               />
 
               <Chip
