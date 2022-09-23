@@ -67,12 +67,6 @@ export const Navbar = () => {
     push(`/search/${searchTerm}`);
   };
 
-  // if (status == "loading") {
-  //   return <Loading />;
-  // }
-
-  console.log(status);
-
   return (
     <AppBar
       sx={{
@@ -100,7 +94,7 @@ export const Navbar = () => {
           }}
           className="fadeIn"
         >
-          <NextLink href="/" passHref>
+          <NextLink href="/#historia" passHref>
             <Link>
               <Button
                 variant="text"
@@ -213,22 +207,7 @@ export const Navbar = () => {
                 </Typography>
               </NextLink>
             </MenuItem>
-            {/* <MenuItem
-              sx={{ fontFamily: "Montserrat, sans-serif" }}
-              onClick={handleClose}
-            >
-              <NextLink href="/productos/categoria/vallas" passHref>
-                <Typography
-                  sx={{
-                    backgroundColor: "transparent",
-                    fontFamily: "Montserrat, sans-serif",
-                    fontSize: "16.2px",
-                  }}
-                >
-                  Vallas de Contención
-                </Typography>
-              </NextLink>
-            </MenuItem> */}
+
             <MenuItem
               sx={{ fontFamily: "Montserrat, sans-serif" }}
               onClick={handleClose}
@@ -246,22 +225,6 @@ export const Navbar = () => {
                 </Typography>
               </NextLink>
             </MenuItem>
-            {/* <MenuItem
-              sx={{ fontFamily: "Montserrat, sans-serif" }}
-              onClick={handleClose}
-            >
-              <NextLink href="/productos/categoria/placas" passHref>
-                <Typography
-                  sx={{
-                    backgroundColor: "transparent",
-                    fontFamily: "Montserrat, sans-serif",
-                    fontSize: "16.2px",
-                  }}
-                >
-                  Placas de Identificación
-                </Typography>
-              </NextLink>
-            </MenuItem> */}
           </Menu>
 
           <NextLink href="/category/women" passHref>
@@ -279,7 +242,7 @@ export const Navbar = () => {
             </Link>
           </NextLink>
 
-          <NextLink href="/category/women" passHref>
+          <NextLink href="#footer" passHref>
             <Link>
               <Button
                 variant="text"

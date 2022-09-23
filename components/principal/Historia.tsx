@@ -5,7 +5,7 @@ import foto from "../../assets/principal.jpg";
 
 export const Historia = () => {
   return (
-    <>
+    <div id="historia">
       <Typography
         variant="h2"
         sx={{
@@ -88,6 +88,6 @@ export const Historia = () => {
           </Typography>
         </Grid>
       </Grid>
-    </>
+    </div>
   );
 };

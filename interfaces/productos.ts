@@ -8,9 +8,8 @@ export interface IProducto {
     | "Equipo Militar o Camping"
     | "Herrajes"
     | "Institucional"
-    | "Vallas de Contención"
-    | "Servicio de Troquelado y Embutido"
-    | "Placas de Identificación";
+    | "Servicio de Troquelado y Embutido";
+
   titulo: string;
   tags: string[];
 }

@@ -1,6 +1,7 @@
 import { FC } from "react";
 import Head from "next/head";
 import { MenuLateral, Navbar } from "../ui";
+import { Footer } from "../principal";
 
 interface Props {
   title: string;
@@ -29,7 +30,7 @@ export const PrincipalLayout: FC<Props> = ({
       <MenuLateral />
       <main>{children}</main>
 
-      <footer></footer>
+      <Footer />
     </>
   );
 };

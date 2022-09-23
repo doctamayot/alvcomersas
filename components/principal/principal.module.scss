@@ -3,7 +3,7 @@
   @media only screen and (max-width: 600px) {
     height: 100vh;
     display: none
-   
+
   }
   @media only screen and (min-width: 600px) {
     height: 100vh;
@@ -20,36 +20,32 @@
     height: 100vh;
     display: flex;
   }
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-size: cover;
-    width: 100%;
     
-    
-    
+
+
+
   }
-  
-  
+
+
 
   .each-slide-cel > div {
 
     @media only screen and (max-width: 600px) {
       height: 100vh;
       display:flex
-     
+
     }
     @media only screen and (min-width: 600px) {
       height: 100vh;
       display:none
-     
-  
+
+
     }
-  
+
     @media only screen and (min-width: 900px) {
       height: 100vh;
     }
-  
+
     @media only screen and (min-width: 1200px) {
       height: 100vh;
     }
@@ -58,12 +54,11 @@
       justify-content: center;
       background-size: cover;
       width: 100%;
-      
-      
-      
-    }
-    
-    
 
-  
-  
+
+
+    }
+
+
+
+
