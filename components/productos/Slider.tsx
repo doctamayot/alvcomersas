@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useEffect, useState } from "react";
 import Image from "next/image";
 
 import { Box } from "@mui/material";
@@ -10,8 +10,19 @@ interface Props {
 }
 
 export const Slider: FC<Props> = ({ activeIndex, productos }) => {
+  const [clas, setClas] = useState("");
+  const [tog, setTog] = useState(true);
+
+  const clases = ["anima", "anima2"];
+
+  useEffect(() => {
+    setTog(!tog);
+  }, [activeIndex]);
+
+  console.log(tog);
+
   return (
-    <div className="container">
+    <div className={tog ? "anima" : "anima2"}>
       <section className="outer-container-image">
         <Box
           sx={{

@@ -208,3 +208,31 @@ button {
   
 }
 
+
+.slider {
+  max-width: 800px;
+}
+
+.anima {
+ 
+ 
+  animation-name: example;
+  animation-duration: 3s;
+}
+
+.anima2 {
+  
+ 
+  animation-name: example2;
+  animation-duration: 3s;
+}
+
+@keyframes example {
+  from {margin-top:-200px}
+  to {margin-top:0px }
+}
+
+@keyframes example2 {
+  from {margin-top:-200px}
+  to {margin-top:0px }
+}

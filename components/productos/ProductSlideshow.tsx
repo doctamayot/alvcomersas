@@ -11,7 +11,7 @@ interface Props {
 
 export const ProductSlideshow: FC<Props> = ({ images }) => {
   return (
-    <Slide easing="ease" duration={7000} indicators>
+    <Slide easing="ease" duration={2000} indicators>
       {images.map((image) => {
         return (
           <div

@@ -1,9 +1,10 @@
 import type { NextPage } from "next";
 
-import { useSession } from "next-auth/react";
 import CookieConsent from "react-cookie-consent";
 import { Historia, Principal } from "../components/principal";
 import { PrincipalLayout } from "../components/layouts";
+
+import { Box } from "@mui/material";
 
 const Home: NextPage = () => {
   return (
@@ -13,6 +14,7 @@ const Home: NextPage = () => {
     >
       <Principal />
       <Historia />
+      <Box></Box>
       <CookieConsent
         location="bottom"
         buttonText="Acepto la política"

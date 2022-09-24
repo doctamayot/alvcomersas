@@ -1,5 +1,5 @@
 import { Box, Button, Grid, Typography } from "@mui/material";
-import React, { useState, FC } from "react";
+import React, { useState, FC, useEffect } from "react";
 import NextLink from "next/link";
 import { Slider } from "./Slider";
 import cn from "classnames";
@@ -56,22 +56,29 @@ export const ProductosLista: FC<Props> = ({ products, titulo }) => {
     }
   };
 
+  useEffect(() => {
+    handleClick("next");
+  }, []);
+
   const handleClick = (direction: any) => {
-    setActiveIndex((prevIndex) => {
-      if (direction === "next") {
-        if (prevIndex + 1 > products.length - 1) {
-          return 0;
+    setInterval(() => {
+      setActiveIndex((prevIndex) => {
+        if (direction === "next") {
+          if (prevIndex + 1 > products.length - 1) {
+            return 0;
+          }
+          return prevIndex + 1;
         }
-        return prevIndex + 1;
-      }
 
-      if (prevIndex - 1 < 0) {
-        return products.length - 1;
-      }
+        if (prevIndex - 1 < 0) {
+          return products.length - 1;
+        }
 
-      return prevIndex - 1;
-    });
+        return prevIndex - 1;
+      });
+    }, 10000);
   };
+
   return (
     <Grid
       container
