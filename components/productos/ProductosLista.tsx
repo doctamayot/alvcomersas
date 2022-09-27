@@ -103,16 +103,6 @@ export const ProductosLista: FC<Props> = ({ products, titulo }) => {
             width: "90%",
           }}
         >
-          {/* <Typography
-            variant="h2"
-            sx={{
-              fontFamily: "Montserrat, sans-serif",
-              fontSize: "50px",
-              fontWeight: "100",
-            }}
-          >
-            Categoria
-          </Typography> */}
           <Typography
             sx={{
               fontFamily: "Montserrat, sans-serif",

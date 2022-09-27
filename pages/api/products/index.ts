@@ -29,9 +29,7 @@ async function getProducts(req: NextApiRequest, res: NextApiResponse<Data>) {
       "Equipo Militar o Camping",
       "Herrajes",
       "Institucional",
-      "Vallas de Contención",
       "Servicio de Troquelado y Embutido",
-      "Placas de Identificación",
     ].includes(`${categoria}`)
   ) {
     condition = { categoria };

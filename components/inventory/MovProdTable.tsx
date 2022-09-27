@@ -41,21 +41,10 @@ interface FormData {
 }
 
 const columns: GridColDef[] = [
-  {
-    field: "title",
-    headerName: "Titulo",
-    width: 200,
-    renderCell: ({ row }: any) => {
-      return (
-        <NextLink href={`/admin/parts/${row.id}`} passHref>
-          <Link underline="always">{row.title}</Link>
-        </NextLink>
-      );
-    },
-  },
-  { field: "tipo", headerName: "Tipo", width: 200 },
-  { field: "valor", headerName: "Valor", width: 200 },
-  { field: "creado", headerName: "Creado", width: 250 },
+  { field: "title", headerName: "Titulo", flex: 1 },
+  { field: "tipo", headerName: "Tipo", flex: 1 },
+  { field: "valor", headerName: "Valor", flex: 1 },
+  { field: "creado", headerName: "Creado", flex: 1.3 },
 ];
 
 interface Props {
@@ -64,8 +53,6 @@ interface Props {
 }
 
 const MovProdTable: FC<Props> = ({ product, idver }) => {
-  console.log(product);
-  console.log(idver);
   const [open, setOpen] = useState(false);
   const router = useRouter();
 
@@ -118,7 +105,6 @@ const MovProdTable: FC<Props> = ({ product, idver }) => {
         data: form,
       });
 
-      console.log({ data });
       setOpen(false);
       Swal.fire({
         title: "Movimiento Ingresado",
@@ -260,7 +246,7 @@ const MovProdTable: FC<Props> = ({ product, idver }) => {
                   fontFamily: "Montserrat, sans-serif",
                 }}
               >
-                Movimientos
+                Movimientos de {product.titulo}
               </Typography>
             </Grid>
           </Grid>
@@ -269,17 +255,18 @@ const MovProdTable: FC<Props> = ({ product, idver }) => {
     );
 
   return (
-    <PrincipalLayout
-      title={`Movimientos (${product?.movimientos.length})`}
-      description={"Mantenimiento de productos"}
-      // icon={ <CategoryOutlined /> }
-    >
+    <>
       <Box sx={{ marginTop: "50px" }}>
         <Box display="flex" justifyContent="center" sx={{ mb: 2, mt: 2 }}>
           <Button
             startIcon={<AddOutlined />}
             color="secondary"
             onClick={handleOpen}
+            sx={{
+              width: "30%",
+              backgroundColor: "#2255c4",
+              color: "#fff",
+            }}
           >
             Crear Movimiento
           </Button>
@@ -369,8 +356,14 @@ const MovProdTable: FC<Props> = ({ product, idver }) => {
                 <Button
                   color="secondary"
                   startIcon={<SaveOutlined />}
-                  sx={{ width: "100%", marginTop: "20px" }}
+                  sx={{
+                    width: "100%",
+                    marginTop: "20px",
+                    backgroundColor: "#2255c4",
+                    color: "#fff",
+                  }}
                   type="submit"
+
                   //disabled={isSaving}
                 >
                   Insertar Movimiento
@@ -394,7 +387,7 @@ const MovProdTable: FC<Props> = ({ product, idver }) => {
                 fontFamily: "Montserrat, sans-serif",
               }}
             >
-              Movimientos
+              Movimientos de {product.titulo}
             </Typography>
           </Grid>
 
@@ -417,7 +410,7 @@ const MovProdTable: FC<Props> = ({ product, idver }) => {
           </Grid>
         </Grid>
       </Box>
-    </PrincipalLayout>
+    </>
   );
 };
 

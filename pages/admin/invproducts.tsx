@@ -51,6 +51,7 @@ const columns: GridColDef[] = [
   {
     field: "img",
     headerName: "Foto",
+
     renderCell: ({ row }: any) => {
       return (
         <a
@@ -72,7 +73,7 @@ const columns: GridColDef[] = [
   {
     field: "title",
     headerName: "Titulo",
-    width: 300,
+    flex: 1,
     renderCell: ({ row }: any) => {
       return (
         <NextLink href={`/admin/invproducts/${row.id}`} passHref>
@@ -81,11 +82,11 @@ const columns: GridColDef[] = [
       );
     },
   },
-  { field: "copy", headerName: "Descripción", width: 400 },
+  { field: "copy", headerName: "Descripción", flex: 1 },
   {
     field: "cantidad",
     headerName: "Stock",
-    width: 200,
+    flex: 1,
     cellClassName: (params: GridCellParams<number>) => {
       if (params.value == null) {
         return "";
@@ -108,7 +109,7 @@ const InvProductsPage = () => {
 
   const product = {
     copy: "",
-    images: ["img.jpg"],
+    images: [],
     precio: 0,
 
     categoria: "",
@@ -166,12 +167,12 @@ const InvProductsPage = () => {
       });
       setOpen(false);
       Swal.fire({
-        title: "Producto Editado",
+        title: "Producto Inventario Creado",
         text: "Continuar",
         icon: "success",
         confirmButtonText: "Ok",
       });
-      router.reload();
+      await router.reload();
 
       console.log({ data });
     } catch (error) {
@@ -208,8 +209,8 @@ const InvProductsPage = () => {
         <Box display="flex" justifyContent="center" sx={{ mb: 2, mr: 6 }}>
           <Button
             startIcon={<AddOutlined />}
-            color="secondary"
             onClick={handleOpen}
+            sx={{ color: "#fff", backgroundColor: "#2255c4" }}
           >
             Crear producto
           </Button>
@@ -319,7 +320,11 @@ const InvProductsPage = () => {
                         color="secondary"
                         fullWidth
                         startIcon={<UploadOutlined />}
-                        sx={{ mb: 3 }}
+                        sx={{
+                          mb: 3,
+                          color: "#fff",
+                          backgroundColor: "#327222",
+                        }}
                         onClick={() => fileInputRef.current?.click()}
                       >
                         Cargar imagen
@@ -377,7 +382,11 @@ const InvProductsPage = () => {
                   <Button
                     color="secondary"
                     startIcon={<SaveOutlined />}
-                    sx={{ width: "30%" }}
+                    sx={{
+                      width: "30%",
+                      backgroundColor: "#2255c4",
+                      color: "#fff",
+                    }}
                     type="submit"
                     //disabled={isSaving}
                   >

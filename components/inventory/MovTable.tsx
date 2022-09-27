@@ -1,5 +1,9 @@
 import NextLink from "next/link";
-import { AddOutlined, SaveOutlined } from "@mui/icons-material";
+import {
+  AddOutlined,
+  DeleteForeverOutlined,
+  SaveOutlined,
+} from "@mui/icons-material";
 import {
   Box,
   Button,
@@ -41,21 +45,10 @@ interface FormData {
 }
 
 const columns: GridColDef[] = [
-  {
-    field: "title",
-    headerName: "Titulo",
-    width: 200,
-    renderCell: ({ row }: any) => {
-      return (
-        <NextLink href={`/admin/parts/${row.id}`} passHref>
-          <Link underline="always">{row.title}</Link>
-        </NextLink>
-      );
-    },
-  },
-  { field: "tipo", headerName: "Tipo", width: 200 },
-  { field: "valor", headerName: "Valor", width: 200 },
-  { field: "creado", headerName: "Creado", width: 250 },
+  { field: "title", headerName: "Titulo", flex: 1 },
+  { field: "tipo", headerName: "Tipo", flex: 1 },
+  { field: "valor", headerName: "Valor", flex: 1 },
+  { field: "creado", headerName: "Creado", flex: 1.3 },
 ];
 
 interface Props {
@@ -67,6 +60,7 @@ interface Props {
 const MovTable: FC<Props> = ({ product, idver, parte }) => {
   const [open, setOpen] = useState(false);
   const router = useRouter();
+  const [isSaving, setIsSaving] = useState(false);
 
   const Swal = require("sweetalert2");
 
@@ -124,19 +118,43 @@ const MovTable: FC<Props> = ({ product, idver, parte }) => {
         icon: "success",
         confirmButtonText: "Ok",
       });
-      router.reload();
+      router.push(`/admin/parts/${idver}`);
     } catch (error) {
       console.log(error);
       //setIsSaving(false);
     }
   };
 
+  const onDeleteComponent = async () => {
+    Swal.fire({
+      title: "Estas Seguro?",
+      text: "Esto borra el componente para siempre",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Si, Borrarlo!",
+    }).then(async (result: any) => {
+      if (result.isConfirmed) {
+        try {
+          const { data } = await tesloApi({
+            url: `/admin/parts`,
+            method: "DELETE",
+            data: product,
+          });
+        } catch (error) {
+          console.log(error);
+          setIsSaving(false);
+        }
+
+        Swal.fire("Borrado!", "El componente fue borrado", "success");
+        router.back();
+      }
+    });
+  };
+
   return (
-    <PrincipalLayout
-      title={`Movimientos (${product?.movimientos.length})`}
-      description={"Mantenimiento de productos"}
-      // icon={ <CategoryOutlined /> }
-    >
+    <>
       <Box sx={{ marginTop: "150px" }}>
         <Box display="flex" justifyContent="center" sx={{ marginTop: "150px" }}>
           <Card sx={{ maxWidth: 345 }}>
@@ -179,9 +197,28 @@ const MovTable: FC<Props> = ({ product, idver, parte }) => {
 
         <Box display="flex" justifyContent="center" sx={{ mb: 2, mt: 2 }}>
           <Button
+            startIcon={<DeleteForeverOutlined />}
+            sx={{
+              width: "200px",
+              backgroundColor: "#9b0f0f",
+              color: "#fff",
+              marginLeft: "5px",
+            }}
+            onClick={() => onDeleteComponent()}
+            disabled={isSaving}
+          >
+            Borrar Componente
+          </Button>
+          <Button
             startIcon={<AddOutlined />}
             color="secondary"
             onClick={handleOpen}
+            sx={{
+              width: "200px",
+              backgroundColor: "#2255c4",
+              color: "#fff",
+              marginLeft: "10px",
+            }}
           >
             Crear Movimiento
           </Button>
@@ -314,7 +351,7 @@ const MovTable: FC<Props> = ({ product, idver, parte }) => {
           </Grid>
         </Grid>
       </Box>
-    </PrincipalLayout>
+    </>
   );
 };
 

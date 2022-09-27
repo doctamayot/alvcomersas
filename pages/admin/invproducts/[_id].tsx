@@ -61,7 +61,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 
   const tempPart = JSON.parse(JSON.stringify(new Part()));
   delete tempPart._id;
-  tempPart.images = ["img1.jpg"];
+  tempPart.images = [];
 
   part = tempPart;
 

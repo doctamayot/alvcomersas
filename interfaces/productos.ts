@@ -4,6 +4,7 @@ export interface IProducto {
   images: string[];
   precio: number;
   slug: string;
+  nuevo: string;
   categoria:
     | "Equipo Militar o Camping"
     | "Herrajes"

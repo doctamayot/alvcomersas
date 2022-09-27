@@ -2,6 +2,10 @@ import NextLink from "next/link";
 import {
   AddOutlined,
   CategoryOutlined,
+  DeleteForeverOutlined,
+  EditAttributes,
+  EditOffOutlined,
+  EditOutlined,
   SaveOutlined,
   UploadOutlined,
 } from "@mui/icons-material";
@@ -70,7 +74,7 @@ const columns: GridColDef[] = [
   {
     field: "title",
     headerName: "Titulo",
-    width: 250,
+    flex: 1,
     renderCell: ({ row }: any) => {
       return (
         <NextLink href={`/admin/parts/${row.id}`} passHref>
@@ -79,11 +83,11 @@ const columns: GridColDef[] = [
       );
     },
   },
-  { field: "copy", headerName: "Descripción", width: 300 },
+  { field: "copy", headerName: "Descripción", flex: 1 },
   {
     field: "cantidad",
     headerName: "Stock",
-    width: 200,
+    flex: 1,
     cellClassName: (params: GridCellParams<number>) => {
       if (params.value == null) {
         return "";
@@ -214,7 +218,7 @@ const PartsTable: FC<Props> = ({ product, part, idver }) => {
       });
 
       console.log({ data });
-      router.reload();
+      router.push(`/admin/invproducts/${idver}`);
     } catch (error) {
       console.log(error);
       setIsSaving(false);
@@ -233,14 +237,12 @@ const PartsTable: FC<Props> = ({ product, part, idver }) => {
       });
       setOpen2(false);
       Swal.fire({
-        title: "Producto Editado",
+        title: form._id ? "Producto Editado" : "Producto Creado",
         text: "Continuar",
         icon: "success",
         confirmButtonText: "Ok",
       });
-      router.reload();
-
-      console.log({ data });
+      router.push(`/admin/invproducts/${idver}`);
     } catch (error) {
       console.log(error);
       setIsSaving(false);
@@ -280,12 +282,36 @@ const PartsTable: FC<Props> = ({ product, part, idver }) => {
     setOpen2(false);
   };
 
+  const onDeleteProduct = async () => {
+    Swal.fire({
+      title: "Estas Seguro?",
+      text: "Esto borra el producto para siempre",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Si, Borrarlo!",
+    }).then(async (result: any) => {
+      if (result.isConfirmed) {
+        try {
+          const { data } = await tesloApi({
+            url: "/admin/inventory",
+            method: "DELETE",
+            data: product,
+          });
+        } catch (error) {
+          console.log(error);
+          setIsSaving(false);
+        }
+
+        Swal.fire("Borrado!", "El producto fue borrado", "success");
+        router.push("/admin/invproducts");
+      }
+    });
+  };
+
   return (
-    <PrincipalLayout
-      title={`Productos (${product.partes?.length})`}
-      description={"Mantenimiento de productos"}
-      // icon={ <CategoryOutlined /> }
-    >
+    <>
       <Box display="flex" justifyContent="center" sx={{ marginTop: "150px" }}>
         <Card sx={{ maxWidth: 400 }}>
           <CardActionArea>
@@ -327,9 +353,220 @@ const PartsTable: FC<Props> = ({ product, part, idver }) => {
       <Box sx={{ marginTop: "20px" }}>
         <Box display="flex" justifyContent="center" sx={{ mb: 2 }}>
           <Button
+            startIcon={<EditOutlined />}
+            color="secondary"
+            onClick={handleOpen2}
+            sx={{ width: "200px", backgroundColor: "#9da71a", color: "#fff" }}
+          >
+            Editar Producto
+          </Button>
+          <Modal
+            open={open2}
+            onClose={handleClose2}
+            aria-labelledby="modal-modal-title"
+            aria-describedby="modal-modal-description"
+          >
+            <Box
+              sx={{
+                position: "absolute" as "absolute",
+                top: "50%",
+                left: "50%",
+                transform: "translate(-50%, -50%)",
+                width: 1000,
+                bgcolor: "background.paper",
+                border: "2px solid #000",
+                boxShadow: 24,
+                p: 4,
+              }}
+            >
+              <form onSubmit={handleSubmit2(onSubmit)}>
+                <Box
+                  sx={{
+                    //display: idver === "new" ? "none" : "flex",
+                    display: "flex",
+                    justifyContent: "center",
+                  }}
+                >
+                  <Typography
+                    variant="h1"
+                    sx={{
+                      mb: 1,
+                      marginTop: "10px",
+                      fontFamily: "Montserrat, sans-serif",
+                      fontSize: "40px",
+                    }}
+                  >
+                    Editar Producto
+                  </Typography>
+                </Box>
+
+                <Grid
+                  container
+                  spacing={2}
+                  display="flex"
+                  justifyContent="center"
+                  sx={{
+                    mb: 1,
+                    marginTop: "10px",
+                    //display: idver === "new" ? "none" : "flex",
+                  }}
+                >
+                  {/* Data */}
+                  <Grid item xs={12} sm={6}>
+                    <TextField
+                      label="Título"
+                      variant="outlined"
+                      fullWidth
+                      sx={{ mb: 1 }}
+                      {...register2("titulo", {
+                        required: "Este campo es requerido",
+                        minLength: {
+                          value: 2,
+                          message: "Mínimo 2 caracteres",
+                        },
+                      })}
+                      error={!!errors2.titulo}
+                      helperText={errors2.titulo?.message}
+                    />
+
+                    <TextField
+                      label="Descripción"
+                      variant="outlined"
+                      fullWidth
+                      multiline
+                      sx={{ mb: 1 }}
+                      {...register2("copy", {
+                        required: "Este campo es requerido",
+                      })}
+                      error={!!errors2.copy}
+                      helperText={errors2.copy?.message}
+                    />
+
+                    <TextField
+                      label="Cantidad"
+                      type="number"
+                      variant="outlined"
+                      fullWidth
+                      sx={{ mb: 1 }}
+                      {...register2("cantidad", {
+                        required: "Este campo es requerido",
+                        min: { value: 0, message: "Mínimo de valor cero" },
+                      })}
+                      error={!!errors2.cantidad}
+                      helperText={errors2.cantidad?.message}
+                    />
+
+                    <Divider sx={{ my: 1 }} />
+                  </Grid>
+
+                  {/* Tags e imagenes */}
+                  <Grid item xs={12} sm={6}>
+                    <Divider sx={{ my: 2 }} />
+
+                    <Box display="flex" flexDirection="column">
+                      <FormLabel sx={{ mb: 1 }}>Imágenes</FormLabel>
+                      <Button
+                        color="secondary"
+                        fullWidth
+                        startIcon={<UploadOutlined />}
+                        sx={{
+                          mb: 3,
+                          color: "#fff",
+                          backgroundColor: "#327222",
+                        }}
+                        onClick={() => fileInputRef.current?.click()}
+                      >
+                        Cargar imagen
+                      </Button>
+                      <input
+                        ref={fileInputRef}
+                        type="file"
+                        multiple
+                        accept="image/png, image/gif, image/jpeg"
+                        style={{ display: "none" }}
+                        onChange={onFilesSelected2}
+                      />
+
+                      <Chip
+                        label="Es necesario al menos 1 imagen"
+                        color="error"
+                        variant="outlined"
+                        sx={{
+                          display:
+                            getValues2("images").length < 1 ? "flex" : "none",
+                        }}
+                      />
+
+                      <Grid container spacing={2}>
+                        {getValues2("images").map((img) => (
+                          <Grid item xs={4} sm={3} key={img}>
+                            <Card>
+                              <CardMedia
+                                component="img"
+                                className="fadeIn"
+                                image={img}
+                                alt={img}
+                              />
+                              <CardActions>
+                                <Button
+                                  fullWidth
+                                  color="error"
+                                  onClick={() => onDeleteImage2(img)}
+                                >
+                                  Borrar
+                                </Button>
+                              </CardActions>
+                            </Card>
+                          </Grid>
+                        ))}
+                      </Grid>
+                    </Box>
+                  </Grid>
+                </Grid>
+                <Box
+                  display="flex"
+                  justifyContent="center"
+                  sx={{ mb: 1, marginTop: "20px" }}
+                >
+                  <Button
+                    color="secondary"
+                    startIcon={<SaveOutlined />}
+                    sx={{
+                      width: "30%",
+                      backgroundColor: "#2255c4",
+                      color: "#fff",
+                    }}
+                    type="submit"
+
+                    //disabled={isSaving}
+                  >
+                    Editar
+                  </Button>
+                </Box>
+              </form>
+            </Box>
+          </Modal>
+
+          <Button
+            startIcon={<DeleteForeverOutlined />}
+            sx={{
+              width: "200px",
+              backgroundColor: "#9b0f0f",
+              color: "#fff",
+              marginLeft: "5px",
+            }}
+            onClick={() => onDeleteProduct()}
+            //disabled={isSaving}
+          >
+            Borrar Producto
+          </Button>
+        </Box>
+        <Box display="flex" justifyContent="center" sx={{ mb: 0, mt: 6 }}>
+          <Button
             startIcon={<AddOutlined />}
             color="secondary"
             onClick={handleOpen}
+            sx={{ width: "200px", backgroundColor: "#2255c4", color: "#fff" }}
           >
             Crear Componente
           </Button>
@@ -439,8 +676,12 @@ const PartsTable: FC<Props> = ({ product, part, idver }) => {
                         color="secondary"
                         fullWidth
                         startIcon={<UploadOutlined />}
-                        sx={{ mb: 3 }}
                         onClick={() => fileInputRef2.current?.click()}
+                        sx={{
+                          mb: 3,
+                          color: "#fff",
+                          backgroundColor: "#327222",
+                        }}
                       >
                         Cargar imagen
                       </Button>
@@ -497,194 +738,15 @@ const PartsTable: FC<Props> = ({ product, part, idver }) => {
                   <Button
                     color="secondary"
                     startIcon={<SaveOutlined />}
-                    sx={{ width: "30%" }}
-                    type="submit"
-                    disabled={isSaving}
-                  >
-                    Crear Parte
-                  </Button>
-                </Box>
-              </form>
-            </Box>
-          </Modal>
-        </Box>
-        <Box display="flex" justifyContent="center" sx={{ mb: 2 }}>
-          <Button
-            startIcon={<AddOutlined />}
-            color="secondary"
-            onClick={handleOpen2}
-          >
-            Editar Producto
-          </Button>
-          <Modal
-            open={open2}
-            onClose={handleClose2}
-            aria-labelledby="modal-modal-title"
-            aria-describedby="modal-modal-description"
-          >
-            <Box
-              sx={{
-                position: "absolute" as "absolute",
-                top: "50%",
-                left: "50%",
-                transform: "translate(-50%, -50%)",
-                width: 1000,
-                bgcolor: "background.paper",
-                border: "2px solid #000",
-                boxShadow: 24,
-                p: 4,
-              }}
-            >
-              <form onSubmit={handleSubmit2(onSubmit)}>
-                <Box
-                  sx={{
-                    //display: idver === "new" ? "none" : "flex",
-                    display: "flex",
-                    justifyContent: "center",
-                  }}
-                >
-                  <Typography
-                    variant="h1"
                     sx={{
-                      mb: 1,
-                      marginTop: "10px",
-                      fontFamily: "Montserrat, sans-serif",
-                      fontSize: "40px",
+                      width: "30%",
+                      backgroundColor: "#2255c4",
+                      color: "#fff",
                     }}
-                  >
-                    Editar Producto
-                  </Typography>
-                </Box>
-
-                <Grid
-                  container
-                  spacing={2}
-                  display="flex"
-                  justifyContent="center"
-                  sx={{
-                    mb: 1,
-                    marginTop: "10px",
-                    //display: idver === "new" ? "none" : "flex",
-                  }}
-                >
-                  {/* Data */}
-                  <Grid item xs={12} sm={6}>
-                    <TextField
-                      label="Título"
-                      variant="outlined"
-                      fullWidth
-                      sx={{ mb: 1 }}
-                      {...register2("titulo", {
-                        required: "Este campo es requerido",
-                        minLength: { value: 2, message: "Mínimo 2 caracteres" },
-                      })}
-                      error={!!errors2.titulo}
-                      helperText={errors2.titulo?.message}
-                    />
-
-                    <TextField
-                      label="Descripción"
-                      variant="outlined"
-                      fullWidth
-                      multiline
-                      sx={{ mb: 1 }}
-                      {...register2("copy", {
-                        required: "Este campo es requerido",
-                      })}
-                      error={!!errors2.copy}
-                      helperText={errors2.copy?.message}
-                    />
-
-                    <TextField
-                      label="Cantidad"
-                      type="number"
-                      variant="outlined"
-                      fullWidth
-                      sx={{ mb: 1 }}
-                      {...register2("cantidad", {
-                        required: "Este campo es requerido",
-                        min: { value: 0, message: "Mínimo de valor cero" },
-                      })}
-                      error={!!errors2.cantidad}
-                      helperText={errors2.cantidad?.message}
-                    />
-
-                    <Divider sx={{ my: 1 }} />
-                  </Grid>
-
-                  {/* Tags e imagenes */}
-                  <Grid item xs={12} sm={6}>
-                    <Divider sx={{ my: 2 }} />
-
-                    <Box display="flex" flexDirection="column">
-                      <FormLabel sx={{ mb: 1 }}>Imágenes</FormLabel>
-                      <Button
-                        color="secondary"
-                        fullWidth
-                        startIcon={<UploadOutlined />}
-                        sx={{ mb: 3 }}
-                        onClick={() => fileInputRef.current?.click()}
-                      >
-                        Cargar imagen
-                      </Button>
-                      <input
-                        ref={fileInputRef}
-                        type="file"
-                        multiple
-                        accept="image/png, image/gif, image/jpeg"
-                        style={{ display: "none" }}
-                        onChange={onFilesSelected2}
-                      />
-
-                      <Chip
-                        label="Es necesario al menos 1 imagen"
-                        color="error"
-                        variant="outlined"
-                        sx={{
-                          display:
-                            getValues2("images").length < 1 ? "flex" : "none",
-                        }}
-                      />
-
-                      <Grid container spacing={2}>
-                        {getValues2("images").map((img) => (
-                          <Grid item xs={4} sm={3} key={img}>
-                            <Card>
-                              <CardMedia
-                                component="img"
-                                className="fadeIn"
-                                image={img}
-                                alt={img}
-                              />
-                              <CardActions>
-                                <Button
-                                  fullWidth
-                                  color="error"
-                                  onClick={() => onDeleteImage2(img)}
-                                >
-                                  Borrar
-                                </Button>
-                              </CardActions>
-                            </Card>
-                          </Grid>
-                        ))}
-                      </Grid>
-                    </Box>
-                  </Grid>
-                </Grid>
-                <Box
-                  display="flex"
-                  justifyContent="center"
-                  sx={{ mb: 1, marginTop: "20px" }}
-                >
-                  <Button
-                    color="secondary"
-                    startIcon={<SaveOutlined />}
-                    sx={{ width: "30%" }}
                     type="submit"
                     //disabled={isSaving}
                   >
-                    Editar
+                    Crear Parte
                   </Button>
                 </Box>
               </form>
@@ -706,7 +768,7 @@ const PartsTable: FC<Props> = ({ product, part, idver }) => {
                 fontFamily: "Montserrat, sans-serif",
               }}
             >
-              Componentes
+              Componentes de {product.titulo}
             </Typography>
           </Grid>
 
@@ -733,7 +795,7 @@ const PartsTable: FC<Props> = ({ product, part, idver }) => {
         </Grid>
       </Box>
       {/* <MovProdTable product={product} idver={idver} /> */}
-    </PrincipalLayout>
+    </>
   );
 };
 

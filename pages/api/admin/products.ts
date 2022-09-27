@@ -24,6 +24,9 @@ export default function handler(
     case "POST":
       return createProduct(req, res);
 
+    case "DELETE":
+      return deleteProduct(req, res);
+
     default:
       return res.status(400).json({ message: "Bad request" });
   }
@@ -52,6 +55,8 @@ const updateProduct = async (
   res: NextApiResponse<Data>
 ) => {
   const { _id = "", images = [] } = req.body as IProducto;
+
+  console.log(req.body);
 
   if (!isValidObjectId(_id)) {
     return res.status(400).json({ message: "El id del producto no es válido" });
@@ -83,12 +88,12 @@ const updateProduct = async (
         const [fileId, extension] = image
           .substring(image.lastIndexOf("/") + 1)
           .split(".");
-        console.log({ image, fileId, extension });
+        //console.log({ image, fileId, extension });
         await cloudinary.uploader.destroy(fileId);
       }
     });
 
-    await product.update(req.body);
+    await product.updateOne(req.body);
     await db.disconnect();
 
     return res.status(200).json(product);
@@ -128,6 +133,49 @@ const createProduct = async (
     await db.disconnect();
 
     res.status(201).json(product);
+  } catch (error) {
+    console.log(error);
+    await db.disconnect();
+    return res.status(400).json({ message: "Revisar logs del servidor" });
+  }
+};
+
+const deleteProduct = async (
+  req: NextApiRequest,
+  res: NextApiResponse<Data>
+) => {
+  const { _id, images = [] } = req.body as IProducto;
+
+  try {
+    await db.connect();
+    const product = await Product.findById(_id);
+
+    if (!product) {
+      await db.disconnect();
+      return res
+        .status(400)
+        .json({ message: "No existe un producto con ese ID" });
+    }
+
+    // TODO: eliminar fotos en Cloudinary
+    // https://res.cloudinary.com/cursos-udemy/image/upload/v1645914028/nct31gbly4kde6cncc6i.jpg
+    product.images.map(async (image) => {
+      // if (!images.includes(image)) {
+      // Borrar de cloudinary
+      const [fileId, extension] = image
+        .substring(image.lastIndexOf("/") + 1)
+        .split(".");
+      // console.log({ image, fileId, extension });
+      // console.log(fileId);
+      // console.log(fileId);
+
+      await cloudinary.uploader.destroy(fileId);
+      //}
+    });
+    await Product.deleteOne({ _id });
+    await db.disconnect();
+
+    res.status(200).json({ message: "Producto Borrado" });
   } catch (error) {
     console.log(error);
     await db.disconnect();

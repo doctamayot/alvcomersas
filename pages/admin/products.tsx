@@ -1,7 +1,7 @@
 import NextLink from "next/link";
-import { AddOutlined, CategoryOutlined } from "@mui/icons-material";
+import { AddOutlined } from "@mui/icons-material";
 import { Box, Button, CardMedia, Grid, Link } from "@mui/material";
-import { DataGrid, GridColDef, GridValueGetterParams } from "@mui/x-data-grid";
+import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import useSWR from "swr";
 
 import { PrincipalLayout } from "../../components/layouts";
@@ -11,6 +11,7 @@ const columns: GridColDef[] = [
   {
     field: "img",
     headerName: "Foto",
+
     renderCell: ({ row }: any) => {
       return (
         <a href={`/productos/${row.slug}`} target="_blank" rel="noreferrer">
@@ -28,7 +29,7 @@ const columns: GridColDef[] = [
   {
     field: "title",
     headerName: "Titulo",
-    width: 200,
+    flex: 1,
     renderCell: ({ row }: any) => {
       return (
         <NextLink href={`/admin/products/${row.slug}`} passHref>
@@ -37,9 +38,8 @@ const columns: GridColDef[] = [
       );
     },
   },
-  { field: "categoria", headerName: "Categoria", width: 250 },
-  { field: "price", headerName: "Precio" },
-  { field: "copy", headerName: "Descripción", width: 400 },
+  { field: "categoria", headerName: "Categoria", flex: 1 },
+  { field: "price", headerName: "Precio", flex: 1 },
 ];
 
 const ProductsPage = () => {
@@ -53,7 +53,7 @@ const ProductsPage = () => {
     title: product.titulo,
     categoria: product.categoria,
     price: product.precio,
-    copy: product.copy,
+
     slug: product.slug,
   }));
 
@@ -67,7 +67,7 @@ const ProductsPage = () => {
         <Box display="flex" justifyContent="end" sx={{ mb: 2, mr: 6 }}>
           <Button
             startIcon={<AddOutlined />}
-            color="secondary"
+            sx={{ color: "#fff", backgroundColor: "#2255c4" }}
             href="/admin/products/new"
           >
             Crear producto
