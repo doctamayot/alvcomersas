@@ -390,7 +390,7 @@ const InvProductsPage = () => {
                     type="submit"
                     //disabled={isSaving}
                   >
-                    Crear Parte
+                    Crear Producto
                   </Button>
                 </Box>
               </form>

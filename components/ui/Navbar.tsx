@@ -34,7 +34,6 @@ import {
 //App
 import logo from "../../public/static/images/logo.png";
 import { UiContext } from "../../context";
-import { Loading } from "./Loading";
 
 export const Navbar = () => {
   const { push } = useRouter();
