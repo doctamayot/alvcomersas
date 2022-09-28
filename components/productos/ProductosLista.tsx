@@ -156,15 +156,18 @@ export const ProductosLista: FC<Props> = ({ products, titulo }) => {
                           <Box
                             sx={{
                               fontFamily: "Montserrat, sans-serif",
-                              fontSize: "25.2px",
+
                               fontWeight: "bolder",
                               display: "flex",
                             }}
                           >
-                            <AcUnit sx={{ color: "#000" }} />
                             <Typography
                               variant="h6"
-                              sx={{ marginLeft: "10px", color: "#000" }}
+                              sx={{
+                                marginLeft: "10px",
+                                color: "#000",
+                                fontSize: "31px",
+                              }}
                             >
                               {item.titulo}
                             </Typography>

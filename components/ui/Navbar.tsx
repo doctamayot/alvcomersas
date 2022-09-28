@@ -140,7 +140,7 @@ export const Navbar = () => {
           >
             <MenuItem
               sx={{ fontFamily: "Montserrat, sans-serif" }}
-              onClick={handleClose}
+              //onClick={handleClose}
             >
               <NextLink href="/productos/categoria/todas" passHref>
                 <Typography
@@ -157,7 +157,7 @@ export const Navbar = () => {
             </MenuItem>
             <MenuItem
               sx={{ fontFamily: "Montserrat, sans-serif" }}
-              onClick={handleClose}
+              //onClick={handleClose}
             >
               <NextLink href="/productos/categoria/militares" passHref>
                 <Typography
@@ -174,7 +174,7 @@ export const Navbar = () => {
             </MenuItem>
             <MenuItem
               sx={{ fontFamily: "Montserrat, sans-serif" }}
-              onClick={handleClose}
+              // onClick={handleClose}
             >
               <NextLink href="/productos/categoria/herrajes" passHref>
                 <Typography
@@ -191,7 +191,7 @@ export const Navbar = () => {
             </MenuItem>
             <MenuItem
               sx={{ fontFamily: "Montserrat, sans-serif" }}
-              onClick={handleClose}
+              // onClick={handleClose}
             >
               <NextLink href="/productos/categoria/inst" passHref>
                 <Typography
@@ -209,7 +209,7 @@ export const Navbar = () => {
 
             <MenuItem
               sx={{ fontFamily: "Montserrat, sans-serif" }}
-              onClick={handleClose}
+              // onClick={handleClose}
             >
               <NextLink href="/productos/categoria/servicios" passHref>
                 <Typography
