@@ -14,9 +14,11 @@ export const getProductBySlug = async (
     return null;
   }
 
-  // product.images = product.images.map( image => {
-  //     return image.includes('http') ? image : `${ process.env.HOST_NAME}products/${ image }`
-  // });
+  product.images = product.images.map((image) => {
+    return image.includes("http")
+      ? image
+      : `${process.env.HOST_NAME}products/${image}`;
+  });
 
   return JSON.parse(JSON.stringify(product));
 };
