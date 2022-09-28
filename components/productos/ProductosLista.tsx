@@ -61,22 +61,20 @@ export const ProductosLista: FC<Props> = ({ products, titulo }) => {
   }, []);
 
   const handleClick = (direction: any) => {
-    setInterval(() => {
-      setActiveIndex((prevIndex) => {
-        if (direction === "next") {
-          if (prevIndex + 1 > products.length - 1) {
-            return 0;
-          }
-          return prevIndex + 1;
+    setActiveIndex((prevIndex) => {
+      if (direction === "next") {
+        if (prevIndex + 1 > products.length - 1) {
+          return 0;
         }
+        return prevIndex + 1;
+      }
 
-        if (prevIndex - 1 < 0) {
-          return products.length - 1;
-        }
+      if (prevIndex - 1 < 0) {
+        return products.length - 1;
+      }
 
-        return prevIndex - 1;
-      });
-    }, 10000);
+      return prevIndex - 1;
+    });
   };
 
   return (
@@ -93,7 +91,7 @@ export const ProductosLista: FC<Props> = ({ products, titulo }) => {
         xs={12}
         md={4}
         sx={{
-          marginTop: "120px",
+          marginTop: "150px",
           display: "flex",
           justifyContent: "flex-start",
         }}
@@ -163,10 +161,10 @@ export const ProductosLista: FC<Props> = ({ products, titulo }) => {
                               display: "flex",
                             }}
                           >
-                            <AcUnit />
+                            <AcUnit sx={{ color: "#000" }} />
                             <Typography
                               variant="h6"
-                              sx={{ marginLeft: "10px" }}
+                              sx={{ marginLeft: "10px", color: "#000" }}
                             >
                               {item.titulo}
                             </Typography>

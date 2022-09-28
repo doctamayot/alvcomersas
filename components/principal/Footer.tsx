@@ -1,11 +1,4 @@
-import {
-  GitHub,
-  LinkedIn,
-  Facebook,
-  Twitter,
-  Instagram,
-  WhatsApp,
-} from "@mui/icons-material";
+import { Facebook, Instagram, WhatsApp } from "@mui/icons-material";
 import { Box, Divider, Grid, Link, Typography } from "@mui/material";
 import React, { FC } from "react";
 import moment from "moment";
@@ -139,7 +132,7 @@ export const Footer: FC = () => {
           <Typography
             variant="h6"
             sx={{
-              marginBottom: "20px",
+              marginBottom: "10px",
               padding: "0 40px",
               border: "1px solid",
             }}
@@ -149,47 +142,26 @@ export const Footer: FC = () => {
 
           <Box component="span" color="#fff">
             <a
-              href="https://github.com/doctamayot/"
-              rel="noreferrer"
-              target="_blank"
-            >
-              <GitHub sx={{ color: "#fff" }} />
-            </a>
-
-            <a
-              href="https://www.linkedin.com/in/hugo-tamayo-8126b791/"
-              rel="noreferrer"
-              target="_blank"
-            >
-              <LinkedIn sx={{ color: "#fff" }} />
-            </a>
-            <a
               href="https://www.facebook.com/hugo.tamayo/"
               rel="noreferrer"
               target="_blank"
             >
-              <Facebook sx={{ color: "#fff" }} />
+              <Facebook sx={{ color: "#fff", fontSize: "40px" }} />
             </a>
-            <a
-              href="https://twitter.com/doctamayot"
-              rel="noreferrer"
-              target="_blank"
-            >
-              <Twitter sx={{ color: "#fff" }} />
-            </a>
+
             <a
               href="https://www.instagram.com/doctamayot/"
               rel="noreferrer"
               target="_blank"
             >
-              <Instagram sx={{ color: "#fff" }} />
+              <Instagram sx={{ color: "#fff", fontSize: "40px" }} />
             </a>
           </Box>
         </Box>
         <Typography variant="h6" component="span" color="#fff">
           <a href={mensaje} rel="noreferrer" target="_blank">
             <WhatsApp
-              sx={{ color: "#129612", fontSize: "50px", marginTop: "10px" }}
+              sx={{ color: "#129612", fontSize: "50px", marginTop: "1px" }}
             />
           </a>
         </Typography>
