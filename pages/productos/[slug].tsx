@@ -24,13 +24,16 @@ const ProductoSlug: NextPage<Props> = ({ product }) => {
         container
         spacing={6}
         marginTop={0}
-        sx={{ backgroundColor: "#fec526", height: "100vh" }}
+        sx={{ backgroundColor: "#fec526" }}
       >
         <Grid
           item
           xs={12}
           sm={5}
-          sx={{ marginTop: "200px", marginLeft: "100px" }}
+          sx={{
+            marginTop: { lg: "200px", xs: "50px" },
+            marginLeft: { lg: "100px" },
+          }}
         >
           <ProductSlideshow images={product.images} />
         </Grid>
@@ -39,9 +42,9 @@ const ProductoSlug: NextPage<Props> = ({ product }) => {
           item
           xs={12}
           sm={6}
-          sx={{ marginTop: "250px", marginLeft: "4px" }}
+          sx={{ marginTop: { lg: "150px" }, marginLeft: { lg: "4px" } }}
         >
-          <Box display="flex" flexDirection="column">
+          <Box display="flex" flexDirection="column" alignItems="center">
             {/* titulos */}
             <Typography
               variant="h1"
@@ -69,7 +72,7 @@ const ProductoSlug: NextPage<Props> = ({ product }) => {
             >{`$ ${product.precio}`}</Typography>
 
             {/* Descripción */}
-            <Box sx={{ mt: 1 }}>
+            <Box sx={{ mt: 1 }} textAlign="center">
               <Typography
                 variant="subtitle2"
                 sx={{
@@ -89,6 +92,7 @@ const ProductoSlug: NextPage<Props> = ({ product }) => {
                   fontFamily: "Montserrat, sans-serif",
                   marginTop: "10px",
                   fontWeight: "100",
+                  fontSize: { lg: "20px" },
                 }}
               >
                 {product.copy}
@@ -101,6 +105,7 @@ const ProductoSlug: NextPage<Props> = ({ product }) => {
                   backgroundColor: "#000",
                   color: "#fff",
                   marginTop: "30px",
+                  marginBottom: { xs: "30px" },
                   width: "300px",
                 }}
               >

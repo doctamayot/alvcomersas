@@ -82,7 +82,7 @@ export const ProductosLista: FC<Props> = ({ products, titulo }) => {
   return (
     <Grid
       container
-      spacing={8}
+      spacing={2}
       sx={{
         backgroundColor: "#fec526",
         justifyContent: "center",
@@ -90,17 +90,19 @@ export const ProductosLista: FC<Props> = ({ products, titulo }) => {
     >
       <Grid
         item
-        xs={4}
+        xs={12}
+        md={4}
         sx={{
-          margin: "120px 20px",
+          marginTop: "120px",
           display: "flex",
           justifyContent: "flex-start",
         }}
       >
         <Box
           sx={{
-            height: "100vh",
+            height: { xs: "80vh", md: "100vh" },
             width: "90%",
+            textAlign: "center",
           }}
         >
           <Typography
@@ -122,10 +124,7 @@ export const ProductosLista: FC<Props> = ({ products, titulo }) => {
               fontWeight: "100",
             }}
           >
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore
-            doloremque quod asperiores quibusdam sit at incidunt possimus, sunt
-            similique et. Accusantium vitae nam eum blanditiis corrupti quos
-            quisquam quibusdam architecto.
+            Esta es toda nuestra linea de productos:
           </Typography>
           <div className="container">
             <section className="outer-container">
@@ -190,16 +189,25 @@ export const ProductosLista: FC<Props> = ({ products, titulo }) => {
           </div>
         </Box>
       </Grid>
-      <Grid item xs={3} sx={{ marginTop: "0px", marginLeft: "-120px" }}>
+      <Grid item xs={12} md={4}>
         <Slider activeIndex={activeIndex} productos={products} />
       </Grid>
-      <Grid item xs={3} sx={{ marginTop: "400px" }}>
+      <Grid
+        item
+        xs={12}
+        md={4}
+        sx={{
+          margin: { md: "300px 0 0 0" },
+          paddingRight: { md: "30px" },
+        }}
+      >
         <Typography
           variant="h2"
           sx={{
             fontFamily: "Montserrat, sans-serif",
             color: "#fff",
             fontSize: "60px",
+            textAlign: "center",
           }}
         >
           {products[activeIndex].titulo}
@@ -210,6 +218,8 @@ export const ProductosLista: FC<Props> = ({ products, titulo }) => {
             marginTop: "30px",
             fontFamily: "Montserrat, sans-serif",
             fontSize: "20px",
+            textAlign: "center",
+            padding: { xs: "10px" },
           }}
         >
           {products[activeIndex].copy}
@@ -219,17 +229,22 @@ export const ProductosLista: FC<Props> = ({ products, titulo }) => {
           passHref
           prefetch={false}
         >
-          <Button
-            endIcon={<ArrowForward />}
-            sx={{
-              backgroundColor: "#000",
-              color: "#fff",
-              marginTop: "30px",
-              width: "300px",
-            }}
-          >
-            Ver más
-          </Button>
+          <Box sx={{ textAlign: "center" }}>
+            <Button
+              endIcon={<ArrowForward />}
+              sx={{
+                backgroundColor: "#000",
+                color: "#fff",
+                marginTop: "30px",
+                width: "300px",
+                margin: "0 auto",
+                textAlign: "center",
+                marginBottom: "30px",
+              }}
+            >
+              Ver más
+            </Button>
+          </Box>
         </NextLink>
       </Grid>
     </Grid>
