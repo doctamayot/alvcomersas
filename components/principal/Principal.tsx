@@ -17,18 +17,36 @@ const zoomOutProperties = {
 };
 
 const fondos = [
-  { url: "/static/images/jarro_red_pr.webp" },
-  { url: "/static/images/pulidora.webp" },
-  { url: "/static/images/lamina.webp" },
-  { url: "/static/images/herrajes.webp" },
-  { url: "/static/images/botas.webp" },
+  {
+    url: "https://res.cloudinary.com/alvcomer/image/upload/v1664329018/jarro_red_pr_sutpxc.webp",
+  },
+  {
+    url: "https://res.cloudinary.com/alvcomer/image/upload/v1664329019/pulidora_t7jhgb.webp",
+  },
+  {
+    url: "https://res.cloudinary.com/alvcomer/image/upload/v1664329017/lamina_v3whqr.webp",
+  },
+  {
+    url: "https://res.cloudinary.com/alvcomer/image/upload/v1664329018/herrajes_ym4riy.webp",
+  },
+  {
+    url: "https://res.cloudinary.com/alvcomer/image/upload/v1664329018/botas_r9xh3q.webp",
+  },
 ];
 
 const fondoscel = [
-  { url: "/static/images/jarroredver.webp" },
-  { url: "/static/images/pulidoraver.webp" },
-  { url: "/static/images/lamina.webp" },
-  { url: "/static/images/herrajes.webp" },
+  {
+    url: "https://res.cloudinary.com/alvcomer/image/upload/v1664329021/jarroredver_ytmdqu.webp",
+  },
+  {
+    url: "https://res.cloudinary.com/alvcomer/image/upload/v1664329022/pulidoraver_mo6jzw.webp",
+  },
+  {
+    url: "https://res.cloudinary.com/alvcomer/image/upload/v1664329017/lamina_v3whqr.webp",
+  },
+  {
+    url: "https://res.cloudinary.com/alvcomer/image/upload/v1664329018/herrajes_ym4riy.webp",
+  },
 ];
 
 export const Principal = () => {

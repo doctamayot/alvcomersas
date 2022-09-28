@@ -30,7 +30,12 @@ export const Historia = () => {
               marginTop: { md: "150px", xl: "20px" },
             }}
           >
-            <Image src={foto} alt="hugp" width={5431} height={3052} />
+            <Image
+              src="https://res.cloudinary.com/alvcomer/image/upload/v1664329017/principal_mdid63.webp"
+              alt="hugp"
+              width={5431}
+              height={3052}
+            />
           </Box>
         </Grid>
         <Grid item xs={12} md={6}>
