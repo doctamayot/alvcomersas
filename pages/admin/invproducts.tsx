@@ -172,7 +172,7 @@ const InvProductsPage = () => {
         icon: "success",
         confirmButtonText: "Ok",
       });
-      await router.push("/admin/invproducts");
+      await router.reload();
 
       console.log({ data });
     } catch (error) {
