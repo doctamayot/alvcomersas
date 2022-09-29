@@ -56,7 +56,7 @@ const updateProduct = async (
 ) => {
   const { _id = "", images = [] } = req.body as IProducto;
 
-  console.log(req.body);
+  //console.log(req.body);
 
   if (!isValidObjectId(_id)) {
     return res.status(400).json({ message: "El id del producto no es válido" });
