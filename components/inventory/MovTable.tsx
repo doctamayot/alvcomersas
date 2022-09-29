@@ -112,13 +112,13 @@ const MovTable: FC<Props> = ({ product, idver, parte }) => {
 
       console.log({ data });
       setOpen(false);
-      Swal.fire({
+      await Swal.fire({
         title: "Movimiento Ingresado",
         text: "Continuar",
         icon: "success",
         confirmButtonText: "Ok",
       });
-      router.push(`/admin/parts/${idver}`);
+      await router.push(`/admin/parts/${idver}`);
     } catch (error) {
       console.log(error);
       //setIsSaving(false);

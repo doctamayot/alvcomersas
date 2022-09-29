@@ -106,13 +106,13 @@ const MovProdTable: FC<Props> = ({ product, idver }) => {
       });
 
       setOpen(false);
-      Swal.fire({
+      await Swal.fire({
         title: "Movimiento Ingresado",
         text: "Continuar",
         icon: "success",
         confirmButtonText: "Ok",
       });
-      router.reload();
+      await router.reload();
     } catch (error) {
       console.log(error);
       //setIsSaving(false);

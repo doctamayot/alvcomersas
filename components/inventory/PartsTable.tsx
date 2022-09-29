@@ -210,15 +210,15 @@ const PartsTable: FC<Props> = ({ product, part, idver }) => {
         data: form,
       });
       setOpen(false);
-      Swal.fire({
+      await Swal.fire({
         title: "Componente Creado",
         text: "Continuar",
         icon: "success",
         confirmButtonText: "Ok",
       });
 
-      console.log({ data });
-      router.push(`/admin/invproducts/${idver}`);
+      //console.log({ data });
+      await router.push(`/admin/invproducts/${idver}`);
     } catch (error) {
       console.log(error);
       setIsSaving(false);
@@ -236,13 +236,13 @@ const PartsTable: FC<Props> = ({ product, part, idver }) => {
         data: form,
       });
       setOpen2(false);
-      Swal.fire({
+      await Swal.fire({
         title: form._id ? "Producto Editado" : "Producto Creado",
         text: "Continuar",
         icon: "success",
         confirmButtonText: "Ok",
       });
-      router.push(`/admin/invproducts/${idver}`);
+      await router.push(`/admin/invproducts/${idver}`);
     } catch (error) {
       console.log(error);
       setIsSaving(false);

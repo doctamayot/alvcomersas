@@ -166,13 +166,13 @@ const InvProductsPage = () => {
         data: form,
       });
       setOpen(false);
-      Swal.fire({
+      await Swal.fire({
         title: "Producto Inventario Creado",
         text: "Continuar",
         icon: "success",
         confirmButtonText: "Ok",
       });
-      await router.reload();
+      await router.push("/admin/invproducts");
 
       console.log({ data });
     } catch (error) {

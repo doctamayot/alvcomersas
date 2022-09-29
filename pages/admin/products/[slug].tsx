@@ -146,19 +146,19 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
         method: form._id ? "PUT" : "POST", // si tenemos un _id, entonces actualizar, si no crear
         data: form,
       });
-      Swal.fire({
+      await Swal.fire({
         title: form._id ? "Producto Editado" : "Producto Creado",
         text: "Continuar",
         icon: "success",
         confirmButtonText: "Ok",
       });
-      router.push("/admin/products");
+      await router.push("/admin/products");
 
-      if (!form._id) {
-        router.replace(`/admin/products/${form.slug}`);
-      } else {
-        setIsSaving(false);
-      }
+      // if (!form._id) {
+      //   router.replace(`/admin/products/${form.slug}`);
+      // } else {
+      //   setIsSaving(false);
+      // }
     } catch (error) {
       console.log(error);
       setIsSaving(false);
