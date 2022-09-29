@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose, { ConnectOptions } from "mongoose";
 
 /**
  * 0 = disconnected
@@ -12,7 +12,6 @@ const mongoConnection = {
 
 export const connect = async () => {
   if (mongoConnection.isConnected) {
-    console.log(mongoConnection);
     console.log("Ya estabamos conectados");
     return;
   }
@@ -28,7 +27,13 @@ export const connect = async () => {
     await mongoose.disconnect();
   }
 
-  await mongoose.connect(process.env.MONGO_URL || "");
+  await mongoose.connect(
+    process.env.MONGO_URL as any,
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    } as ConnectOptions
+  );
   mongoConnection.isConnected = 1;
   console.log("Conectado a MongoDB:", process.env.MONGO_URL);
 };
