@@ -306,9 +306,13 @@ const MovTable: FC<Props> = ({ product, idver, parte }) => {
                 </FormControl>
 
                 <Button
-                  color="secondary"
                   startIcon={<SaveOutlined />}
-                  sx={{ width: "100%", marginTop: "20px" }}
+                  sx={{
+                    width: "100%",
+                    backgroundColor: "#2255c4",
+                    color: "#fff",
+                    marginTop: "10px",
+                  }}
                   type="submit"
                   //disabled={isSaving}
                 >

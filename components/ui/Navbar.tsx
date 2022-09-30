@@ -241,7 +241,7 @@ export const Navbar = () => {
             </Link>
           </NextLink>
 
-          <NextLink href="#footer" passHref>
+          <NextLink href="/#footer" passHref>
             <Link>
               <Button
                 variant="text"

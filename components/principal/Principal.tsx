@@ -52,6 +52,8 @@ const fondoscel = [
 export const Principal = () => {
   const { data: session, status } = useSession();
 
+  //console.log(session.user.role);
+
   if (status === "loading") {
     return <Loading />;
   }
