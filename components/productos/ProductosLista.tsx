@@ -86,10 +86,11 @@ export const ProductosLista: FC<Props> = ({ products, titulo }) => {
         justifyContent: "center",
       }}
     >
+      <Grid item md={1}></Grid>
       <Grid
         item
         xs={12}
-        md={4}
+        md={3}
         sx={{
           marginTop: "180px",
           display: "flex",
@@ -101,6 +102,7 @@ export const ProductosLista: FC<Props> = ({ products, titulo }) => {
             height: { xs: "80vh", md: "80vh" },
             width: "100%",
             textAlign: "center",
+            //marginLeft: { md: "300px" },
           }}
         >
           <Typography
@@ -190,7 +192,7 @@ export const ProductosLista: FC<Props> = ({ products, titulo }) => {
           </div>
         </Box>
       </Grid>
-      <Grid item xs={12} md={4}>
+      <Grid item xs={12} md={3}>
         <Slider activeIndex={activeIndex} productos={products} />
       </Grid>
       <Grid
@@ -198,8 +200,8 @@ export const ProductosLista: FC<Props> = ({ products, titulo }) => {
         xs={12}
         md={4}
         sx={{
-          margin: { md: "300px 0 0 0" },
-          paddingRight: { md: "30px" },
+          margin: { md: "300px 0px 0 0" },
+          //paddingRight: { md: "30px" },
         }}
       >
         <Typography
@@ -248,6 +250,7 @@ export const ProductosLista: FC<Props> = ({ products, titulo }) => {
           </Box>
         </NextLink>
       </Grid>
+      <Grid item xs={0} md={1}></Grid>
     </Grid>
   );
 };
