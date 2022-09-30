@@ -1,9 +1,6 @@
 {
   "name": "alvcomersas",
-  "version": "0.1.0",
-  "engines": {
-    "node": "16.x"
-  },
+  "version": "0.1.0",  
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -26,7 +23,7 @@
     "mongodb": "^4.9.1",
     "mongoose": "^6.6.1",
     "mongoose-autopopulate": "^0.16.1",
-    "next": "12.2.2",
+    "next": "12.2.0",
     "next-auth": "^4.10.3",
     "react": "18.2.0",
     "react-awesome-slider": "^4.1.0",
