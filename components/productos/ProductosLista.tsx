@@ -91,15 +91,15 @@ export const ProductosLista: FC<Props> = ({ products, titulo }) => {
         xs={12}
         md={4}
         sx={{
-          marginTop: "150px",
+          marginTop: "180px",
           display: "flex",
           justifyContent: "flex-start",
         }}
       >
         <Box
           sx={{
-            height: { xs: "80vh", md: "100vh" },
-            width: "90%",
+            height: { xs: "80vh", md: "80vh" },
+            width: "100%",
             textAlign: "center",
           }}
         >
@@ -236,9 +236,9 @@ export const ProductosLista: FC<Props> = ({ products, titulo }) => {
               sx={{
                 backgroundColor: "#000",
                 color: "#fff",
-                marginTop: "30px",
+
                 width: "300px",
-                margin: "0 auto",
+                margin: "60px auto",
                 textAlign: "center",
                 marginBottom: "30px",
               }}
