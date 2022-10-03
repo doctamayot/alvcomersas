@@ -99,7 +99,7 @@ export const ProductosLista: FC<Props> = ({ products, titulo }) => {
       >
         <Box
           sx={{
-            height: { xs: "100vh", md: "100vh" },
+            height: { xs: "100vh", md: "75vh" },
             width: "100%",
             textAlign: "center",
             //marginBottom: "500px",
