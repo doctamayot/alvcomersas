@@ -17,7 +17,7 @@ interface Props {
 }
 
 const ProductoSlug: NextPage<Props> = ({ product }) => {
-  const mensaje = `https://api.whatsapp.com/send?phone=57&text=Hola%20quiero%20comprar%20el%20producto%20${product.titulo}`;
+  const mensaje = `https://api.whatsapp.com/send?phone=573138270226&text=Hola%20quiero%20comprar%20el%20producto%20${product.titulo}`;
   return (
     <PrincipalLayout title={product.titulo} description={product.copy}>
       <Grid
