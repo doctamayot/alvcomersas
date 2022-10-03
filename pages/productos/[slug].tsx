@@ -24,14 +24,14 @@ const ProductoSlug: NextPage<Props> = ({ product }) => {
         container
         spacing={6}
         marginTop={0}
-        sx={{ backgroundColor: "#fec526" }}
+        sx={{ backgroundColor: "#fec526", height: { md: "80vh" } }}
       >
         <Grid
           item
           xs={12}
           md={5}
           sx={{
-            marginTop: { md: "200px", xs: "50px" },
+            marginTop: { md: "80px", xs: "50px" },
             marginLeft: { lg: "100px" },
           }}
         >
@@ -42,7 +42,7 @@ const ProductoSlug: NextPage<Props> = ({ product }) => {
           item
           xs={12}
           md={6}
-          sx={{ marginTop: { md: "250px" }, marginLeft: { lg: "4px" } }}
+          sx={{ marginTop: { md: "150px" }, marginLeft: { lg: "4px" } }}
         >
           <Box display="flex" flexDirection="column" alignItems="center">
             {/* titulos */}

@@ -86,20 +86,20 @@ export const ProductosLista: FC<Props> = ({ products, titulo }) => {
         justifyContent: "center",
       }}
     >
-      <Grid item md={1}></Grid>
+      <Grid item md={1} sx={{ display: { xs: "none", lg: "flex" } }}></Grid>
       <Grid
         item
         xs={12}
         md={3}
         sx={{
-          marginTop: { xs: "100px", sm: "180px" },
+          marginTop: { xs: "120px", sm: "180px" },
           display: "flex",
           justifyContent: "flex-start",
         }}
       >
         <Box
           sx={{
-            height: { xs: "100vh", md: "80vh" },
+            height: { xs: "100vh", md: "100vh" },
             width: "100%",
             textAlign: "center",
             //marginBottom: "500px",

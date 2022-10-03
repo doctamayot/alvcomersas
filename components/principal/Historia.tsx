@@ -1,7 +1,6 @@
 import React from "react";
 import Image from "next/image";
 import { Box, Grid, Typography } from "@mui/material";
-import foto from "../../assets/principal.jpg";
 
 export const Historia = () => {
   return (
@@ -32,7 +31,7 @@ export const Historia = () => {
           >
             <Image
               src="https://res.cloudinary.com/alvcomer/image/upload/v1664329017/principal_mdid63.webp"
-              alt="hugp"
+              alt="Historia Alvcomersas"
               width={5431}
               height={3052}
             />
