@@ -17,21 +17,21 @@ interface Props {
 }
 
 const ProductoSlug: NextPage<Props> = ({ product }) => {
-  const mensaje = `https://api.whatsapp.com/send?phone=573144261190&text=Hola%20quiero%20comprar%20el%20producto%20${product.titulo}`;
+  const mensaje = `https://api.whatsapp.com/send?phone=57&text=Hola%20quiero%20comprar%20el%20producto%20${product.titulo}`;
   return (
     <PrincipalLayout title={product.titulo} description={product.copy}>
       <Grid
         container
         spacing={6}
         marginTop={0}
-        sx={{ backgroundColor: "#fec526" }}
+        sx={{ backgroundColor: "#fec526", height: "100vh" }}
       >
         <Grid
           item
           xs={12}
-          sm={5}
+          md={5}
           sx={{
-            marginTop: { lg: "200px", xs: "50px" },
+            marginTop: { md: "200px", xs: "50px" },
             marginLeft: { lg: "100px" },
           }}
         >
@@ -41,8 +41,8 @@ const ProductoSlug: NextPage<Props> = ({ product }) => {
         <Grid
           item
           xs={12}
-          sm={6}
-          sx={{ marginTop: { lg: "150px" }, marginLeft: { lg: "4px" } }}
+          md={6}
+          sx={{ marginTop: { md: "250px" }, marginLeft: { lg: "4px" } }}
         >
           <Box display="flex" flexDirection="column" alignItems="center">
             {/* titulos */}
@@ -51,11 +51,11 @@ const ProductoSlug: NextPage<Props> = ({ product }) => {
               component="h1"
               sx={{
                 fontFamily: "Montserrat, sans-serif",
-                fontSize: "60px",
+                fontSize: "40px",
                 fontWeight: "bolder",
                 color: "#fff",
-
-                lineHeight: "70px",
+                textAlign: "center",
+                lineHeight: "40px",
               }}
             >
               {product.titulo}
@@ -77,11 +77,9 @@ const ProductoSlug: NextPage<Props> = ({ product }) => {
                 variant="subtitle2"
                 sx={{
                   fontFamily: "Montserrat, sans-serif",
-                  fontSize: "40px",
+                  fontSize: "30px",
                   fontWeight: "bolder",
                   color: "#fff",
-
-                  lineHeight: "70px",
                 }}
               >
                 Descripción

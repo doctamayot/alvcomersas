@@ -88,11 +88,14 @@ export const MenuLateral = () => {
             />
           </ListItem>
 
-          <ListItem button onClick={() => navigateTo("/productos/categoria/")}>
+          <ListItem
+            button
+            onClick={() => navigateTo("/productos/categoria/todas")}
+          >
             <ListItemIcon>
               <AccountCircleOutlined />
             </ListItemIcon>
-            <ListItemText primary={"Perfil"} />
+            <ListItemText primary={"Todos"} />
           </ListItem>
 
           <ListItem
@@ -124,15 +127,7 @@ export const MenuLateral = () => {
             </ListItemIcon>
             <ListItemText primary={"Institucional"} />
           </ListItem>
-          <ListItem
-            button
-            onClick={() => navigateTo("/productos/categoria/vallas")}
-          >
-            <ListItemIcon>
-              <Airplay />
-            </ListItemIcon>
-            <ListItemText primary={"Vallas de Contención"} />
-          </ListItem>
+
           <ListItem
             button
             onClick={() => navigateTo("/productos/categoria/servicios")}
@@ -141,15 +136,6 @@ export const MenuLateral = () => {
               <PrecisionManufacturing />
             </ListItemIcon>
             <ListItemText primary={"Servicio de Troquelado y embutido"} />
-          </ListItem>
-          <ListItem
-            button
-            onClick={() => navigateTo("/productos/categoria/placas")}
-          >
-            <ListItemIcon>
-              <WorkspacePremium />
-            </ListItemIcon>
-            <ListItemText primary={"Placas de Identificación"} />
           </ListItem>
 
           {session ? (

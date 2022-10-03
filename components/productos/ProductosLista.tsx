@@ -92,27 +92,28 @@ export const ProductosLista: FC<Props> = ({ products, titulo }) => {
         xs={12}
         md={3}
         sx={{
-          marginTop: "180px",
+          marginTop: { xs: "100px", sm: "180px" },
           display: "flex",
           justifyContent: "flex-start",
         }}
       >
         <Box
           sx={{
-            height: { xs: "80vh", md: "80vh" },
+            height: { xs: "100vh", md: "80vh" },
             width: "100%",
             textAlign: "center",
+            //marginBottom: "500px",
             //marginLeft: { md: "300px" },
           }}
+          className="hugo"
         >
           <Typography
             sx={{
-              fontFamily: "Montserrat, sans-serif",
               fontSize: "40px",
               fontWeight: "bolder",
               color: "#fff",
 
-              lineHeight: "70px",
+              lineHeight: "45px",
             }}
           >
             {titulo}
@@ -169,6 +170,7 @@ export const ProductosLista: FC<Props> = ({ products, titulo }) => {
                                 marginLeft: "10px",
                                 color: "#000",
                                 fontSize: "20px",
+                                lineHeight: "20px",
                               }}
                             >
                               {item.titulo}
@@ -192,7 +194,7 @@ export const ProductosLista: FC<Props> = ({ products, titulo }) => {
           </div>
         </Box>
       </Grid>
-      <Grid item xs={12} md={3}>
+      <Grid item xs={12} lg={3}>
         <Slider activeIndex={activeIndex} productos={products} />
       </Grid>
       <Grid
@@ -209,7 +211,7 @@ export const ProductosLista: FC<Props> = ({ products, titulo }) => {
           sx={{
             fontFamily: "Montserrat, sans-serif",
             color: "#fff",
-            fontSize: "60px",
+            fontSize: "40px",
             textAlign: "center",
           }}
         >

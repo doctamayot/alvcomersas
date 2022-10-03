@@ -236,3 +236,12 @@ button {
   from {margin-top:-200px}
   to {margin-top:0px }
 }
+
+
+
+
+@media (max-width: 1200px) and (orientation: landscape) {
+  .hugo{
+    margin-bottom:500px
+  }
+}

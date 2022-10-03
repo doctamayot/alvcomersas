@@ -5,7 +5,7 @@ import moment from "moment";
 import NextLink from "next/link";
 
 export const Footer: FC = () => {
-  const mensaje = `https://api.whatsapp.com/send?phone=573144261190&text=Hola%20buen%20dia`;
+  const mensaje = `https://api.whatsapp.com/send?phone=573144261190&text=Hola%20Alvcomer!!!`;
   return (
     <Grid
       container

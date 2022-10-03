@@ -26,11 +26,12 @@ export const Slider: FC<Props> = ({ activeIndex, productos }) => {
       <section className="outer-container-image">
         <Box
           sx={{
+            //position: "absolute",
             display: "flex",
-            alignItems: "flex-end",
+            alignItems: "center",
             justifyContent: "center",
-            marginRight: "20px",
-            marginTop: { xs: "-50px", md: "400px" },
+            marginRight: "00px",
+            marginTop: { xs: "-100px", md: "0px", lg: "400px" },
           }}
         >
           <Image
