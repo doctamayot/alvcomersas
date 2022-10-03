@@ -24,7 +24,7 @@ const ProductoSlug: NextPage<Props> = ({ product }) => {
         container
         spacing={6}
         marginTop={0}
-        sx={{ backgroundColor: "#fec526", height: { md: "80vh" } }}
+        sx={{ backgroundColor: "#d8d3c4", height: { md: "80vh" } }}
       >
         <Grid
           item
@@ -52,7 +52,7 @@ const ProductoSlug: NextPage<Props> = ({ product }) => {
               sx={{
                 fontSize: "40px",
                 fontWeight: "bolder",
-                color: "#fff",
+                color: "#3d3939",
                 textAlign: "center",
                 lineHeight: "40px",
               }}
@@ -104,6 +104,7 @@ const ProductoSlug: NextPage<Props> = ({ product }) => {
                   marginTop: "30px",
                   marginBottom: { xs: "30px" },
                   width: "300px",
+                  underline: "none",
                 }}
               >
                 Quiero Comprar

@@ -17,9 +17,8 @@ export const Slider: FC<Props> = ({ activeIndex, productos }) => {
 
   useEffect(() => {
     setTog(!tog);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeIndex]);
-
-  console.log(tog);
 
   return (
     <div className={tog ? "anima" : "anima2"}>

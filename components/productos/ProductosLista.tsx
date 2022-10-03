@@ -82,7 +82,7 @@ export const ProductosLista: FC<Props> = ({ products, titulo }) => {
       container
       spacing={2}
       sx={{
-        backgroundColor: "#fec526",
+        backgroundColor: "#d8d3c4",
         justifyContent: "center",
       }}
     >
@@ -111,7 +111,7 @@ export const ProductosLista: FC<Props> = ({ products, titulo }) => {
             sx={{
               fontSize: "40px",
               fontWeight: "bolder",
-              color: "#fff",
+              color: "#3d3939",
 
               lineHeight: "45px",
             }}
@@ -213,7 +213,7 @@ export const ProductosLista: FC<Props> = ({ products, titulo }) => {
         <Typography
           variant="h2"
           sx={{
-            color: "#fff",
+            color: "#3d3939",
             fontSize: "40px",
             textAlign: "center",
             fontWeight: "bold",
