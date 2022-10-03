@@ -6,8 +6,6 @@ import styles from "./principal.module.scss";
 import { useSession } from "next-auth/react";
 import { Loading } from "../ui";
 
-import "react-animated-slider/build/vertical.css";
-
 const zoomOutProperties = {
   duration: 1000,
   transitionDuration: 3000,
