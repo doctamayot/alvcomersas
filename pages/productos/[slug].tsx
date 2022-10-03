@@ -24,7 +24,7 @@ const ProductoSlug: NextPage<Props> = ({ product }) => {
         container
         spacing={6}
         marginTop={0}
-        sx={{ backgroundColor: "#fec526", height: "100vh" }}
+        sx={{ backgroundColor: "#fec526" }}
       >
         <Grid
           item
