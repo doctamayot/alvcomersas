@@ -25,31 +25,60 @@ export const Footer: FC = () => {
         alignItems="center"
         marginTop="20px"
       >
-        <Box sx={{ textAlign: "center" }}>
+        <Box
+          sx={{
+            textAlign: "center",
+          }}
+        >
           <Typography
             variant="h6"
-            sx={{ border: "1px solid", padding: " 0 40px" }}
+            sx={{
+              border: "1px solid",
+              padding: " 0 40px",
+              fontFamily: "Roboto Condensed, sans-serif",
+              fontWeight: "600",
+            }}
           >
             Secciones
           </Typography>
           <NextLink href="/#historia" passHref>
             <Link underline="none" color="#fff">
-              <Typography variant="subtitle1">Alvcomer SAS</Typography>
+              <Typography
+                variant="subtitle1"
+                fontFamily="Roboto Condensed, sans-serif"
+              >
+                Alvcomer SAS
+              </Typography>
             </Link>
           </NextLink>
           <NextLink href="/productos/categoria/todas" passHref>
             <Link underline="none" color="#fff">
-              <Typography variant="subtitle1">Productos</Typography>
+              <Typography
+                variant="subtitle1"
+                fontFamily="Roboto Condensed, sans-serif"
+              >
+                Productos
+              </Typography>
             </Link>
           </NextLink>
           <NextLink href="/blog" passHref>
             <Link underline="none" color="#fff">
-              <Typography variant="subtitle1">Blog</Typography>
+              <Typography
+                variant="subtitle1"
+                fontFamily="Roboto Condensed, sans-serif"
+              >
+                Blog
+              </Typography>
             </Link>
           </NextLink>
           <NextLink href="/#footer" passHref>
             <Link underline="none" color="#fff">
-              <Typography variant="subtitle1">Encuéntranos</Typography>
+              <Typography
+                variant="subtitle1"
+                fontFamily="Roboto Condensed, sans-serif"
+              >
+                Encuéntranos
+              </Typography>
             </Link>
           </NextLink>
         </Box>
@@ -77,29 +106,49 @@ export const Footer: FC = () => {
         marginTop="20px"
       >
         <Box sx={{ textAlign: "center" }}>
-          <Typography variant="h6" sx={{ border: "1px solid" }}>
+          <Typography
+            variant="h6"
+            sx={{ border: "1px solid", fontWeight: "600" }}
+            fontFamily="Roboto Condensed,sans-serif"
+          >
             Categorías
           </Typography>
           <NextLink href="/productos/categoria/todas" passHref>
             <Link underline="none" color="#fff">
-              <Typography variant="subtitle1">
+              <Typography
+                variant="subtitle1"
+                fontFamily="Roboto Condensed,sans-serif"
+              >
                 Equipo Militar o Camping
               </Typography>
             </Link>
           </NextLink>
           <NextLink href="/productos/categoria/todas" passHref>
             <Link underline="none" color="#fff">
-              <Typography variant="subtitle1">Herrajes</Typography>
+              <Typography
+                variant="subtitle1"
+                fontFamily="Roboto Condensed,sans-serif"
+              >
+                Herrajes
+              </Typography>
             </Link>
           </NextLink>
           <NextLink href="/productos/categoria/todas" passHref>
             <Link underline="none" color="#fff">
-              <Typography variant="subtitle1">Institucional</Typography>
+              <Typography
+                variant="subtitle1"
+                fontFamily="Roboto Condensed,sans-serif"
+              >
+                Institucional
+              </Typography>
             </Link>
           </NextLink>
           <NextLink href="/productos/categoria/todas" passHref>
             <Link underline="none" color="#fff">
-              <Typography variant="subtitle1">
+              <Typography
+                variant="subtitle1"
+                fontFamily="Roboto Condensed,sans-serif"
+              >
                 Servicio de Troquelado y Embutido
               </Typography>
             </Link>
@@ -136,6 +185,8 @@ export const Footer: FC = () => {
               padding: "0 40px",
               border: "1px solid",
             }}
+            fontFamily="Roboto Condensed,sans-serif"
+            fontWeight="600"
           >
             Encuéntranos
           </Typography>

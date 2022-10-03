@@ -9,7 +9,7 @@ import { Box } from "@mui/material";
 const Home: NextPage = () => {
   return (
     <PrincipalLayout
-      title="Alvcomer sas"
+      title="Alvcomer SAS"
       description="Alvcomer productos militares y otros"
     >
       <Principal />

@@ -115,15 +115,17 @@ export const ProductosLista: FC<Props> = ({ products, titulo }) => {
 
               lineHeight: "45px",
             }}
+            fontFamily="Roboto Condensed, sans-serif"
           >
             {titulo}
           </Typography>
           <Typography
             sx={{
-              fontFamily: "Montserrat, sans-serif",
               marginTop: "10px",
               fontWeight: "100",
+              fontSize: "20px",
             }}
+            fontFamily="Roboto Condensed, sans-serif"
           >
             Esta es toda nuestra linea de productos:
           </Typography>
@@ -171,6 +173,8 @@ export const ProductosLista: FC<Props> = ({ products, titulo }) => {
                                 color: "#000",
                                 fontSize: "20px",
                                 lineHeight: "20px",
+                                fontFamily: "Roboto Condensed, sans-serif",
+                                fontWeight: "bold",
                               }}
                             >
                               {item.titulo}
@@ -209,19 +213,19 @@ export const ProductosLista: FC<Props> = ({ products, titulo }) => {
         <Typography
           variant="h2"
           sx={{
-            fontFamily: "Montserrat, sans-serif",
             color: "#fff",
             fontSize: "40px",
             textAlign: "center",
+            fontWeight: "bold",
           }}
         >
           {products[activeIndex].titulo}
         </Typography>
         <Typography
           variant="h6"
+          fontFamily="Roboto Condensed, sans-serif"
           sx={{
             marginTop: "30px",
-            fontFamily: "Montserrat, sans-serif",
             fontSize: "20px",
             textAlign: "center",
             padding: { xs: "10px" },
@@ -240,7 +244,7 @@ export const ProductosLista: FC<Props> = ({ products, titulo }) => {
               sx={{
                 backgroundColor: "#000",
                 color: "#fff",
-
+                fontFamily: "Roboto Condensed, sans-serif",
                 width: "300px",
                 margin: "60px auto",
                 textAlign: "center",

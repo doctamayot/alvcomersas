@@ -50,13 +50,13 @@ const ProductoSlug: NextPage<Props> = ({ product }) => {
               variant="h1"
               component="h1"
               sx={{
-                fontFamily: "Montserrat, sans-serif",
                 fontSize: "40px",
                 fontWeight: "bolder",
                 color: "#fff",
                 textAlign: "center",
                 lineHeight: "40px",
               }}
+              fontFamily="Roboto Condensed, sans-serif"
             >
               {product.titulo}
             </Typography>
@@ -64,7 +64,6 @@ const ProductoSlug: NextPage<Props> = ({ product }) => {
               variant="subtitle1"
               component="h2"
               sx={{
-                fontFamily: "Montserrat, sans-serif",
                 marginTop: "10px",
                 fontWeight: "100",
                 fontSize: "30px",
@@ -76,22 +75,22 @@ const ProductoSlug: NextPage<Props> = ({ product }) => {
               <Typography
                 variant="subtitle2"
                 sx={{
-                  fontFamily: "Montserrat, sans-serif",
                   fontSize: "30px",
                   fontWeight: "bolder",
                   color: "#fff",
                 }}
+                fontFamily="Roboto Condensed, sans-serif"
               >
                 Descripción
               </Typography>
               <Typography
                 variant="body2"
                 sx={{
-                  fontFamily: "Montserrat, sans-serif",
                   marginTop: "10px",
                   fontWeight: "100",
                   fontSize: { lg: "20px" },
                 }}
+                fontFamily="Roboto Condensed, sans-serif"
               >
                 {product.copy}
               </Typography>

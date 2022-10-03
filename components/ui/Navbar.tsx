@@ -98,8 +98,9 @@ export const Navbar = () => {
               <Button
                 variant="text"
                 sx={{
-                  fontFamily: "Montserrat, sans-serif",
-                  fontSize: "16.2px",
+                  fontFamily: "Roboto Condensed, sans-serif",
+                  fontWeight: "700",
+                  fontSize: "24.2px",
                   color: "#fff",
                 }}
               >
@@ -122,8 +123,10 @@ export const Navbar = () => {
               sx={{
                 backgroundColor: "transparent",
                 color: "#fff",
-                fontFamily: "Montserrat, sans-serif",
-                fontSize: "16.2px",
+                fontFamily: "Roboto Condensed, sans-serif",
+                fontWeight: "700",
+                fontSize: "20.2px",
+                //marginLeft: "30px",
               }}
             >
               Productos
@@ -139,14 +142,14 @@ export const Navbar = () => {
             }}
           >
             <MenuItem
-              sx={{ fontFamily: "Montserrat, sans-serif" }}
+              sx={{ fontFamily: "Roboto Condensed, sans-serif" }}
               //onClick={handleClose}
             >
               <NextLink href="/productos/categoria/todas" passHref>
                 <Typography
                   sx={{
                     backgroundColor: "transparent",
-                    fontFamily: "Montserrat, sans-serif",
+                    fontFamily: "Roboto Condensed, sans-serif",
                     fontSize: "16.2px",
                     color: "#000",
                   }}
@@ -156,14 +159,14 @@ export const Navbar = () => {
               </NextLink>
             </MenuItem>
             <MenuItem
-              sx={{ fontFamily: "Montserrat, sans-serif" }}
+              sx={{ fontFamily: "Roboto Condensed, sans-serif" }}
               //onClick={handleClose}
             >
               <NextLink href="/productos/categoria/militares" passHref>
                 <Typography
                   sx={{
                     backgroundColor: "transparent",
-                    fontFamily: "Montserrat, sans-serif",
+                    fontFamily: "Roboto Condensed, sans-serif",
                     fontSize: "16.2px",
                     color: "#000",
                   }}
@@ -173,14 +176,14 @@ export const Navbar = () => {
               </NextLink>
             </MenuItem>
             <MenuItem
-              sx={{ fontFamily: "Montserrat, sans-serif" }}
+              sx={{ fontFamily: "Roboto Condensed, sans-serif" }}
               // onClick={handleClose}
             >
               <NextLink href="/productos/categoria/herrajes" passHref>
                 <Typography
                   sx={{
                     backgroundColor: "transparent",
-                    fontFamily: "Montserrat, sans-serif",
+                    fontFamily: "Roboto Condensed, sans-serif",
                     fontSize: "16.2px",
                     color: "#000",
                   }}
@@ -190,14 +193,14 @@ export const Navbar = () => {
               </NextLink>
             </MenuItem>
             <MenuItem
-              sx={{ fontFamily: "Montserrat, sans-serif" }}
+              sx={{ fontFamily: "Roboto Condensed, sans-serif" }}
               // onClick={handleClose}
             >
               <NextLink href="/productos/categoria/inst" passHref>
                 <Typography
                   sx={{
                     backgroundColor: "transparent",
-                    fontFamily: "Montserrat, sans-serif",
+                    fontFamily: "Roboto Condensed, sans-serif",
                     fontSize: "16.2px",
                     color: "#000",
                   }}
@@ -208,14 +211,14 @@ export const Navbar = () => {
             </MenuItem>
 
             <MenuItem
-              sx={{ fontFamily: "Montserrat, sans-serif" }}
+              sx={{ fontFamily: "Roboto Condensed, sans-serif" }}
               // onClick={handleClose}
             >
               <NextLink href="/productos/categoria/servicios" passHref>
                 <Typography
                   sx={{
                     backgroundColor: "transparent",
-                    fontFamily: "Montserrat, sans-serif",
+                    fontFamily: "Roboto Condensed, sans-serif",
                     fontSize: "16.2px",
                     color: "#000",
                   }}
@@ -231,8 +234,9 @@ export const Navbar = () => {
               <Button
                 variant="text"
                 sx={{
-                  fontFamily: "Montserrat, sans-serif",
-                  fontSize: "16.2px",
+                  fontFamily: "Roboto Condensed, sans-serif",
+                  fontWeight: "700",
+                  fontSize: "20.2px",
                   color: "#fff",
                 }}
               >
@@ -246,8 +250,9 @@ export const Navbar = () => {
               <Button
                 variant="text"
                 sx={{
-                  fontFamily: "Montserrat, sans-serif",
-                  fontSize: "16.2px",
+                  fontFamily: "Roboto Condensed, sans-serif",
+                  fontWeight: "700",
+                  fontSize: "20.2px",
                   color: "#fff",
                 }}
               >
@@ -305,7 +310,7 @@ export const Navbar = () => {
                   marginRight: "20px",
                   fontSize: "0.8em",
                   color: "#fff",
-                  fontFamily: "Montserrat, sans-serif",
+                  fontFamily: "Roboto Condensed, sans-serif",
                 }}
               >
                 Logout
@@ -330,7 +335,7 @@ export const Navbar = () => {
 
                   fontSize: "20px",
                   color: "#fff",
-                  fontFamily: "Montserrat, sans-serif",
+                  fontFamily: "Roboto Condensed, sans-serif",
                 }}
               >
                 Login

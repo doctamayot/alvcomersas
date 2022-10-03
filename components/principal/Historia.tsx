@@ -9,7 +9,9 @@ export const Historia = () => {
         variant="h2"
         sx={{
           marginTop: { xs: "50px", xl: "100px" },
-          fontSize: "35px",
+          fontFamily: "Roboto Condensed, sans-serif",
+          fontSize: "40px",
+          fontWeight: "600",
           textAlign: "center",
         }}
       >
@@ -43,7 +45,8 @@ export const Historia = () => {
               marginTop: "20px",
               textAlign: "justify",
               padding: "20px",
-              fontSize: { md: "15px", lg: "20px" },
+              fontSize: { md: "20px", lg: "25px" },
+              fontFamily: "Roboto Condensed, sans-serif",
             }}
           >
             ALVCOMER S.A.S. es una empresa familiar cuyo enfoque desde sus
@@ -59,7 +62,8 @@ export const Historia = () => {
               marginTop: "10px",
               textAlign: "justify",
               padding: "20px",
-              fontSize: { md: "15px", lg: "20px" },
+              fontSize: { md: "20px", lg: "25px" },
+              fontFamily: "Roboto Condensed, sans-serif",
             }}
           >
             Para inicios de los 90 logran adquirir sus primeras maquinas
@@ -77,7 +81,8 @@ export const Historia = () => {
               marginTop: "10px",
               textAlign: "justify",
               padding: "20px",
-              fontSize: { md: "15px", lg: "20px" },
+              fontSize: { md: "20px", lg: "25px" },
+              fontFamily: "Roboto Condensed, sans-serif",
             }}
           >
             Para el año 2000 ven una nueva oportunidad de negocio como
