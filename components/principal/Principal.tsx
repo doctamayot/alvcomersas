@@ -1,10 +1,12 @@
-import { Fade } from "react-slideshow-image";
+import { Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
 
 import styles from "./principal.module.scss";
 
 import { useSession } from "next-auth/react";
 import { Loading } from "../ui";
+
+import "react-animated-slider/build/vertical.css";
 
 const zoomOutProperties = {
   duration: 1000,
@@ -14,6 +16,7 @@ const zoomOutProperties = {
   scale: 0.6,
   arrows: false,
   pauseOnHover: false,
+  autoplay: true,
 };
 
 const fondos = [
@@ -54,36 +57,41 @@ export const Principal = () => {
 
   //console.log(session.user.role);
 
-  if (status === "loading") {
-    return <Loading />;
-  }
+  // if (status === "loading") {
+  //   return <Loading />;
+  // }
   return (
     <>
-      <Fade {...zoomOutProperties}>
-        {fondos.map((i, index) => (
-          <div className={styles["each-slide"]} key={index}>
-            <div
-              style={{
-                backgroundImage: `url(${i.url})`,
-                backgroundSize: "cover",
-              }}
-            ></div>
-          </div>
-        ))}
-      </Fade>
-
-      <Fade {...zoomOutProperties}>
-        {fondoscel.map((i, index) => (
-          <div className={styles["each-slide-cel"]} key={index}>
-            <div
-              style={{
-                backgroundImage: `url(${i.url})`,
-                backgroundSize: "cover",
-              }}
-            ></div>
-          </div>
-        ))}
-      </Fade>
+      {status === "loading" ? (
+        <Loading />
+      ) : (
+        <>
+          <Slide {...zoomOutProperties}>
+            {fondos.map((i, index) => (
+              <div className={styles["each-slide"]} key={index}>
+                <div
+                  style={{
+                    backgroundImage: `url(${i.url})`,
+                    backgroundSize: "cover",
+                  }}
+                ></div>
+              </div>
+            ))}
+          </Slide>
+          <Slide {...zoomOutProperties}>
+            {fondoscel.map((i, index) => (
+              <div className={styles["each-slide-cel"]} key={index}>
+                <div
+                  style={{
+                    backgroundImage: `url(${i.url})`,
+                    backgroundSize: "cover",
+                  }}
+                ></div>
+              </div>
+            ))}
+          </Slide>
+        </>
+      )}
     </>
   );
 };
