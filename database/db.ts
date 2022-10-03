@@ -28,11 +28,11 @@ export const connect = async () => {
   }
 
   await mongoose.connect(
-    process.env.MONGO_URL as any,
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    } as ConnectOptions
+    process.env.MONGO_URL || ""
+    // {
+    //   useNewUrlParser: true,
+    //   useUnifiedTopology: true,
+    // } as ConnectOptions
   );
   mongoConnection.isConnected = 1;
   console.log("Conectado a MongoDB:", process.env.MONGO_URL);

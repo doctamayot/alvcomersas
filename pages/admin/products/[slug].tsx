@@ -154,11 +154,11 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
       });
       await router.push("/admin/products");
 
-      // if (!form._id) {
-      //   router.replace(`/admin/products/${form.slug}`);
-      // } else {
-      //   setIsSaving(false);
-      // }
+      if (!form._id) {
+        router.replace(`/admin/products/${form.slug}`);
+      } else {
+        setIsSaving(false);
+      }
     } catch (error) {
       console.log(error);
       setIsSaving(false);

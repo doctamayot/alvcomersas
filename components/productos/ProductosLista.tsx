@@ -168,7 +168,7 @@ export const ProductosLista: FC<Props> = ({ products, titulo }) => {
                               sx={{
                                 marginLeft: "10px",
                                 color: "#000",
-                                fontSize: "31px",
+                                fontSize: "20px",
                               }}
                             >
                               {item.titulo}
