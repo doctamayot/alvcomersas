@@ -9,6 +9,8 @@ const Militares = () => {
   );
 
   const titulo = "Equipo Militar o Camping";
+  const desc =
+    "Accesorios indispensables en actividades recreativas, educativas o militares, para el buen desempeño del personal en los diferentes roles que desarrollen en los terrenos abiertos.";
   return (
     <PrincipalLayout
       title="Equipo Militar o Camping"
@@ -17,7 +19,7 @@ const Militares = () => {
       {isLoading ? (
         <Loading />
       ) : (
-        <ProductosLista products={products} titulo={titulo} />
+        <ProductosLista products={products} titulo={titulo} desc={desc} />
       )}
     </PrincipalLayout>
   );

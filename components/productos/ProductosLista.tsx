@@ -15,9 +15,10 @@ import { IProducto } from "../../interfaces/productos";
 interface Props {
   products: IProducto[];
   titulo: string;
+  desc: string;
 }
 
-export const ProductosLista: FC<Props> = ({ products, titulo }) => {
+export const ProductosLista: FC<Props> = ({ products, titulo, desc }) => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   // Used to determine which items appear above the active item
@@ -85,6 +86,7 @@ export const ProductosLista: FC<Props> = ({ products, titulo }) => {
       sx={{
         backgroundColor: "#d8d3c4",
         justifyContent: "center",
+        height: "auto",
       }}
     >
       <Grid item md={1} sx={{ display: { xs: "none", lg: "flex" } }}></Grid>
@@ -93,15 +95,14 @@ export const ProductosLista: FC<Props> = ({ products, titulo }) => {
         xs={12}
         md={3}
         sx={{
-          marginTop: { xs: "120px", sm: "180px" },
+          marginTop: { xs: "120px", sm: "130px" },
           display: "flex",
-          justifyContent: "flex-start",
         }}
       >
         <Box
           sx={{
-            height: { xs: "100vh", md: "75vh" },
-            width: "100%",
+            height: { xs: "100vh", md: "100vh" },
+
             textAlign: "center",
             //marginBottom: "500px",
             //marginLeft: { md: "300px" },
@@ -122,13 +123,13 @@ export const ProductosLista: FC<Props> = ({ products, titulo }) => {
           </Typography>
           <Typography
             sx={{
-              marginTop: "10px",
+              marginTop: "20px",
               fontWeight: "100",
-              fontSize: "20px",
+              fontSize: "15px",
             }}
             fontFamily="Roboto Condensed, sans-serif"
           >
-            Esta es toda nuestra linea de productos:
+            {desc}
           </Typography>
           <div className="container">
             <section className="outer-container">
@@ -199,13 +200,13 @@ export const ProductosLista: FC<Props> = ({ products, titulo }) => {
           </div>
         </Box>
       </Grid>
-      <Grid item xs={12} lg={3}>
+      <Grid item xs={12} md={3}>
         <Slider activeIndex={activeIndex} productos={products} />
       </Grid>
       <Grid
         item
         xs={12}
-        md={4}
+        md={3}
         sx={{
           margin: { md: "300px 0px 0 0" },
           //paddingRight: { md: "30px" },
@@ -257,7 +258,12 @@ export const ProductosLista: FC<Props> = ({ products, titulo }) => {
           </Box>
         </NextLink>
       </Grid>
-      <Grid item xs={0} md={1}></Grid>
+      <Grid
+        sx={{ display: { xs: "none", lg: "flex" } }}
+        item
+        xs={0}
+        md={1}
+      ></Grid>
     </Grid>
   );
 };

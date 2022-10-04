@@ -7,12 +7,13 @@ const Todas = () => {
   const { products, isLoading } = useProducts("/products");
 
   const titulo = "Todos";
+  const desc = "Estos son todos nuestros productos";
   return (
     <PrincipalLayout title="Todos" description="Todos los productos">
       {isLoading ? (
         <Loading />
       ) : (
-        <ProductosLista products={products} titulo={titulo} />
+        <ProductosLista products={products} titulo={titulo} desc={desc} />
       )}
     </PrincipalLayout>
   );

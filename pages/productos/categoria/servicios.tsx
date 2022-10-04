@@ -9,6 +9,7 @@ const Servicios = () => {
   );
 
   const titulo = "Servicio de Troquelado y Embutido";
+  const desc = "Prestamos servicio de embutido y de troquelado";
   return (
     <PrincipalLayout
       title="Servicio de Troquelado y Embutido"
@@ -17,7 +18,7 @@ const Servicios = () => {
       {isLoading ? (
         <Loading />
       ) : (
-        <ProductosLista products={products} titulo={titulo} />
+        <ProductosLista products={products} titulo={titulo} desc={desc} />
       )}
     </PrincipalLayout>
   );

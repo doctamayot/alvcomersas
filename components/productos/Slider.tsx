@@ -29,8 +29,8 @@ export const Slider: FC<Props> = ({ activeIndex, productos }) => {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            marginRight: "00px",
-            marginTop: { xs: "-200px", md: "0px", lg: "300px" },
+            marginRight: "0px",
+            marginTop: { xs: "-300px", md: "300px", lg: "300px" },
           }}
         >
           <Image

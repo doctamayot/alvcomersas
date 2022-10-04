@@ -147,12 +147,13 @@ button {
 }
 
 .slides {
-  align-self: flex-start;
+  align-self: center;
   flex: 1;
-  width: 100%;
+  text-align: center;
   overflow: hidden;
   font-family: "Montserrat, sans-serif";
   font-size: 260px;
+  
   
   
 }
