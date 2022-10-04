@@ -113,7 +113,7 @@ export const Footer: FC = () => {
           >
             Categorías
           </Typography>
-          <NextLink href="/productos/categoria/todas" passHref>
+          <NextLink href="/productos/categoria/militares" passHref>
             <Link underline="none" color="#fff">
               <Typography
                 variant="subtitle1"
@@ -123,7 +123,7 @@ export const Footer: FC = () => {
               </Typography>
             </Link>
           </NextLink>
-          <NextLink href="/productos/categoria/todas" passHref>
+          <NextLink href="/productos/categoria/herrajes" passHref>
             <Link underline="none" color="#fff">
               <Typography
                 variant="subtitle1"
@@ -133,7 +133,7 @@ export const Footer: FC = () => {
               </Typography>
             </Link>
           </NextLink>
-          <NextLink href="/productos/categoria/todas" passHref>
+          <NextLink href="/productos/categoria/inst" passHref>
             <Link underline="none" color="#fff">
               <Typography
                 variant="subtitle1"
@@ -143,7 +143,7 @@ export const Footer: FC = () => {
               </Typography>
             </Link>
           </NextLink>
-          <NextLink href="/productos/categoria/todas" passHref>
+          <NextLink href="/productos/categoria/servicios" passHref>
             <Link underline="none" color="#fff">
               <Typography
                 variant="subtitle1"
@@ -193,7 +193,7 @@ export const Footer: FC = () => {
 
           <Box component="span" color="#fff">
             <a
-              href="https://www.facebook.com/hugo.tamayo/"
+              href="https://www.facebook.com/Alvcomer-SAS-102592972551525"
               rel="noreferrer"
               target="_blank"
             >
@@ -201,7 +201,7 @@ export const Footer: FC = () => {
             </a>
 
             <a
-              href="https://www.instagram.com/doctamayot/"
+              href="https://www.instagram.com/alvcomer/"
               rel="noreferrer"
               target="_blank"
             >
