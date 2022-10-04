@@ -4,4 +4,5 @@ export interface IBlog {
   images: string[];
   slug: string;
   titulo: string;
+  createdAt: any;
 }

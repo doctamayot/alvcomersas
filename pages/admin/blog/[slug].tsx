@@ -184,10 +184,7 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
   };
 
   return (
-    <PrincipalLayout
-      title={"Producto"}
-      description={`Editando: ${product.titulo}`}
-    >
+    <PrincipalLayout title={"Blog"} description={`Editando: ${product.titulo}`}>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Box sx={{ padding: "20px" }}>
           <Box

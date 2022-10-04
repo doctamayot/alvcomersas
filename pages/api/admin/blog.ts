@@ -35,7 +35,7 @@ export default function handler(
 const getProducts = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
   await db.connect();
 
-  const products = await Blog.find().lean();
+  const products = await Blog.find().sort({ createdAt: -1 }).lean();
 
   await db.disconnect();
 

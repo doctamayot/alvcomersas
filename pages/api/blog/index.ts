@@ -37,8 +37,8 @@ async function getProducts(req: NextApiRequest, res: NextApiResponse<Data>) {
 
   await db.connect();
   const products = await Blog.find()
-    .select("titulo copy images slug -_id")
-    .sort("createdAt")
+    .select("titulo copy images slug createdAt -_id")
+    .sort({ createdAt: -1 })
     .lean();
 
   await db.disconnect();

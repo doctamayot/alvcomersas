@@ -1,4 +1,4 @@
-import NextLink from "next/link";
+import Image from "next/image";
 import {
   NextPage,
   GetServerSideProps,
@@ -10,7 +10,15 @@ import { dbBlog } from "../../database";
 import { PrincipalLayout } from "../../components/layouts";
 import { Grid, Box, Typography, Button, Chip } from "@mui/material";
 import { ProductSlideshow } from "../../components/productos/ProductSlideshow";
-import { ShoppingCartCheckout } from "@mui/icons-material";
+import moment from "moment";
+import "moment/locale/es";
+
+interface Props {
+  products: any;
+  titulo: string;
+}
+
+moment.locale("es");
 
 interface Props {
   product: IBlog;
@@ -23,27 +31,28 @@ const ProductoSlug: NextPage<Props> = ({ product }) => {
         container
         spacing={6}
         marginTop={0}
-        sx={{ backgroundColor: "#d8d3c4", height: { md: "80vh" } }}
+        sx={{ backgroundColor: "#d8d3c4", height: { md: "100vh" } }}
       >
+        <Grid item md={1} sx={{ display: { xs: "none", md: "flex" } }}></Grid>
         <Grid
           item
           xs={12}
           md={5}
           sx={{
-            marginTop: { md: "80px", xs: "50px" },
-            marginLeft: { lg: "100px" },
+            marginTop: { md: "150px", xs: "100px" },
+            textAlign: "center",
           }}
         >
-          <ProductSlideshow images={product.images} />
+          <Image
+            src={product.images[0]}
+            alt="imagen blog"
+            width={500}
+            height={500}
+          />
         </Grid>
 
-        <Grid
-          item
-          xs={12}
-          md={6}
-          sx={{ marginTop: { md: "150px" }, marginLeft: { lg: "4px" } }}
-        >
-          <Box display="flex" flexDirection="column" alignItems="center">
+        <Grid item xs={12} md={6} sx={{ marginTop: { md: "180px" } }}>
+          <Box display="flex" flexDirection="column">
             {/* titulos */}
             <Typography
               variant="h1"
@@ -52,7 +61,7 @@ const ProductoSlug: NextPage<Props> = ({ product }) => {
                 fontSize: "40px",
                 fontWeight: "bolder",
                 color: "#3d3939",
-                textAlign: "center",
+                textAlign: { xs: "center", md: "start" },
                 lineHeight: "40px",
               }}
               fontFamily="Roboto Condensed, sans-serif"
@@ -61,7 +70,7 @@ const ProductoSlug: NextPage<Props> = ({ product }) => {
             </Typography>
 
             {/* Descripción */}
-            <Box sx={{ mt: 1 }} textAlign="center">
+            <Box sx={{ mt: 1, textAlign: { xs: "center", md: "start" } }}>
               <Typography
                 variant="body2"
                 sx={{
@@ -72,6 +81,19 @@ const ProductoSlug: NextPage<Props> = ({ product }) => {
                 fontFamily="Roboto Condensed, sans-serif"
               >
                 {product.copy}
+              </Typography>
+            </Box>
+            <Box sx={{ mt: 1, textAlign: { xs: "center", md: "start" } }}>
+              <Typography
+                variant="body2"
+                sx={{
+                  marginTop: "10px",
+                  fontWeight: "100",
+                  fontSize: { lg: "20px" },
+                }}
+                fontFamily="Roboto Condensed, sans-serif"
+              >
+                Publicado el {moment(product.createdAt).format("LLL")}
               </Typography>
             </Box>
           </Box>

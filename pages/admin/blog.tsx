@@ -6,6 +6,10 @@ import useSWR from "swr";
 
 import { PrincipalLayout } from "../../components/layouts";
 import { IBlog } from "../../interfaces";
+import moment from "moment";
+import "moment/locale/es";
+
+moment.locale("es");
 
 const columns: GridColDef[] = [
   {
@@ -38,10 +42,12 @@ const columns: GridColDef[] = [
       );
     },
   },
+  { field: "creado", headerName: "Creado", flex: 1 },
 ];
 
 const ProductsPage = () => {
   const { data, error } = useSWR<IBlog[]>("/api/admin/blog");
+  moment.locale("es");
 
   if (!data && !error) return <></>;
 
@@ -49,13 +55,14 @@ const ProductsPage = () => {
     id: product._id,
     img: product.images[0],
     title: product.titulo,
+    creado: moment(product.createdAt).format("LLL"),
     slug: product.slug,
   }));
 
   return (
     <PrincipalLayout
-      title={`Productos (${data?.length})`}
-      description={"Mantenimiento de productos"}
+      title={`Blogs (${data?.length})`}
+      description={"Mantenimiento de Blog"}
       // icon={ <CategoryOutlined /> }
     >
       <Box sx={{ marginTop: "150px" }}>

@@ -9,7 +9,7 @@ const Productos = () => {
 
   return (
     <PrincipalLayout
-      title="Acero Inoxidable"
+      title="Blog Alvcomer"
       description="Productos en acero inoxidable"
     >
       {isLoading ? (

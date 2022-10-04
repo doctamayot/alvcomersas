@@ -88,8 +88,8 @@ export const Navbar = () => {
 
         <Box
           sx={{
-            display: { xs: "none", md: "block" },
-            marginLeft: "80px",
+            display: { xs: "none", lg: "block" },
+            marginLeft: "20px",
           }}
           className="fadeIn"
         >
@@ -100,11 +100,11 @@ export const Navbar = () => {
                 sx={{
                   fontFamily: "Roboto Condensed, sans-serif",
                   fontWeight: "700",
-                  fontSize: "24.2px",
+                  fontSize: "20.2px",
                   color: "#fff",
                 }}
               >
-                Alvcomer SAS
+                Alvcomer
               </Button>
             </Link>
           </NextLink>
@@ -126,7 +126,6 @@ export const Navbar = () => {
                 fontFamily: "Roboto Condensed, sans-serif",
                 fontWeight: "700",
                 fontSize: "20.2px",
-                //marginLeft: "30px",
               }}
             >
               Productos

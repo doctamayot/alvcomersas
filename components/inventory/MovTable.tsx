@@ -25,8 +25,6 @@ import {
 
 import { DataGrid, GridColDef, GridValueGetterParams } from "@mui/x-data-grid";
 
-import { PrincipalLayout } from "../../components/layouts";
-import { IInventory } from "../../interfaces/inventory";
 import { FC, useState } from "react";
 
 import { useForm } from "react-hook-form";
