@@ -7,7 +7,7 @@ const Productos = () => {
   const { products, isLoading } = useProducts("/products");
   const titulo = "Todos";
   const desc = "Todos nuestros productos";
-  console.log(products);
+
   return (
     <PrincipalLayout
       title="Acero Inoxidable"

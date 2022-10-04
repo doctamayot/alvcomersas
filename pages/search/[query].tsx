@@ -16,7 +16,8 @@ interface Props {
 
 const SearchPage: NextPage<Props> = ({ products, foundProducts, query }) => {
   const titulo = "Busqueda:";
-  const desc = "Estos son los productos según la busqueda";
+  const desc =
+    "Para el producto que estas buscando nuestra plataforma encontró los siguientes Productos: Estos son los productos según la busqueda";
   return (
     <PrincipalLayout
       title="Busqueda productos"

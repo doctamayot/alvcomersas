@@ -139,6 +139,14 @@ export const MenuLateral = () => {
             <ListItemText primary={"Servicio de Troquelado y embutido"} />
           </ListItem>
 
+          <Divider />
+          <ListItem button onClick={() => navigateTo("/blog")}>
+            <ListItemIcon>
+              <AssuredWorkload />
+            </ListItemIcon>
+            <ListItemText primary={"Blog"} />
+          </ListItem>
+
           {session ? (
             <ListItem button onClick={() => signOut()}>
               <ListItemIcon>

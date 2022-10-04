@@ -171,7 +171,7 @@ export const ProductosLista: FC<Props> = ({ products, titulo, desc }) => {
                             <Typography
                               variant="h6"
                               sx={{
-                                marginLeft: "10px",
+                                marginLeft: "0px",
                                 color: "#000",
                                 fontSize: "20px",
                                 lineHeight: "20px",
