@@ -58,6 +58,7 @@ export const ProductosLista: FC<Props> = ({ products, titulo }) => {
 
   useEffect(() => {
     handleClick("next");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleClick = (direction: any) => {

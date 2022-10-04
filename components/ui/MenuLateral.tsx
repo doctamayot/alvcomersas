@@ -24,6 +24,7 @@ import {
   Animation,
   AssuredWorkload,
   CategoryOutlined,
+  LibraryBooks,
   LoginOutlined,
   MilitaryTech,
   PrecisionManufacturing,
@@ -175,6 +176,13 @@ export const MenuLateral = () => {
                   <AdminPanelSettings />
                 </ListItemIcon>
                 <ListItemText primary={"Inventario"} />
+              </ListItem>
+
+              <ListItem button onClick={() => navigateTo("/admin/blog")}>
+                <ListItemIcon>
+                  <LibraryBooks />
+                </ListItemIcon>
+                <ListItemText primary={"Blog"} />
               </ListItem>
             </>
           ) : null}

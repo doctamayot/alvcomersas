@@ -229,7 +229,7 @@ export const Navbar = () => {
             </MenuItem>
           </Menu>
 
-          {/* <NextLink href="/category/women" passHref>
+          <NextLink href="/blog" passHref>
             <Link>
               <Button
                 variant="text"
@@ -243,7 +243,7 @@ export const Navbar = () => {
                 Blog
               </Button>
             </Link>
-          </NextLink> */}
+          </NextLink>
 
           <NextLink href="/#footer" passHref>
             <Link>
