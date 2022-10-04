@@ -6,6 +6,7 @@ import { useProducts } from "../../hooks";
 const Productos = () => {
   const { products, isLoading } = useProducts("/products");
   const titulo = "Todos";
+  const desc = "Todos nuestros productos";
   console.log(products);
   return (
     <PrincipalLayout
@@ -15,7 +16,7 @@ const Productos = () => {
       {isLoading ? (
         <Loading />
       ) : (
-        <ProductosLista products={products} titulo={titulo} />
+        <ProductosLista products={products} titulo={titulo} desc={desc} />
       )}
     </PrincipalLayout>
   );
