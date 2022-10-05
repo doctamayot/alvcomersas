@@ -14,15 +14,15 @@ const columns: GridColDef[] = [
 
     renderCell: ({ row }: any) => {
       return (
-        <a href={`/productos/${row.slug}`} target="_blank" rel="noreferrer">
-          <CardMedia
-            component="img"
-            alt={row.title}
-            className="fadeIn"
-            image={row.img}
-            sx={{ padding: "20px" }}
-          />
-        </a>
+        // <a href={`/productos/${row.slug}`} target="_blank" rel="noreferrer">
+        <CardMedia
+          component="img"
+          alt={row.title}
+          className="fadeIn"
+          image={row.img}
+          sx={{ padding: "20px" }}
+        />
+        // </a>
       );
     },
   },
@@ -53,7 +53,6 @@ const ProductsPage = () => {
     title: product.titulo,
     categoria: product.categoria,
     price: product.precio,
-
     slug: product.slug,
   }));
 

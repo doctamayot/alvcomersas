@@ -226,11 +226,11 @@ const InvProductsPage = () => {
                 top: "50%",
                 left: "50%",
                 transform: "translate(-50%, -50%)",
-                width: 1000,
+                width: { xs: 300, md: 900 },
                 bgcolor: "background.paper",
                 border: "2px solid #000",
                 boxShadow: 24,
-                p: 4,
+                p: 2,
               }}
             >
               <form onSubmit={handleSubmit(onSubmit)}>
@@ -247,10 +247,10 @@ const InvProductsPage = () => {
                       mb: 1,
                       marginTop: "10px",
                       fontFamily: "Montserrat, sans-serif",
-                      fontSize: "40px",
+                      fontSize: { xs: "20px", md: "40px" },
                     }}
                   >
-                    Crear Componente
+                    Crear Producto Terminado
                   </Typography>
                 </Box>
 
@@ -307,12 +307,16 @@ const InvProductsPage = () => {
                       helperText={errors.cantidad?.message}
                     />
 
-                    <Divider sx={{ my: 1 }} />
+                    <Divider
+                      sx={{ my: 1, display: { xs: "none", md: "flex" } }}
+                    />
                   </Grid>
 
                   {/* Tags e imagenes */}
                   <Grid item xs={12} sm={6}>
-                    <Divider sx={{ my: 2 }} />
+                    <Divider
+                      sx={{ my: 2, display: { xs: "none", md: "flex" } }}
+                    />
 
                     <Box display="flex" flexDirection="column">
                       <FormLabel sx={{ mb: 1 }}>Imágenes</FormLabel>
@@ -380,10 +384,9 @@ const InvProductsPage = () => {
                   sx={{ mb: 1, marginTop: "20px" }}
                 >
                   <Button
-                    color="secondary"
                     startIcon={<SaveOutlined />}
                     sx={{
-                      width: "30%",
+                      width: "100%",
                       backgroundColor: "#2255c4",
                       color: "#fff",
                     }}

@@ -35,13 +35,13 @@ export default function handler(
 const getProducts = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
   await db.connect();
 
-  const products = await Product.find().lean();
+  const products = await Product.find();
 
   await db.disconnect();
 
   const updatedProducts = products.map((product) => {
     product.images = product.images.map((image) => {
-      return image.includes("http") ? image : `/products/${image}`;
+      return image.includes("http") ? image : `/productos/${image}`;
     });
 
     return product;

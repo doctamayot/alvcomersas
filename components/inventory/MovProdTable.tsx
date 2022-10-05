@@ -147,7 +147,7 @@ const MovProdTable: FC<Props> = ({ product, idver }) => {
                   top: "50%",
                   left: "50%",
                   transform: "translate(-50%, -50%)",
-                  width: 400,
+                  width: { xs: 200, md: 400 },
                   bgcolor: "background.paper",
                   border: "2px solid #000",
                   boxShadow: 24,
@@ -219,7 +219,6 @@ const MovProdTable: FC<Props> = ({ product, idver }) => {
                   </FormControl>
 
                   <Button
-                    color="secondary"
                     startIcon={<SaveOutlined />}
                     sx={{ width: "100%", marginTop: "20px" }}
                     type="submit"
@@ -263,7 +262,7 @@ const MovProdTable: FC<Props> = ({ product, idver }) => {
             color="secondary"
             onClick={handleOpen}
             sx={{
-              width: "30%",
+              width: { xs: "90%", md: "30%" },
               backgroundColor: "#2255c4",
               color: "#fff",
             }}
@@ -282,7 +281,7 @@ const MovProdTable: FC<Props> = ({ product, idver }) => {
                 top: "50%",
                 left: "50%",
                 transform: "translate(-50%, -50%)",
-                width: 400,
+                width: { xs: 300, md: 900 },
                 bgcolor: "background.paper",
                 border: "2px solid #000",
                 boxShadow: 24,

@@ -92,7 +92,7 @@ const updateProduct = async (
       }
     });
 
-    await product.update(req.body);
+    await product.updateOne(req.body);
     await db.disconnect();
 
     return res.status(200).json(product);
