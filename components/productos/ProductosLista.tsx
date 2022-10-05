@@ -21,6 +21,8 @@ interface Props {
 export const ProductosLista: FC<Props> = ({ products, titulo, desc }) => {
   const [activeIndex, setActiveIndex] = useState(0);
 
+  console.log(titulo);
+
   // Used to determine which items appear above the active item
   const halfwayIndex = Math.ceil(products.length / 2);
 
@@ -119,7 +121,7 @@ export const ProductosLista: FC<Props> = ({ products, titulo, desc }) => {
             }}
             fontFamily="Roboto Condensed, sans-serif"
           >
-            {titulo}
+            Titulo
           </Typography>
           <Typography
             sx={{
