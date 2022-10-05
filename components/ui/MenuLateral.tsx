@@ -26,6 +26,7 @@ import {
   CategoryOutlined,
   LibraryBooks,
   LoginOutlined,
+  ManageHistory,
   MilitaryTech,
   PrecisionManufacturing,
   SearchOutlined,
@@ -140,6 +141,12 @@ export const MenuLateral = () => {
           </ListItem>
 
           <Divider />
+          <ListItem button onClick={() => navigateTo("/#historia")}>
+            <ListItemIcon>
+              <ManageHistory />
+            </ListItemIcon>
+            <ListItemText primary={"Historia"} />
+          </ListItem>
           <ListItem button onClick={() => navigateTo("/blog")}>
             <ListItemIcon>
               <AssuredWorkload />
