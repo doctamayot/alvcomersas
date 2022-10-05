@@ -63,7 +63,7 @@ body{
 
 :root {
   --white: #fff;
-  --orange: #d8d3c4;
+  --orange: #e9b721;
 }
 
 * {
@@ -184,7 +184,7 @@ button {
   background: linear-gradient(
     0deg,
     hsla(0, 80%, 100%, 0%) 0%,
-    #d8d3c4 100%
+    #e9b721 100%
   );
   
   
@@ -194,7 +194,7 @@ button {
   bottom: 0;
   background: linear-gradient(
     0deg,
-    #d8d3c4 0%,
+    #e9b721 0%,
     hsla(0, 80%, 100%, 0) 100%
   );
   

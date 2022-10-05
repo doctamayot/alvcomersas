@@ -24,7 +24,7 @@ const ProductoSlug: NextPage<Props> = ({ product }) => {
         container
         spacing={6}
         marginTop={0}
-        sx={{ backgroundColor: "#d8d3c4", height: { md: "80vh" } }}
+        sx={{ backgroundColor: "#e9b721", height: { md: "80vh" } }}
       >
         <Grid
           item
@@ -52,7 +52,7 @@ const ProductoSlug: NextPage<Props> = ({ product }) => {
               sx={{
                 fontSize: "40px",
                 fontWeight: "bolder",
-                color: "#3d3939",
+                color: "#ffffff",
                 textAlign: "center",
                 lineHeight: "40px",
               }}
@@ -75,7 +75,7 @@ const ProductoSlug: NextPage<Props> = ({ product }) => {
               <Typography
                 variant="subtitle2"
                 sx={{
-                  fontSize: "30px",
+                  fontSize: "15px",
                   fontWeight: "bolder",
                   color: "#fff",
                 }}
