@@ -32,6 +32,7 @@ export const Slider: FC<Props> = ({ activeIndex, productos }) => {
             marginRight: "0px",
             marginTop: { xs: "-150px", md: "300px", lg: "300px" },
           }}
+          className="hugo2"
         >
           <Image
             src={productos[activeIndex].images[0]}
