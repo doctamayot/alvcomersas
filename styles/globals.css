@@ -261,5 +261,5 @@ button {
   }
 }
 
-@media screen and ( max-height: 600px ) {  .hugo2{margin-top:120px }}
+@media screen and ( max-height: 800px ) {  .hugo2{margin-top:120px }}
 
