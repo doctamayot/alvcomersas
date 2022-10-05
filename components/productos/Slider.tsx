@@ -30,7 +30,7 @@ export const Slider: FC<Props> = ({ activeIndex, productos }) => {
             alignItems: "center",
             justifyContent: "center",
             marginRight: "0px",
-            marginTop: { xs: "-150px", md: "300px", lg: "300px" },
+            marginTop: { xs: "-50px", md: "300px", lg: "300px" },
           }}
           className="hugo2"
         >
