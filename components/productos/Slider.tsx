@@ -34,12 +34,23 @@ export const Slider: FC<Props> = ({ activeIndex, productos }) => {
           }}
           className="hugo2"
         >
-          <Image
+          {/* <Image
             src={productos[activeIndex].images[0]}
             alt={productos[activeIndex].copy}
             width={400}
             height={400}
-          />
+          /> */}
+          <div
+            style={{
+              backgroundImage: `url(${productos[activeIndex].images[0]})`,
+              backgroundSize: "contain",
+              backgroundRepeat: "no-repeat",
+              width: "100%",
+              height: "400px",
+              justifyContent: "center",
+              backgroundPosition: "center",
+            }}
+          ></div>
         </Box>
       </section>
     </div>

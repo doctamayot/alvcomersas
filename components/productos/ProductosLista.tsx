@@ -4,13 +4,14 @@ import NextLink from "next/link";
 import { Slider } from "./Slider";
 import cn from "classnames";
 import {
-  AcUnit,
   ArrowCircleDown,
   ArrowCircleUp,
   ArrowForward,
 } from "@mui/icons-material";
 
 import { IProducto } from "../../interfaces/productos";
+
+import { useRouter } from "next/router";
 
 interface Props {
   products: IProducto[];
@@ -20,6 +21,8 @@ interface Props {
 
 export const ProductosLista: FC<Props> = ({ products, titulo, desc }) => {
   const [activeIndex, setActiveIndex] = useState(0);
+
+  let { asPath } = useRouter();
 
   // Used to determine which items appear above the active item
   const halfwayIndex = Math.ceil(products.length / 2);
@@ -84,7 +87,7 @@ export const ProductosLista: FC<Props> = ({ products, titulo, desc }) => {
       container
       spacing={2}
       sx={{
-        backgroundColor: "#e9b721",
+        // backgroundColor: "#e9b721",
         justifyContent: "center",
         height: "auto",
       }}
@@ -132,11 +135,45 @@ export const ProductosLista: FC<Props> = ({ products, titulo, desc }) => {
             {desc}
           </Typography>
           <div className="container">
-            <section className="outer-container">
-              <div className="carousel-wrapper">
+            <section
+              className={
+                asPath === "/productos/categoria/militares"
+                  ? "outer-container-militar"
+                  : asPath === "/productos/categoria/herrajes"
+                  ? "outer-container-herrajes"
+                  : asPath === "/productos/categoria/inst"
+                  ? "outer-container-inst"
+                  : asPath === "/productos/categoria/servicios"
+                  ? "outer-container-servicios"
+                  : "outer-container"
+              }
+            >
+              <div
+                className={
+                  asPath === "/productos/categoria/militares"
+                    ? "carousel-wrapper-militar"
+                    : asPath === "/productos/categoria/herrajes"
+                    ? "carousel-wrapper-herrajes"
+                    : asPath === "/productos/categoria/inst"
+                    ? "carousel-wrapper-inst"
+                    : asPath === "/productos/categoria/servicios"
+                    ? "carousel-wrapper-servicios"
+                    : "carousel-wrapper"
+                }
+              >
                 <button
                   type="button"
-                  className="carousel-button prev"
+                  className={
+                    asPath === "/productos/categoria/militares"
+                      ? "carousel-button-militar prev"
+                      : asPath === "/productos/categoria/herrajes"
+                      ? "carousel-button-herrajes prev"
+                      : asPath === "/productos/categoria/inst"
+                      ? "carousel-button-inst prev"
+                      : asPath === "/productos/categoria/servicios"
+                      ? "carousel-button-servicios prev"
+                      : "carousel-button prev"
+                  }
                   onClick={() => handleClick("prev")}
                 >
                   <ArrowCircleUp sx={{ marginBottom: "0px" }} />
@@ -190,7 +227,17 @@ export const ProductosLista: FC<Props> = ({ products, titulo, desc }) => {
 
                 <button
                   type="button"
-                  className="carousel-button next"
+                  className={
+                    asPath === "/productos/categoria/militares"
+                      ? "carousel-button-militar next"
+                      : asPath === "/productos/categoria/herrajes"
+                      ? "carousel-button-herrajes next"
+                      : asPath === "/productos/categoria/inst"
+                      ? "carousel-button-inst next"
+                      : asPath === "/productos/categoria/servicios"
+                      ? "carousel-button-servicios next"
+                      : "carousel-button next"
+                  }
                   onClick={() => handleClick("next")}
                 >
                   <ArrowCircleDown />

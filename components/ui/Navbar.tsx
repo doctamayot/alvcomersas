@@ -76,10 +76,10 @@ export const Navbar = () => {
     >
       <Toolbar>
         <NextLink href="/" passHref>
-          <Link display="flex" alignItems="center">
+          <Link display="flex" alignItems="center" sx={{ marginTop: "5px" }}>
             <Image
               src={logo}
-              width={100}
+              width={260}
               height={80}
               alt="Alvcomer SAS Productos Militares"
             />
@@ -332,7 +332,7 @@ export const Navbar = () => {
                   marginRight: "20px",
                   marginLeft: "10px",
 
-                  fontSize: "20px",
+                  fontSize: "17px",
                   color: "#fff",
                   fontFamily: "Roboto Condensed, sans-serif",
                 }}

@@ -1,3 +1,4 @@
+import { Box } from "@mui/material";
 import { PrincipalLayout } from "../../../components/layouts";
 import { ProductosLista } from "../../../components/productos";
 import { Loading } from "../../../components/ui";
@@ -19,7 +20,9 @@ const Militares = () => {
       {isLoading ? (
         <Loading />
       ) : (
-        <ProductosLista products={products} titulo={titulo} desc={desc} />
+        <Box sx={{ backgroundColor: "#667c3c" }}>
+          <ProductosLista products={products} titulo={titulo} desc={desc} />
+        </Box>
       )}
     </PrincipalLayout>
   );

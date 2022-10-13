@@ -63,7 +63,11 @@ body{
 
 :root {
   --white: #fff;
-  --orange: #e9b721;
+  --todos: #e9b721;
+  --militar: #667c3c;
+  --herrajes: #B0C4DE ;
+  --inst: #C34A2C;
+  --servicios: #e37222;
 }
 
 * {
@@ -94,10 +98,37 @@ button {
 }
 
 .outer-container .carousel-wrapper {
-  background: var(--orange);
+  background: var(--todos);
   display: flex;
   flex-direction: column;
 }
+
+.outer-container-militar .carousel-wrapper-militar {
+  background: var(--militar);
+  display: flex;
+  flex-direction: column;
+}
+
+.outer-container-herrajes .carousel-wrapper-herrajes {
+  background: var(--herrajes);
+  display: flex;
+  flex-direction: column;
+}
+
+.outer-container-inst .carousel-wrapper-inst {
+  background: var(--inst);
+  display: flex;
+  flex-direction: column;
+}
+
+.outer-container-servicios .carousel-wrapper-servicios {
+  background: var(--servicios);
+  display: flex;
+  flex-direction: column;
+}
+
+
+
 
 .outer-container .carousel-wrapper p,
 .carousel-item {
@@ -133,7 +164,48 @@ button {
   padding: 10px;
   max-width: 50px;
   border-radius: 30px;
-  background: var(--orange);
+  background: var(--todos);
+  border: 2px solid var(--white);
+  margin: 30px 0
+}
+.carousel-button-militar {
+  display: flex;
+  align-self: center;
+  padding: 10px;
+  max-width: 50px;
+  border-radius: 30px;
+  background: var(--militar);
+  border: 2px solid var(--white);
+  margin: 30px 0
+}
+.carousel-button-herrajes {
+  display: flex;
+  align-self: center;
+  padding: 10px;
+  max-width: 50px;
+  border-radius: 30px;
+  background: var(--herrajes);
+  border: 2px solid var(--white);
+  margin: 30px 0
+}
+
+.carousel-button-inst {
+  display: flex;
+  align-self: center;
+  padding: 10px;
+  max-width: 50px;
+  border-radius: 30px;
+  background: var(--inst);
+  border: 2px solid var(--white);
+  margin: 30px 0
+}
+.carousel-button-servicios {
+  display: flex;
+  align-self: center;
+  padding: 10px;
+  max-width: 50px;
+  border-radius: 30px;
+  background: var(--servicios);
   border: 2px solid var(--white);
   margin: 30px 0
 }
@@ -184,17 +256,101 @@ button {
   background: linear-gradient(
     0deg,
     hsla(0, 80%, 100%, 0%) 0%,
-    #e9b721 100%
+    var(--todas) 100%
   );
   
   
 }
 
+.carousel-inner-militar::before {
+  top: 0;
+  background: linear-gradient(
+    0deg,
+    hsla(0, 80%, 100%, 0%) 0%,
+    var(--militar) 100%
+  );
+  
+  
+}
+.carousel-inner-inst::before {
+  top: 0;
+  background: linear-gradient(
+    0deg,
+    hsla(0, 80%, 100%, 0%) 0%,
+    var(--inst) 100%
+  );
+  
+  
+}
+
+.carousel-inner-servicios::before {
+  top: 0;
+  background: linear-gradient(
+    0deg,
+    hsla(0, 80%, 100%, 0%) 0%,
+    var(--servicios) 100%
+  );
+  
+  
+}
+
+.carousel-inner-herrajes::before {
+  top: 0;
+  background: linear-gradient(
+    0deg,
+    hsla(0, 80%, 100%, 0%) 0%,
+    var(--herrajes) 100%
+  );
+  
+  
+}
+
+
+
 .carousel-inner::after {
   bottom: 0;
   background: linear-gradient(
     0deg,
-    #e9b721 0%,
+    var(--todas) 0%,
+    hsla(0, 80%, 100%, 0) 100%
+  );
+  
+}
+
+.carousel-inner-militar::after {
+  bottom: 0;
+  background: linear-gradient(
+    0deg,
+    var(--militar) 0%,
+    hsla(0, 80%, 100%, 0) 100%
+  );
+  
+}
+.carousel-inner-herrajes::after {
+  bottom: 0;
+  background: linear-gradient(
+    0deg,
+    var(--herrajes) 0%,
+    hsla(0, 80%, 100%, 0) 100%
+  );
+  
+}
+
+.carousel-inner-inst::after {
+  bottom: 0;
+  background: linear-gradient(
+    0deg,
+    var(--inst) 0%,
+    hsla(0, 80%, 100%, 0) 100%
+  );
+  
+}
+
+.carousel-inner-servicios::after {
+  bottom: 0;
+  background: linear-gradient(
+    0deg,
+    var(--servicios) 0%,
     hsla(0, 80%, 100%, 0) 100%
   );
   

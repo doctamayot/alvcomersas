@@ -1,3 +1,4 @@
+import { Box } from "@mui/material";
 import { PrincipalLayout } from "../../../components/layouts";
 import { ProductosLista } from "../../../components/productos";
 import { Loading } from "../../../components/ui";
@@ -15,7 +16,9 @@ const Todas = () => {
       {isLoading ? (
         <Loading />
       ) : (
-        <ProductosLista products={products} titulo={titulo} desc={desc} />
+        <Box sx={{ backgroundColor: "#e9b721" }}>
+          <ProductosLista products={products} titulo={titulo} desc={desc} />
+        </Box>
       )}
     </PrincipalLayout>
   );

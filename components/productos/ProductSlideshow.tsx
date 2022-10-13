@@ -21,18 +21,19 @@ export const ProductSlideshow: FC<Props> = ({ images }) => {
               justifyContent: "center",
             }}
           >
-            {/* <div
+            <div
               style={{
                 backgroundImage: `url(${image})`,
-                backgroundSize: "cover",
+                backgroundSize: "contain",
+                backgroundRepeat: "no-repeat",
                 width: "100%",
-                height: "500px",
+                height: "400px",
                 justifyContent: "center",
                 backgroundPosition: "center",
               }}
-            ></div> */}
+            ></div>
 
-            <Image src={image} alt="imagen" width={400} height={400} />
+            {/* <Image src={image} alt="imagen" layout="intrinsic" /> */}
           </div>
         );
       })}
