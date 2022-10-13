@@ -104,7 +104,7 @@ export const ProductosLista: FC<Props> = ({ products, titulo, desc }) => {
       >
         <Box
           sx={{
-            height: { xs: "100vh", md: "100vh" },
+            //height: { xs: "100vh", md: "100vh" },
 
             textAlign: "center",
             //marginBottom: "500px",
@@ -134,7 +134,11 @@ export const ProductosLista: FC<Props> = ({ products, titulo, desc }) => {
           >
             {desc}
           </Typography>
-          <div className="container">
+          <div
+            style={{
+              marginTop: "20px",
+            }}
+          >
             <section
               className={
                 asPath === "/productos/categoria/militares"
