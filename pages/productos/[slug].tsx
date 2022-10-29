@@ -42,7 +42,7 @@ const ProductoSlug: NextPage<Props> = ({ product }) => {
           item
           xs={12}
           md={6}
-          sx={{ marginTop: { md: "150px" }, marginLeft: { lg: "4px" } }}
+          sx={{ marginTop: { md: "250px" }, marginLeft: { lg: "4px" } }}
         >
           <Box display="flex" flexDirection="column" alignItems="center">
             {/* titulos */}
@@ -60,7 +60,7 @@ const ProductoSlug: NextPage<Props> = ({ product }) => {
             >
               {product.titulo}
             </Typography>
-            <Typography
+            {/* <Typography
               variant="subtitle1"
               component="h2"
               sx={{
@@ -68,7 +68,7 @@ const ProductoSlug: NextPage<Props> = ({ product }) => {
                 fontWeight: "100",
                 fontSize: "30px",
               }}
-            >{`$ ${product.precio}`}</Typography>
+            >{`$ ${product.precio}`}</Typography> */}
 
             {/* Descripción */}
             <Box sx={{ mt: 1 }} textAlign="center">

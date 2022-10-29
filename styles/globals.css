@@ -114,6 +114,7 @@ button {
   background: var(--herrajes);
   display: flex;
   flex-direction: column;
+  
 }
 
 .outer-container-inst .carousel-wrapper-inst {
