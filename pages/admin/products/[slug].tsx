@@ -37,6 +37,7 @@ const validCategories = [
   "Herrajes",
   "Institucional",
   "Servicio de Troquelado y Embutido",
+  "Botas Multiproposito",
 ];
 
 interface FormData {
@@ -306,7 +307,7 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
                 label="Slug - URL"
                 variant="outlined"
                 fullWidth
-                sx={{ mb: 1 }}
+                sx={{ mb: 1, visibility: "hidden" }}
                 {...register("slug", {
                   required: "Este campo es requerido",
                   validate: (val) =>

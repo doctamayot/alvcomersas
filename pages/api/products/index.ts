@@ -30,6 +30,7 @@ async function getProducts(req: NextApiRequest, res: NextApiResponse<Data>) {
       "Herrajes",
       "Institucional",
       "Servicio de Troquelado y Embutido",
+      "Botas Multiproposito",
     ].includes(`${categoria}`)
   ) {
     condition = { categoria };

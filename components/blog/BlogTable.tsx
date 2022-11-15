@@ -54,7 +54,7 @@ export const BlogTable: FC<Props> = ({ products, titulo }) => {
                     component="img"
                     height="140"
                     image={blog.images[0]}
-                    alt="green iguana"
+                    alt="Productos militares y en acero"
                   />
                   <CardContent>
                     <Typography

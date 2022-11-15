@@ -9,7 +9,8 @@ export interface IProducto {
     | "Equipo Militar o Camping"
     | "Herrajes"
     | "Institucional"
-    | "Servicio de Troquelado y Embutido";
+    | "Servicio de Troquelado y Embutido"
+    | "Botas Multiproposito";
 
   titulo: string;
   tags: string[];

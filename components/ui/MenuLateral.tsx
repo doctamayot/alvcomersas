@@ -29,6 +29,7 @@ import {
   ManageHistory,
   MilitaryTech,
   PrecisionManufacturing,
+  RollerSkating,
   SearchOutlined,
   VpnKeyOutlined,
   WorkspacePremium,
@@ -128,6 +129,16 @@ export const MenuLateral = () => {
               <AssuredWorkload />
             </ListItemIcon>
             <ListItemText primary={"Institucional"} />
+          </ListItem>
+
+          <ListItem
+            button
+            onClick={() => navigateTo("/productos/categoria/botas")}
+          >
+            <ListItemIcon>
+              <RollerSkating />
+            </ListItemIcon>
+            <ListItemText primary={"Botas Multipropósito"} />
           </ListItem>
 
           <ListItem

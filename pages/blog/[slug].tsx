@@ -46,8 +46,8 @@ const ProductoSlug: NextPage<Props> = ({ product }) => {
           <Image
             src={product.images[0]}
             alt="imagen blog"
-            width={500}
-            height={500}
+            width={400}
+            height={400}
           />
         </Grid>
 

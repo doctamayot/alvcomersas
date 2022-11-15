@@ -213,6 +213,24 @@ export const Navbar = () => {
               sx={{ fontFamily: "Roboto Condensed, sans-serif" }}
               // onClick={handleClose}
             >
+              <NextLink href="/productos/categoria/botas" passHref>
+                <Typography
+                  sx={{
+                    backgroundColor: "transparent",
+                    fontFamily: "Roboto Condensed, sans-serif",
+                    fontSize: "16.2px",
+                    color: "#000",
+                  }}
+                >
+                  Botas Multipropósito
+                </Typography>
+              </NextLink>
+            </MenuItem>
+
+            <MenuItem
+              sx={{ fontFamily: "Roboto Condensed, sans-serif" }}
+              // onClick={handleClose}
+            >
               <NextLink href="/productos/categoria/servicios" passHref>
                 <Typography
                   sx={{

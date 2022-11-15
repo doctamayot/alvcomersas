@@ -19,6 +19,7 @@ const productSchema = new Schema(
           "Vallas de Contención",
           "Servicio de Troquelado y Embutido",
           "Placas de Identificación",
+          "Botas Multiproposito",
         ],
         message: "{VALUE} no es una categoria válida",
       },
