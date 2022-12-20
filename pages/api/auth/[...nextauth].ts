@@ -27,7 +27,7 @@ export default NextAuth({
     updateAge: 86400, // cada día
   },
   callbacks: {
-    async signIn({ user, account, profile, email, credentials }) {
+    async signIn({ user, account, profile, email, credentials }: any) {
       if (!user?.role) {
         user.role = "Cliente";
       }
@@ -53,7 +53,7 @@ export default NextAuth({
       return token;
     },
 
-    async session({ session, user, token }) {
+    async session({ session, user, token }: any) {
       //console.log({ session, token, user });
       session.accessToken = token.accessToken;
       session.user = token.user as any;
