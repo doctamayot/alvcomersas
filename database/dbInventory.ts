@@ -18,7 +18,7 @@ export const getProductBySlug = async (
   product.images = product.images.map((image) => {
     return image.includes("http")
       ? image
-      : `${process.env.HOST_NAME}products/${image}`;
+      : `https://alvcomer.com.co/products/${image}`;
   });
 
   return JSON.parse(JSON.stringify(product));
@@ -38,7 +38,7 @@ export const getPartBySlug = async (
   product.images = product.images.map((image) => {
     return image.includes("http")
       ? image
-      : `${process.env.HOST_NAME}products/${image}`;
+      : `https://alvcomer.com.co/products/${image}`;
   });
 
   return JSON.parse(JSON.stringify(product));
