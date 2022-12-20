@@ -21,6 +21,8 @@ export const getProductBySlug = async (
       : `https://alvcomer.com.co/products/${image}`;
   });
 
+  //pilas
+
   return JSON.parse(JSON.stringify(product));
 };
 
