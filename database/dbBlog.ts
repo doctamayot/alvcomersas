@@ -15,7 +15,7 @@ export const getProductBySlug = async (slug: string): Promise<IBlog | null> => {
   product.images = product.images.map((image) => {
     return image.includes("http")
       ? image
-      : `${process.env.HOST_NAME}blog/${image}`;
+      : `https://alvcomer.com.co/blog/${image}`;
   });
 
   return JSON.parse(JSON.stringify(product));

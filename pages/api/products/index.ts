@@ -46,7 +46,7 @@ async function getProducts(req: NextApiRequest, res: NextApiResponse<Data>) {
     product.images = product.images.map((image) => {
       return image.includes("http")
         ? image
-        : `${process.env.HOST_NAME}products/${image}`;
+        : `https://alvcomer.com.co/products/${image}`;
     });
 
     return product;
