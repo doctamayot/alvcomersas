@@ -56,9 +56,9 @@ export const getMovBySlug = async (_id: string): Promise<IInventory | null> => {
   return JSON.parse(JSON.stringify(product));
 };
 
-interface ProductSlug {
-  id: string;
-}
+// interface ProductSlug {
+//   id: string;
+// }
 
 // export const getAllProductSlugs = async (): Promise<ProductSlug[]> => {
 //   await db.connect();
