@@ -86,6 +86,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       idver,
       part,
     },
+    revalidate: 20,
   };
 };
 
