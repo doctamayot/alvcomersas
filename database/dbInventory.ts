@@ -58,17 +58,25 @@ export const getMovBySlug = async (_id: string): Promise<IInventory | null> => {
   return JSON.parse(JSON.stringify(product));
 };
 
-// interface ProductSlug {
-//   id: string;
-// }
+interface ProductSlug {
+  _id: any;
+}
 
-// export const getAllProductSlugs = async (): Promise<ProductSlug[]> => {
-//   await db.connect();
-//   const slugs = await Inventory.find().select("slug -_id").lean();
-//   await db.disconnect();
+export const getAllProductSlugs = async (): Promise<ProductSlug[]> => {
+  await db.connect();
+  const slugs: any = await Inventory.find().select("_id").lean();
+  await db.disconnect();
 
-//   return slugs;
-// };
+  return slugs;
+};
+
+export const getAllPartsSlugs = async (): Promise<ProductSlug[]> => {
+  await db.connect();
+  const slugs: any = await Part.find().select("_id").lean();
+  await db.disconnect();
+
+  return slugs;
+};
 
 export const getProductsByTerm = async (
   term: string
@@ -100,6 +108,14 @@ export const getProductsByTerm = async (
 export const getAllProducts = async (): Promise<IInventory[]> => {
   await db.connect();
   const products = await Inventory.find().lean();
+  await db.disconnect();
+
+  return JSON.parse(JSON.stringify(products));
+};
+
+export const getAllParts = async (): Promise<IInventory[]> => {
+  await db.connect();
+  const products = await Part.find().lean();
   await db.disconnect();
 
   return JSON.parse(JSON.stringify(products));

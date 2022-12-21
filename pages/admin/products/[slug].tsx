@@ -1,5 +1,5 @@
 import { ChangeEvent, FC, useEffect, useRef, useState } from "react";
-import { GetServerSideProps } from "next";
+import { GetServerSideProps, GetStaticPaths, GetStaticProps } from "next";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 
@@ -418,11 +418,24 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
   );
 };
 
+export const getStaticPaths: GetStaticPaths = async (ctx) => {
+  const productSlugs = await dbProducts.getAllProductSlugs();
+
+  return {
+    paths: productSlugs.map(({ slug }) => ({
+      params: {
+        slug,
+      },
+    })),
+    fallback: "blocking",
+  };
+};
+
 // You should use getServerSideProps when:
 // - Only if you need to pre-render a page whose data must be fetched at request time
 
-export const getServerSideProps: GetServerSideProps = async ({ query }) => {
-  const { slug = "" } = query;
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const { slug = "" } = params as { slug: string };
 
   let product: IProducto | null;
 
