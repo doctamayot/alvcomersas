@@ -68,7 +68,7 @@ export const getStaticPaths: GetStaticPaths = async (ctx) => {
         _id: _id.toString(),
       },
     })),
-    fallback: true,
+    fallback: "blocking",
   };
 };
 
