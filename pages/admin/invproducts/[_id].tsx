@@ -32,6 +32,13 @@ const InvProductAdminPage: FC<Props> = ({ product, part, idver }) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async (ctx) => {
+  if (process.env.SKIP_BUILD_STATIC_GENERATION) {
+    return {
+      paths: [],
+      fallback: "blocking",
+    };
+  }
+
   const productSlugs = await dbInventory.getAllProductSlugs();
 
   return {
@@ -40,7 +47,7 @@ export const getStaticPaths: GetStaticPaths = async (ctx) => {
         _id: _id.toString(),
       },
     })),
-    fallback: "blocking",
+    fallback: false,
   };
 };
 
