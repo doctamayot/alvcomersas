@@ -19,15 +19,15 @@ interface Props {
 
 const InvProductAdminPage: FC<Props> = ({ product, part, idver }) => {
   //const partes = data.partes;
-  //console.log(product);
-
-  //const router = useRouter();
-  //console.log(router);
+  // console.log(product);
 
   return (
-    <PrincipalLayout title={"Producto"} description={`Editando: `}>
-      {/* <PartsTable product={product} part={part} idver={idver} />
-      <MovProdTable product={product} idver={idver} /> */}
+    <PrincipalLayout
+      title={"Producto"}
+      description={`Editando: ${product.titulo}`}
+    >
+      <PartsTable product={product} part={part} idver={idver} />
+      <MovProdTable product={product} idver={idver} />
     </PrincipalLayout>
   );
 };
@@ -35,45 +35,41 @@ const InvProductAdminPage: FC<Props> = ({ product, part, idver }) => {
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const { _id = "" } = query;
 
-  console.log(_id);
-
   let product: IInventory | null;
   let part: IInventory | null;
-  // if (_id === "new") {
-  //   // crear un producto
-  //   const tempProduct = JSON.parse(JSON.stringify(new Inventory()));
-  //   delete tempProduct._id;
-  //   tempProduct.images = ["img1.jpg"];
-  //   tempProduct.categoria = "";
-  //   product = tempProduct;
-  // } else {
-  //   product = await dbInventory.getProductBySlug(_id.toString());
-  // }
+  if (_id === "new") {
+    // crear un producto
+    const tempProduct = JSON.parse(JSON.stringify(new Inventory()));
+    delete tempProduct._id;
+    tempProduct.images = ["img1.jpg"];
+    tempProduct.categoria = "";
+    product = tempProduct;
+  } else {
+    product = await dbInventory.getProductBySlug(_id.toString());
+  }
 
-  //product = await dbInventory.getProductBySlug(_id.toString());
+  if (!product) {
+    return {
+      redirect: {
+        destination: "/admin/invproducts",
+        permanent: false,
+      },
+    };
+  }
 
-  // if (!product) {
-  //   return {
-  //     redirect: {
-  //       destination: "/admin/invproducts",
-  //       permanent: false,
-  //     },
-  //   };
-  // }
+  const tempPart = JSON.parse(JSON.stringify(new Part()));
+  delete tempPart._id;
+  tempPart.images = ["img1.jpg"];
 
-  // const tempPart = JSON.parse(JSON.stringify(new Part()));
-  // delete tempPart._id;
-  // tempPart.images = ["img1.jpg"];
+  part = tempPart;
 
-  // part = tempPart;
-
-  // const idver = _id;
+  const idver = _id;
 
   return {
     props: {
-      //product,
-      // idver,
-      // part,
+      product,
+      idver,
+      part,
     },
   };
 };

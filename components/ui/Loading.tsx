@@ -6,10 +6,7 @@ import { PrincipalLayout } from "../layouts/PrincipalLayout";
 
 export const Loading = () => {
   return (
-    <PrincipalLayout
-      title="Página no encontrada"
-      description={"No hay nada que mostrar aquí"}
-    >
+    <PrincipalLayout title="Alvcomer SAS" description={"Alvcomer SAS"}>
       <Box
         display="flex"
         justifyContent="center"
