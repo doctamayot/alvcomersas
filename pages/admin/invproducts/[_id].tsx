@@ -9,6 +9,7 @@ import { Inventory, Part } from "../../../models";
 
 import PartsTable from "../../../components/inventory/PartsTable";
 import MovProdTable from "../../../components/inventory/MovProdTable";
+import { useRouter } from "next/router";
 
 interface Props {
   product: IInventory;
@@ -19,6 +20,9 @@ interface Props {
 const InvProductAdminPage: FC<Props> = ({ product, part, idver }) => {
   //const partes = data.partes;
   // console.log(product);
+
+  //const router = useRouter();
+  //console.log(router);
 
   return (
     <PrincipalLayout
@@ -31,44 +35,23 @@ const InvProductAdminPage: FC<Props> = ({ product, part, idver }) => {
   );
 };
 
-export const getStaticPaths: GetStaticPaths = async (ctx) => {
-  if (process.env.SKIP_BUILD_STATIC_GENERATION) {
-    return {
-      paths: [],
-      fallback: "blocking",
-    };
-  }
-
-  const productSlugs = await dbInventory.getAllProductSlugs();
-
-  return {
-    paths: productSlugs.map(({ _id }) => ({
-      params: {
-        _id: _id.toString(),
-      },
-    })),
-    fallback: false,
-  };
-};
-
-// You should use getServerSideProps when:
-// - Only if you need to pre-render a page whose data must be fetched at request time
-
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const { _id = "" } = params as { _id: string };
+export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+  const { _id = "" } = query;
 
   let product: IInventory | null;
   let part: IInventory | null;
-  if (_id === "new") {
-    // crear un producto
-    const tempProduct = JSON.parse(JSON.stringify(new Inventory()));
-    delete tempProduct._id;
-    tempProduct.images = ["img1.jpg"];
-    tempProduct.categoria = "";
-    product = tempProduct;
-  } else {
-    product = await dbInventory.getProductBySlug(_id.toString());
-  }
+  // if (_id === "new") {
+  //   // crear un producto
+  //   const tempProduct = JSON.parse(JSON.stringify(new Inventory()));
+  //   delete tempProduct._id;
+  //   tempProduct.images = ["img1.jpg"];
+  //   tempProduct.categoria = "";
+  //   product = tempProduct;
+  // } else {
+  //   product = await dbInventory.getProductBySlug(_id.toString());
+  // }
+
+  product = await dbInventory.getProductBySlug(_id.toString());
 
   if (!product) {
     return {
@@ -81,7 +64,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   const tempPart = JSON.parse(JSON.stringify(new Part()));
   delete tempPart._id;
-  tempPart.images = [];
+  tempPart.images = ["img1.jpg"];
 
   part = tempPart;
 
@@ -93,7 +76,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       idver,
       part,
     },
-    revalidate: 10,
   };
 };
 
