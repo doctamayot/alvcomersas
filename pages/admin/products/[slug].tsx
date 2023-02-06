@@ -418,24 +418,8 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
   );
 };
 
-export const getStaticPaths: GetStaticPaths = async (ctx) => {
-  const productSlugs = await dbProducts.getAllProductSlugs();
-
-  return {
-    paths: productSlugs.map(({ slug }) => ({
-      params: {
-        slug,
-      },
-    })),
-    fallback: "blocking",
-  };
-};
-
-// You should use getServerSideProps when:
-// - Only if you need to pre-render a page whose data must be fetched at request time
-
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const { slug = "" } = params as { slug: string };
+export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+  const { slug = "" } = query;
 
   let product: IProducto | null;
 
@@ -443,9 +427,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     // crear un producto
     const tempProduct = JSON.parse(JSON.stringify(new Product()));
     delete tempProduct._id;
-    tempProduct.images = [];
+    tempProduct.images = ["img1.jpg", "img2.jpg"];
     tempProduct.categoria = "";
-    tempProduct.nuevo = "nuevo";
     product = tempProduct;
   } else {
     product = await dbProducts.getProductBySlug(slug.toString());

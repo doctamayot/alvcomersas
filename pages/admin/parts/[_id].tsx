@@ -59,24 +59,11 @@ const InvPartAdminPage: FC<Props> = ({ product, idver, mov }) => {
   );
 };
 
-export const getStaticPaths: GetStaticPaths = async (ctx) => {
-  const productSlugs = await dbInventory.getAllPartsSlugs();
-
-  return {
-    paths: productSlugs.map(({ _id }) => ({
-      params: {
-        _id: _id.toString(),
-      },
-    })),
-    fallback: "blocking",
-  };
-};
-
 // You should use getServerSideProps when:
 // - Only if you need to pre-render a page whose data must be fetched at request time
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const { _id = "" } = params as { _id: string };
+export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+  const { _id = "" } = query;
 
   let product: any | null;
   let mov: any | null;
@@ -112,7 +99,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       idver,
       mov,
     },
-    revalidate: 10,
   };
 };
 

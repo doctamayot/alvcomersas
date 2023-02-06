@@ -19,16 +19,13 @@ interface Props {
 
 const InvProductAdminPage: FC<Props> = ({ product, part, idver }) => {
   //const partes = data.partes;
-  console.log(product);
+  //console.log(product);
 
   //const router = useRouter();
   //console.log(router);
 
   return (
-    <PrincipalLayout
-      title={"Producto"}
-      description={`Editando: ${product.titulo}`}
-    >
+    <PrincipalLayout title={"Producto"} description={`Editando: `}>
       {/* <PartsTable product={product} part={part} idver={idver} />
       <MovProdTable product={product} idver={idver} /> */}
     </PrincipalLayout>
@@ -37,6 +34,8 @@ const InvProductAdminPage: FC<Props> = ({ product, part, idver }) => {
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const { _id = "" } = query;
+
+  console.log(_id);
 
   let product: IInventory | null;
   let part: IInventory | null;
@@ -51,7 +50,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   //   product = await dbInventory.getProductBySlug(_id.toString());
   // }
 
-  product = await dbInventory.getProductBySlug(_id.toString());
+  //product = await dbInventory.getProductBySlug(_id.toString());
 
   // if (!product) {
   //   return {
@@ -72,7 +71,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 
   return {
     props: {
-      product,
+      //product,
       // idver,
       // part,
     },
