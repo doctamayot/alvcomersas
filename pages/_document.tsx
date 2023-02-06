@@ -25,6 +25,18 @@ class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;700&family=Rubik+Dirt&display=swap"
             rel="stylesheet"
           />
+
+          <meta
+            name="description"
+            content="Productos militares, acero inoxidable, tienda militar"
+          />
+          <meta property="og:title" content="Productos en acero inoxidable" />
+          <meta
+            property="og:description"
+            content="Productos militares, acero inoxidable, tienda militar"
+          />
+          <meta property="og:URL" content="https://alvcomer.com.co/" />
+          <meta property="og:type" content="website" />
           <link rel="icon" href="/favicon.ico" />
           {/* <meta name="viewport" content="width=device-width, initial-scale=1" /> */}
         </Head>
