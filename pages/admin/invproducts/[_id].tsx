@@ -19,7 +19,7 @@ interface Props {
 
 const InvProductAdminPage: FC<Props> = ({ product, part, idver }) => {
   //const partes = data.partes;
-  // console.log(product);
+  console.log(product);
 
   //const router = useRouter();
   //console.log(router);
@@ -29,8 +29,8 @@ const InvProductAdminPage: FC<Props> = ({ product, part, idver }) => {
       title={"Producto"}
       description={`Editando: ${product.titulo}`}
     >
-      <PartsTable product={product} part={part} idver={idver} />
-      <MovProdTable product={product} idver={idver} />
+      {/* <PartsTable product={product} part={part} idver={idver} />
+      <MovProdTable product={product} idver={idver} /> */}
     </PrincipalLayout>
   );
 };
@@ -53,28 +53,28 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 
   product = await dbInventory.getProductBySlug(_id.toString());
 
-  if (!product) {
-    return {
-      redirect: {
-        destination: "/admin/invproducts",
-        permanent: false,
-      },
-    };
-  }
+  // if (!product) {
+  //   return {
+  //     redirect: {
+  //       destination: "/admin/invproducts",
+  //       permanent: false,
+  //     },
+  //   };
+  // }
 
-  const tempPart = JSON.parse(JSON.stringify(new Part()));
-  delete tempPart._id;
-  tempPart.images = ["img1.jpg"];
+  // const tempPart = JSON.parse(JSON.stringify(new Part()));
+  // delete tempPart._id;
+  // tempPart.images = ["img1.jpg"];
 
-  part = tempPart;
+  // part = tempPart;
 
-  const idver = _id;
+  // const idver = _id;
 
   return {
     props: {
       product,
-      idver,
-      part,
+      // idver,
+      // part,
     },
   };
 };
