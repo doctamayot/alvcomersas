@@ -68,6 +68,7 @@ body{
   --herrajes: #B0C4DE ;
   --inst: #C34A2C;
   --servicios: #e37222;
+  --botas:#000000;
 }
 
 * {
@@ -112,6 +113,13 @@ button {
 
 .outer-container-herrajes .carousel-wrapper-herrajes {
   background: var(--herrajes);
+  display: flex;
+  flex-direction: column;
+  
+}
+
+.outer-container-botas .carousel-wrapper-botas {
+  background: var(--botas);
   display: flex;
   flex-direction: column;
   
