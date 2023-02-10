@@ -61,6 +61,7 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
   const [newTagValue, setNewTagValue] = useState("");
   const [isSaving, setIsSaving] = useState(false);
   const Swal = require("sweetalert2");
+  //console.log(router);
 
   const {
     register,
@@ -72,6 +73,17 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
   } = useForm<FormData>({
     defaultValues: product,
   });
+
+  // const hugo = async () => {
+  //   const { query } = router;
+  //   const producto = await dbProducts.getProductBySlug("marmita");
+  // };
+
+  // useEffect(() => {
+  //   hugo();
+  // }, []);
+
+  //const producto = dbProducts.getProductBySlug("marmita");
 
   useEffect(() => {
     const subscription = watch((value, { name, type }) => {
@@ -421,27 +433,44 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const { slug = "" } = query;
 
-  let product: IProducto | null;
+  // let product: IProducto | null;
 
-  if (slug === "new") {
-    // crear un producto
-    const tempProduct = JSON.parse(JSON.stringify(new Product()));
-    delete tempProduct._id;
-    tempProduct.images = ["img1.jpg", "img2.jpg"];
-    tempProduct.categoria = "";
-    product = tempProduct;
-  } else {
-    product = await dbProducts.getProductBySlug(slug.toString());
-  }
+  // if (slug === "new") {
+  //   // crear un producto
+  //   const tempProduct = JSON.parse(JSON.stringify(new Product()));
+  //   delete tempProduct._id;
+  //   tempProduct.images = ["img1.jpg", "img2.jpg"];
+  //   tempProduct.categoria = "";
+  //   product = tempProduct;
+  // } else {
+  //   product = await dbProducts.getProductBySlug(slug.toString());
+  // }
 
-  if (!product) {
-    return {
-      redirect: {
-        destination: "/admin/products",
-        permanent: false,
-      },
-    };
-  }
+  // if (!product) {
+  //   return {
+  //     redirect: {
+  //       destination: "/admin/products",
+  //       permanent: false,
+  //     },
+  //   };
+  // }
+
+  const product = {
+    _id: "6334da1ef689ebda45a7bb8b",
+    copy: "Jarro cantimplora: Recipiente en acero inoxidable para servir bebidas frías o calientes en el área de Defensa, excursión, camping, trabajos de campo, ecoturismo, entre otros.",
+    images: [
+      "https://res.cloudinary.com/alvcomer/image/upload/v1664407423/kakjgsh6ckg3s9y272jp.png",
+      "https://res.cloudinary.com/alvcomer/image/upload/v1664407429/bchjv79hyn1nmuihhgpp.png",
+    ],
+    precio: 16000,
+    slug: "jarro_cantimplora",
+    tags: ["jarro", "cantimplora", "táctico", "militar", "camping"],
+    categoria: "Equipo Militar o Camping",
+    titulo: "Jarro Cantimplora",
+    createdAt: "2022-09-28T23:34:54.408Z",
+    updatedAt: "2022-10-05T12:54:09.496Z",
+    __v: 0,
+  };
 
   return {
     props: {
