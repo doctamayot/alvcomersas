@@ -433,7 +433,7 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const { slug = "" } = query;
 
-  let product: IProducto | null;
+  let product: any | null;
 
   if (slug === "new") {
     // crear un producto
@@ -443,25 +443,41 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
     tempProduct.categoria = "";
     product = tempProduct;
   } else {
-    const getProduct = async (slug: string): Promise<IProducto | null> => {
-      await db.connect();
+    // const getProduct = async (slug: string): Promise<IProducto | null> => {
+    //   await db.connect();
 
-      const product = await Product.findOne({ slug }).lean();
-      await db.disconnect();
+    //   const product = await Product.findOne({ slug }).lean();
+    //   await db.disconnect();
 
-      if (!product) {
-        return null;
-      }
+    //   if (!product) {
+    //     return null;
+    //   }
 
-      product.images = product.images.map((image) => {
-        return image.includes("http")
-          ? image
-          : `https://alvcomer.com.co/products/${image}`;
-      });
+    //   product.images = product.images.map((image) => {
+    //     return image.includes("http")
+    //       ? image
+    //       : `https://alvcomer.com.co/products/${image}`;
+    //   });
 
-      return JSON.parse(JSON.stringify(product));
+    //   return JSON.parse(JSON.stringify(product));
+    // };
+    // product = await getProduct(slug.toString());
+    product = {
+      _id: "6334da1ef689ebda45a7bb8b",
+      copy: "Jarro cantimplora: Recipiente en acero inoxidable para servir bebidas frías o calientes en el área de Defensa, excursión, camping, trabajos de campo, ecoturismo, entre otros.",
+      images: [
+        "https://res.cloudinary.com/alvcomer/image/upload/v1664407423/kakjgsh6ckg3s9y272jp.png",
+        "https://res.cloudinary.com/alvcomer/image/upload/v1664407429/bchjv79hyn1nmuihhgpp.png",
+      ],
+      precio: 16000,
+      slug: "jarro_cantimplora",
+      tags: ["jarro", "cantimplora", "táctico", "militar", "camping"],
+      categoria: "Equipo Militar o Camping",
+      titulo: "Jarro Cantimplora",
+      createdAt: "2022-09-28T23:34:54.408Z",
+      updatedAt: "2022-10-05T12:54:09.496Z",
+      __v: 0,
     };
-    product = await getProduct(slug.toString());
   }
 
   if (!product) {
@@ -472,23 +488,6 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
       },
     };
   }
-
-  // const product = {
-  //   _id: "6334da1ef689ebda45a7bb8b",
-  //   copy: "Jarro cantimplora: Recipiente en acero inoxidable para servir bebidas frías o calientes en el área de Defensa, excursión, camping, trabajos de campo, ecoturismo, entre otros.",
-  //   images: [
-  //     "https://res.cloudinary.com/alvcomer/image/upload/v1664407423/kakjgsh6ckg3s9y272jp.png",
-  //     "https://res.cloudinary.com/alvcomer/image/upload/v1664407429/bchjv79hyn1nmuihhgpp.png",
-  //   ],
-  //   precio: 16000,
-  //   slug: "jarro_cantimplora",
-  //   tags: ["jarro", "cantimplora", "táctico", "militar", "camping"],
-  //   categoria: "Equipo Militar o Camping",
-  //   titulo: "Jarro Cantimplora",
-  //   createdAt: "2022-09-28T23:34:54.408Z",
-  //   updatedAt: "2022-10-05T12:54:09.496Z",
-  //   __v: 0,
-  // };
 
   return {
     props: {
