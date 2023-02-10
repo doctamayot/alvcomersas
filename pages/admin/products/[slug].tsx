@@ -1,5 +1,5 @@
-import { ChangeEvent, FC, useEffect, useRef, useState } from "react";
-import { GetServerSideProps, GetStaticPaths, GetStaticProps } from "next";
+import { FC, useEffect, useRef, useState } from "react";
+import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 
@@ -28,7 +28,7 @@ import {
 
 import { PrincipalLayout } from "../../../components/layouts";
 import { IProducto } from "../../../interfaces/productos";
-import { dbProducts } from "../../../database";
+import { db, dbProducts } from "../../../database";
 import { tesloApi } from "../../../axios";
 import Product from "../../../models/Product";
 
@@ -433,44 +433,62 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const { slug = "" } = query;
 
-  // let product: IProducto | null;
+  let product: IProducto | null;
 
-  // if (slug === "new") {
-  //   // crear un producto
-  //   const tempProduct = JSON.parse(JSON.stringify(new Product()));
-  //   delete tempProduct._id;
-  //   tempProduct.images = ["img1.jpg", "img2.jpg"];
-  //   tempProduct.categoria = "";
-  //   product = tempProduct;
-  // } else {
-  //   product = await dbProducts.getProductBySlug(slug.toString());
-  // }
+  if (slug === "new") {
+    // crear un producto
+    const tempProduct = await JSON.parse(JSON.stringify(new Product()));
+    delete tempProduct._id;
+    tempProduct.images = [];
+    tempProduct.categoria = "";
+    product = tempProduct;
+  } else {
+    const getProduct = async (slug: string): Promise<IProducto | null> => {
+      await db.connect();
 
-  // if (!product) {
-  //   return {
-  //     redirect: {
-  //       destination: "/admin/products",
-  //       permanent: false,
-  //     },
-  //   };
-  // }
+      const product = await Product.findOne({ slug }).lean();
+      await db.disconnect();
 
-  const product = {
-    _id: "6334da1ef689ebda45a7bb8b",
-    copy: "Jarro cantimplora: Recipiente en acero inoxidable para servir bebidas frías o calientes en el área de Defensa, excursión, camping, trabajos de campo, ecoturismo, entre otros.",
-    images: [
-      "https://res.cloudinary.com/alvcomer/image/upload/v1664407423/kakjgsh6ckg3s9y272jp.png",
-      "https://res.cloudinary.com/alvcomer/image/upload/v1664407429/bchjv79hyn1nmuihhgpp.png",
-    ],
-    precio: 16000,
-    slug: "jarro_cantimplora",
-    tags: ["jarro", "cantimplora", "táctico", "militar", "camping"],
-    categoria: "Equipo Militar o Camping",
-    titulo: "Jarro Cantimplora",
-    createdAt: "2022-09-28T23:34:54.408Z",
-    updatedAt: "2022-10-05T12:54:09.496Z",
-    __v: 0,
-  };
+      if (!product) {
+        return null;
+      }
+
+      product.images = product.images.map((image) => {
+        return image.includes("http")
+          ? image
+          : `https://alvcomer.com.co/products/${image}`;
+      });
+
+      return JSON.parse(JSON.stringify(product));
+    };
+    product = await getProduct(slug.toString());
+  }
+
+  if (!product) {
+    return {
+      redirect: {
+        destination: "/admin/products",
+        permanent: false,
+      },
+    };
+  }
+
+  // const product = {
+  //   _id: "6334da1ef689ebda45a7bb8b",
+  //   copy: "Jarro cantimplora: Recipiente en acero inoxidable para servir bebidas frías o calientes en el área de Defensa, excursión, camping, trabajos de campo, ecoturismo, entre otros.",
+  //   images: [
+  //     "https://res.cloudinary.com/alvcomer/image/upload/v1664407423/kakjgsh6ckg3s9y272jp.png",
+  //     "https://res.cloudinary.com/alvcomer/image/upload/v1664407429/bchjv79hyn1nmuihhgpp.png",
+  //   ],
+  //   precio: 16000,
+  //   slug: "jarro_cantimplora",
+  //   tags: ["jarro", "cantimplora", "táctico", "militar", "camping"],
+  //   categoria: "Equipo Militar o Camping",
+  //   titulo: "Jarro Cantimplora",
+  //   createdAt: "2022-09-28T23:34:54.408Z",
+  //   updatedAt: "2022-10-05T12:54:09.496Z",
+  //   __v: 0,
+  // };
 
   return {
     props: {
