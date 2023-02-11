@@ -20,9 +20,15 @@ interface Props {
   idver: string;
 }
 
-const InvProductAdminPage: FC<Props> = ({ part }) => {
+const InvProductAdminPage: FC<Props> = () => {
   const [product, setProducto] = useState<any>();
   const router = useRouter();
+
+  const part = {
+    images: [],
+    movimientos: [],
+    tags: [],
+  };
 
   //const partes = data.partes;
 
@@ -53,47 +59,47 @@ const InvProductAdminPage: FC<Props> = ({ part }) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async ({ query }) => {
-  const { _id = "" } = query;
+// export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+//   const { _id = "" } = query;
 
-  let part: IInventory | null;
-  // if (_id === "new") {
-  //   // crear un producto
-  //   const tempProduct = JSON.parse(JSON.stringify(new Inventory()));
-  //   delete tempProduct._id;
-  //   tempProduct.images = [];
-  //   tempProduct.categoria = "";
-  //   product = tempProduct;
-  // } else {
-  //   product = await dbInventory.getProductBySlug(_id.toString());
-  // }
+//   let part: IInventory | null;
+// if (_id === "new") {
+//   // crear un producto
+//   const tempProduct = JSON.parse(JSON.stringify(new Inventory()));
+//   delete tempProduct._id;
+//   tempProduct.images = [];
+//   tempProduct.categoria = "";
+//   product = tempProduct;
+// } else {
+//   product = await dbInventory.getProductBySlug(_id.toString());
+// }
 
-  //   const tempProduct = JSON.parse(JSON.stringify(new Inventory()));
-  //   delete tempProduct._id;
-  //   tempProduct.images = [];
-  //   tempProduct.categoria = "";
-  //   product = tempProduct;
+//   const tempProduct = JSON.parse(JSON.stringify(new Inventory()));
+//   delete tempProduct._id;
+//   tempProduct.images = [];
+//   tempProduct.categoria = "";
+//   product = tempProduct;
 
-  // if (!product) {
-  //   return {
-  //     redirect: {
-  //       destination: "/admin/invproducts",
-  //       permanent: false,
-  //     },
-  //   };
-  // }
+// if (!product) {
+//   return {
+//     redirect: {
+//       destination: "/admin/invproducts",
+//       permanent: false,
+//     },
+//   };
+// }
 
-  const tempPart = JSON.parse(JSON.stringify(new Part()));
-  delete tempPart._id;
-  tempPart.images = [];
+//   const tempPart = JSON.parse(JSON.stringify(new Part()));
+//   delete tempPart._id;
+//   tempPart.images = [];
 
-  part = tempPart;
+//   part = tempPart;
 
-  return {
-    props: {
-      part,
-    },
-  };
-};
+//   return {
+//     props: {
+//       part,
+//     },
+//   };
+// };
 
 export default InvProductAdminPage;
