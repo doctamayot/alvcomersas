@@ -386,7 +386,7 @@ const MovProdTable: FC<Props> = ({ product, idver }) => {
                 fontFamily: "Montserrat, sans-serif",
               }}
             >
-              Movimientos de {product.titulo}
+              Movimientos de Producto Terminado {product.titulo}
             </Typography>
           </Grid>
 

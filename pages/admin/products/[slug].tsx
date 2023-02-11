@@ -218,220 +218,220 @@ const ProductAdminPage: FC<Props> = () => {
     });
   };
 
-  if (router.query.slug === "new")
-    return (
-      <PrincipalLayout title="Nuevo Producto" description={`Nuevo Producto`}>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <Box sx={{ padding: "20px" }}>
-            <Box
-              display="flex"
-              justifyContent="end"
-              sx={{ mb: 1, marginTop: "150px", padding: "20px" }}
-            >
-              <Button
-                startIcon={<SaveOutlined />}
-                sx={{
-                  width: "150px",
-                  backgroundColor: "#2255c4",
-                  color: "#fff",
-                }}
-                type="submit"
-                disabled={isSaving}
-              >
-                Guardar
-              </Button>
-            </Box>
+  // if (router.query.slug === "new")
+  //   return (
+  //     <PrincipalLayout title="Nuevo Producto" description={`Nuevo Producto`}>
+  //       <form onSubmit={handleSubmit(onSubmit)}>
+  //         <Box sx={{ padding: "20px" }}>
+  //           <Box
+  //             display="flex"
+  //             justifyContent="end"
+  //             sx={{ mb: 1, marginTop: "150px", padding: "20px" }}
+  //           >
+  //             <Button
+  //               startIcon={<SaveOutlined />}
+  //               sx={{
+  //                 width: "150px",
+  //                 backgroundColor: "#2255c4",
+  //                 color: "#fff",
+  //               }}
+  //               type="submit"
+  //               disabled={isSaving}
+  //             >
+  //               Guardar
+  //             </Button>
+  //           </Box>
 
-            <Grid container spacing={2}>
-              {/* Data */}
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  label="Título"
-                  variant="outlined"
-                  fullWidth
-                  sx={{ mb: 1 }}
-                  {...register("titulo", {
-                    required: "Este campo es requerido",
-                    minLength: { value: 2, message: "Mínimo 2 caracteres" },
-                  })}
-                  error={!!errors.titulo}
-                  helperText={errors.titulo?.message}
-                />
+  //           <Grid container spacing={2}>
+  //             {/* Data */}
+  //             <Grid item xs={12} sm={6}>
+  //               <TextField
+  //                 label="Título"
+  //                 variant="outlined"
+  //                 fullWidth
+  //                 sx={{ mb: 1 }}
+  //                 {...register("titulo", {
+  //                   required: "Este campo es requerido",
+  //                   minLength: { value: 2, message: "Mínimo 2 caracteres" },
+  //                 })}
+  //                 error={!!errors.titulo}
+  //                 helperText={errors.titulo?.message}
+  //               />
 
-                <TextField
-                  label="Descripción"
-                  variant="outlined"
-                  fullWidth
-                  multiline
-                  sx={{ mb: 1 }}
-                  {...register("copy", {
-                    required: "Este campo es requerido",
-                  })}
-                  error={!!errors.copy}
-                  helperText={errors.copy?.message}
-                  rows={4}
-                />
+  //               <TextField
+  //                 label="Descripción"
+  //                 variant="outlined"
+  //                 fullWidth
+  //                 multiline
+  //                 sx={{ mb: 1 }}
+  //                 {...register("copy", {
+  //                   required: "Este campo es requerido",
+  //                 })}
+  //                 error={!!errors.copy}
+  //                 helperText={errors.copy?.message}
+  //                 rows={4}
+  //               />
 
-                <TextField
-                  label="Precio"
-                  type="number"
-                  variant="outlined"
-                  fullWidth
-                  sx={{ mb: 1 }}
-                  {...register("precio", {
-                    required: "Este campo es requerido",
-                    min: { value: 0, message: "Mínimo de valor cero" },
-                  })}
-                  error={!!errors.precio}
-                  helperText={errors.precio?.message}
-                />
+  //               <TextField
+  //                 label="Precio"
+  //                 type="number"
+  //                 variant="outlined"
+  //                 fullWidth
+  //                 sx={{ mb: 1 }}
+  //                 {...register("precio", {
+  //                   required: "Este campo es requerido",
+  //                   min: { value: 0, message: "Mínimo de valor cero" },
+  //                 })}
+  //                 error={!!errors.precio}
+  //                 helperText={errors.precio?.message}
+  //               />
 
-                <Divider sx={{ my: 1 }} />
+  //               <Divider sx={{ my: 1 }} />
 
-                <FormControl sx={{ mb: 1 }}>
-                  <FormLabel>Categoría</FormLabel>
-                  <RadioGroup
-                    aria-labelledby="demo-radio-buttons-group-label"
-                    name="categoria"
-                    value={getValues("categoria")}
-                    onChange={({ target }) =>
-                      setValue("categoria", target.value, {
-                        shouldValidate: true,
-                      })
-                    }
-                  >
-                    {validCategories.map((option) => (
-                      <FormControlLabel
-                        key={option}
-                        value={option}
-                        control={<Radio color="secondary" />}
-                        label={capitalize(option)}
-                      />
-                    ))}
-                  </RadioGroup>
-                </FormControl>
-              </Grid>
+  //               <FormControl sx={{ mb: 1 }}>
+  //                 <FormLabel>Categoría</FormLabel>
+  //                 <RadioGroup
+  //                   aria-labelledby="demo-radio-buttons-group-label"
+  //                   name="categoria"
+  //                   value={getValues("categoria")}
+  //                   onChange={({ target }) =>
+  //                     setValue("categoria", target.value, {
+  //                       shouldValidate: true,
+  //                     })
+  //                   }
+  //                 >
+  //                   {validCategories.map((option) => (
+  //                     <FormControlLabel
+  //                       key={option}
+  //                       value={option}
+  //                       control={<Radio color="secondary" />}
+  //                       label={capitalize(option)}
+  //                     />
+  //                   ))}
+  //                 </RadioGroup>
+  //               </FormControl>
+  //             </Grid>
 
-              {/* Tags e imagenes */}
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  label="Slug - URL"
-                  variant="outlined"
-                  fullWidth
-                  sx={{ mb: 1, visibility: "hidden" }}
-                  {...register("slug", {
-                    required: "Este campo es requerido",
-                    validate: (val) =>
-                      val.trim().includes(" ")
-                        ? "No puede tener espacios en blanco"
-                        : undefined,
-                  })}
-                  error={!!errors.slug}
-                  helperText={errors.slug?.message}
-                />
+  //             {/* Tags e imagenes */}
+  //             <Grid item xs={12} sm={6}>
+  //               <TextField
+  //                 label="Slug - URL"
+  //                 variant="outlined"
+  //                 fullWidth
+  //                 sx={{ mb: 1, visibility: "hidden" }}
+  //                 {...register("slug", {
+  //                   required: "Este campo es requerido",
+  //                   validate: (val) =>
+  //                     val.trim().includes(" ")
+  //                       ? "No puede tener espacios en blanco"
+  //                       : undefined,
+  //                 })}
+  //                 error={!!errors.slug}
+  //                 helperText={errors.slug?.message}
+  //               />
 
-                <TextField
-                  label="Etiquetas"
-                  variant="outlined"
-                  fullWidth
-                  sx={{ mb: 1 }}
-                  helperText="Presiona [spacebar] para agregar"
-                  value={newTagValue}
-                  onChange={({ target }) => setNewTagValue(target.value)}
-                  onKeyUp={({ code }) =>
-                    code === "Space" ? onNewTag() : undefined
-                  }
-                />
+  //               <TextField
+  //                 label="Etiquetas"
+  //                 variant="outlined"
+  //                 fullWidth
+  //                 sx={{ mb: 1 }}
+  //                 helperText="Presiona [spacebar] para agregar"
+  //                 value={newTagValue}
+  //                 onChange={({ target }) => setNewTagValue(target.value)}
+  //                 onKeyUp={({ code }) =>
+  //                   code === "Space" ? onNewTag() : undefined
+  //                 }
+  //               />
 
-                <Box
-                  sx={{
-                    display: "flex",
-                    flexWrap: "wrap",
-                    listStyle: "none",
-                    p: 0,
-                    m: 0,
-                  }}
-                  component="ul"
-                >
-                  {getValues("tags") &&
-                    getValues("tags").map((tag) => {
-                      return (
-                        <Chip
-                          key={tag}
-                          label={tag}
-                          onDelete={() => onDeleteTag(tag)}
-                          color="primary"
-                          size="small"
-                          sx={{ ml: 1, mt: 1 }}
-                        />
-                      );
-                    })}
-                </Box>
+  //               <Box
+  //                 sx={{
+  //                   display: "flex",
+  //                   flexWrap: "wrap",
+  //                   listStyle: "none",
+  //                   p: 0,
+  //                   m: 0,
+  //                 }}
+  //                 component="ul"
+  //               >
+  //                 {getValues("tags") &&
+  //                   getValues("tags").map((tag) => {
+  //                     return (
+  //                       <Chip
+  //                         key={tag}
+  //                         label={tag}
+  //                         onDelete={() => onDeleteTag(tag)}
+  //                         color="primary"
+  //                         size="small"
+  //                         sx={{ ml: 1, mt: 1 }}
+  //                       />
+  //                     );
+  //                   })}
+  //               </Box>
 
-                <Divider sx={{ my: 2 }} />
+  //               <Divider sx={{ my: 2 }} />
 
-                <Box display="flex" flexDirection="column">
-                  <FormLabel sx={{ mb: 1 }}>Imágenes</FormLabel>
-                  <Button
-                    fullWidth
-                    startIcon={<UploadOutlined />}
-                    sx={{ mb: 3, color: "#fff", backgroundColor: "#327222" }}
-                    onClick={() => fileInputRef.current?.click()}
-                  >
-                    Cargar imagen
-                  </Button>
-                  <input
-                    ref={fileInputRef}
-                    type="file"
-                    multiple
-                    accept="image/png, image/gif, image/jpeg"
-                    style={{ display: "none" }}
-                    onChange={onFilesSelected}
-                  />
+  //               <Box display="flex" flexDirection="column">
+  //                 <FormLabel sx={{ mb: 1 }}>Imágenes</FormLabel>
+  //                 <Button
+  //                   fullWidth
+  //                   startIcon={<UploadOutlined />}
+  //                   sx={{ mb: 3, color: "#fff", backgroundColor: "#327222" }}
+  //                   onClick={() => fileInputRef.current?.click()}
+  //                 >
+  //                   Cargar imagen
+  //                 </Button>
+  //                 <input
+  //                   ref={fileInputRef}
+  //                   type="file"
+  //                   multiple
+  //                   accept="image/png, image/gif, image/jpeg"
+  //                   style={{ display: "none" }}
+  //                   onChange={onFilesSelected}
+  //                 />
 
-                  <Chip
-                    label="Es necesario al menos 2 imagenes"
-                    color="error"
-                    variant="outlined"
-                    sx={{
-                      display:
-                        getValues("images") && getValues("images").length < 2
-                          ? "flex"
-                          : "none",
-                    }}
-                  />
+  //                 <Chip
+  //                   label="Es necesario al menos 2 imagenes"
+  //                   color="error"
+  //                   variant="outlined"
+  //                   sx={{
+  //                     display:
+  //                       getValues("images") && getValues("images").length < 2
+  //                         ? "flex"
+  //                         : "none",
+  //                   }}
+  //                 />
 
-                  <Grid container spacing={2}>
-                    {getValues("images") &&
-                      getValues("images").map((img) => (
-                        <Grid item xs={4} sm={3} key={img}>
-                          <Card>
-                            <CardMedia
-                              component="img"
-                              className="fadeIn"
-                              image={img}
-                              alt={img}
-                            />
-                            <CardActions>
-                              <Button
-                                fullWidth
-                                color="error"
-                                onClick={() => onDeleteImage(img)}
-                              >
-                                Borrar
-                              </Button>
-                            </CardActions>
-                          </Card>
-                        </Grid>
-                      ))}
-                  </Grid>
-                </Box>
-              </Grid>
-            </Grid>
-          </Box>
-        </form>
-      </PrincipalLayout>
-    );
+  //                 <Grid container spacing={2}>
+  //                   {getValues("images") &&
+  //                     getValues("images").map((img) => (
+  //                       <Grid item xs={4} sm={3} key={img}>
+  //                         <Card>
+  //                           <CardMedia
+  //                             component="img"
+  //                             className="fadeIn"
+  //                             image={img}
+  //                             alt={img}
+  //                           />
+  //                           <CardActions>
+  //                             <Button
+  //                               fullWidth
+  //                               color="error"
+  //                               onClick={() => onDeleteImage(img)}
+  //                             >
+  //                               Borrar
+  //                             </Button>
+  //                           </CardActions>
+  //                         </Card>
+  //                       </Grid>
+  //                     ))}
+  //                 </Grid>
+  //               </Box>
+  //             </Grid>
+  //           </Grid>
+  //         </Box>
+  //       </form>
+  //     </PrincipalLayout>
+  //   );
 
   if (!product) return <Loading />;
 

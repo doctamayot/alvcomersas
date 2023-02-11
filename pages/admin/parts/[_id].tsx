@@ -10,6 +10,7 @@ import { dbInventory } from "../../../database";
 import { Movimiento } from "../../../models";
 
 import MovTable from "../../../components/inventory/MovTable";
+import { Loading } from "../../../components/ui";
 
 interface FormData {
   _id?: string;
@@ -46,6 +47,8 @@ const InvPartAdminPage: FC<Props> = ({ product, idver, mov }) => {
     mode: "onBlur",
     defaultValues: mov,
   });
+
+  if (!product) return <Loading />;
 
   return (
     <PrincipalLayout

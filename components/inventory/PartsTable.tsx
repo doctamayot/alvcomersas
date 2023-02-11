@@ -242,7 +242,7 @@ const PartsTable: FC<Props> = ({ product, part, idver }) => {
         icon: "success",
         confirmButtonText: "Ok",
       });
-      await router.push(`/admin/invproducts/${idver}`);
+      router.push(`/admin/invproducts/${idver}`);
     } catch (error) {
       console.log(error);
       setIsSaving(false);
@@ -260,7 +260,7 @@ const PartsTable: FC<Props> = ({ product, part, idver }) => {
       cantidad: any;
     }) => ({
       id: product._id,
-      img: product.images[0],
+      img: product.images && product.images[0],
       title: product.titulo,
       copy: product.copy,
       cantidad: product.cantidad,
