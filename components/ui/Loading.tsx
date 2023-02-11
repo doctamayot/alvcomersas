@@ -18,7 +18,7 @@ export const Loading = () => {
         textAlign="center"
       >
         <Typography
-          sx={{ fontFamily: "Montserrat, sans-serif", color: "#fff" }}
+          sx={{ fontFamily: "Montserrat, sans-serif", color: "#000000" }}
           variant="h6"
           fontSize={30}
           fontWeight="200"
@@ -26,7 +26,7 @@ export const Loading = () => {
           Cargando....
         </Typography>
         <CircularProgress
-          sx={{ marginTop: "30px", color: "#fff" }}
+          sx={{ marginTop: "30px", color: "#000000" }}
           thickness={2}
         />
       </Box>

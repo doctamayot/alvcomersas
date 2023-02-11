@@ -57,12 +57,13 @@ interface Props {
   prod: IProducto;
 }
 
-const ProductAdminPage: FC<Props> = () => {
+const ProductAdminPage: FC<Props> = ({ prod }) => {
   const router = useRouter();
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [newTagValue, setNewTagValue] = useState("");
   const [isSaving, setIsSaving] = useState(false);
-  const [product, setProducto] = useState<IProducto>();
+
+  console.log(prod);
 
   const Swal = require("sweetalert2");
 
@@ -75,24 +76,8 @@ const ProductAdminPage: FC<Props> = () => {
     watch,
     reset,
   } = useForm<FormData>({
-    defaultValues: product,
+    defaultValues: prod,
   });
-
-  const hugo = async () => {
-    try {
-      const { data } = await tesloApi({
-        url: "/admin/serversideproducts",
-        method: "POST", // si tenemos un _id, entonces actualizar, si no crear
-        data: { slug: router.query.slug },
-      });
-      setProducto(data);
-      reset(data);
-    } catch (error) {}
-  };
-
-  useEffect(() => {
-    hugo();
-  }, []);
 
   //const producto = dbProducts.getProductBySlug("marmita");
 
@@ -168,7 +153,7 @@ const ProductAdminPage: FC<Props> = () => {
     try {
       const { data } = await tesloApi({
         url: "/admin/products",
-        method: form._id ? "PUT" : "POST", // si tenemos un _id, entonces actualizar, si no crear
+        method: "POST", // si tenemos un _id, entonces actualizar, si no crear
         data: form,
       });
       await Swal.fire({
@@ -179,267 +164,19 @@ const ProductAdminPage: FC<Props> = () => {
       });
       router.replace("/admin/products");
 
-      if (!form._id) {
-        router.replace(`/admin/products/${form.slug}`);
-      } else {
-        setIsSaving(false);
-      }
+      //   if (!form._id) {
+      //     router.replace(`/admin/products/${form.slug}`);
+      //   } else {
+      //     setIsSaving(false);
+      //   }
     } catch (error) {
       console.log(error);
       setIsSaving(false);
     }
   };
 
-  const onDeleteProduct = async () => {
-    Swal.fire({
-      title: "Estas Seguro?",
-      text: "Esto borra el producto para siempre",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Si, Borrarlo!",
-    }).then(async (result: any) => {
-      if (result.isConfirmed) {
-        try {
-          const { data } = await tesloApi({
-            url: "/admin/products",
-            method: "DELETE",
-            data: product,
-          });
-        } catch (error) {
-          console.log(error);
-          setIsSaving(false);
-        }
-
-        Swal.fire("Borrado!", "El producto fue borrado", "success");
-        router.push("/admin/products");
-      }
-    });
-  };
-
-  if (router.query.slug === "new")
-    return (
-      <PrincipalLayout title="Nuevo Producto" description={`Nuevo Producto`}>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <Box sx={{ padding: "20px" }}>
-            <Box
-              display="flex"
-              justifyContent="end"
-              sx={{ mb: 1, marginTop: "150px", padding: "20px" }}
-            >
-              <Button
-                startIcon={<SaveOutlined />}
-                sx={{
-                  width: "150px",
-                  backgroundColor: "#2255c4",
-                  color: "#fff",
-                }}
-                type="submit"
-                disabled={isSaving}
-              >
-                Guardar
-              </Button>
-            </Box>
-
-            <Grid container spacing={2}>
-              {/* Data */}
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  label="Título"
-                  variant="outlined"
-                  fullWidth
-                  sx={{ mb: 1 }}
-                  {...register("titulo", {
-                    required: "Este campo es requerido",
-                    minLength: { value: 2, message: "Mínimo 2 caracteres" },
-                  })}
-                  error={!!errors.titulo}
-                  helperText={errors.titulo?.message}
-                />
-
-                <TextField
-                  label="Descripción"
-                  variant="outlined"
-                  fullWidth
-                  multiline
-                  sx={{ mb: 1 }}
-                  {...register("copy", {
-                    required: "Este campo es requerido",
-                  })}
-                  error={!!errors.copy}
-                  helperText={errors.copy?.message}
-                  rows={4}
-                />
-
-                <TextField
-                  label="Precio"
-                  type="number"
-                  variant="outlined"
-                  fullWidth
-                  sx={{ mb: 1 }}
-                  {...register("precio", {
-                    required: "Este campo es requerido",
-                    min: { value: 0, message: "Mínimo de valor cero" },
-                  })}
-                  error={!!errors.precio}
-                  helperText={errors.precio?.message}
-                />
-
-                <Divider sx={{ my: 1 }} />
-
-                <FormControl sx={{ mb: 1 }}>
-                  <FormLabel>Categoría</FormLabel>
-                  <RadioGroup
-                    aria-labelledby="demo-radio-buttons-group-label"
-                    name="categoria"
-                    value={getValues("categoria")}
-                    onChange={({ target }) =>
-                      setValue("categoria", target.value, {
-                        shouldValidate: true,
-                      })
-                    }
-                  >
-                    {validCategories.map((option) => (
-                      <FormControlLabel
-                        key={option}
-                        value={option}
-                        control={<Radio color="secondary" />}
-                        label={capitalize(option)}
-                      />
-                    ))}
-                  </RadioGroup>
-                </FormControl>
-              </Grid>
-
-              {/* Tags e imagenes */}
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  label="Slug - URL"
-                  variant="outlined"
-                  fullWidth
-                  sx={{ mb: 1, visibility: "hidden" }}
-                  {...register("slug", {
-                    required: "Este campo es requerido",
-                    validate: (val) =>
-                      val.trim().includes(" ")
-                        ? "No puede tener espacios en blanco"
-                        : undefined,
-                  })}
-                  error={!!errors.slug}
-                  helperText={errors.slug?.message}
-                />
-
-                <TextField
-                  label="Etiquetas"
-                  variant="outlined"
-                  fullWidth
-                  sx={{ mb: 1 }}
-                  helperText="Presiona [spacebar] para agregar"
-                  value={newTagValue}
-                  onChange={({ target }) => setNewTagValue(target.value)}
-                  onKeyUp={({ code }) =>
-                    code === "Space" ? onNewTag() : undefined
-                  }
-                />
-
-                <Box
-                  sx={{
-                    display: "flex",
-                    flexWrap: "wrap",
-                    listStyle: "none",
-                    p: 0,
-                    m: 0,
-                  }}
-                  component="ul"
-                >
-                  {getValues("tags") &&
-                    getValues("tags").map((tag) => {
-                      return (
-                        <Chip
-                          key={tag}
-                          label={tag}
-                          onDelete={() => onDeleteTag(tag)}
-                          color="primary"
-                          size="small"
-                          sx={{ ml: 1, mt: 1 }}
-                        />
-                      );
-                    })}
-                </Box>
-
-                <Divider sx={{ my: 2 }} />
-
-                <Box display="flex" flexDirection="column">
-                  <FormLabel sx={{ mb: 1 }}>Imágenes</FormLabel>
-                  <Button
-                    fullWidth
-                    startIcon={<UploadOutlined />}
-                    sx={{ mb: 3, color: "#fff", backgroundColor: "#327222" }}
-                    onClick={() => fileInputRef.current?.click()}
-                  >
-                    Cargar imagen
-                  </Button>
-                  <input
-                    ref={fileInputRef}
-                    type="file"
-                    multiple
-                    accept="image/png, image/gif, image/jpeg"
-                    style={{ display: "none" }}
-                    onChange={onFilesSelected}
-                  />
-
-                  <Chip
-                    label="Es necesario al menos 2 imagenes"
-                    color="error"
-                    variant="outlined"
-                    sx={{
-                      display:
-                        getValues("images") && getValues("images").length < 2
-                          ? "flex"
-                          : "none",
-                    }}
-                  />
-
-                  <Grid container spacing={2}>
-                    {getValues("images") &&
-                      getValues("images").map((img) => (
-                        <Grid item xs={4} sm={3} key={img}>
-                          <Card>
-                            <CardMedia
-                              component="img"
-                              className="fadeIn"
-                              image={img}
-                              alt={img}
-                            />
-                            <CardActions>
-                              <Button
-                                fullWidth
-                                color="error"
-                                onClick={() => onDeleteImage(img)}
-                              >
-                                Borrar
-                              </Button>
-                            </CardActions>
-                          </Card>
-                        </Grid>
-                      ))}
-                  </Grid>
-                </Box>
-              </Grid>
-            </Grid>
-          </Box>
-        </form>
-      </PrincipalLayout>
-    );
-
-  if (!product) return <Loading />;
-
   return (
-    <PrincipalLayout
-      title={product.titulo}
-      description={`Editando: ${product.titulo}`}
-    >
+    <PrincipalLayout title="Nuevo" description="nuevo">
       <form onSubmit={handleSubmit(onSubmit)}>
         <Box sx={{ padding: "20px" }}>
           <Box
@@ -459,21 +196,6 @@ const ProductAdminPage: FC<Props> = () => {
             >
               Guardar
             </Button>
-            {product.nuevo != "nuevo" ? (
-              <Button
-                startIcon={<DeleteForeverOutlined />}
-                sx={{
-                  width: "150px",
-                  backgroundColor: "#9b0f0f",
-                  color: "#fff",
-                  marginLeft: "5px",
-                }}
-                onClick={() => onDeleteProduct()}
-                disabled={isSaving}
-              >
-                Borrar
-              </Button>
-            ) : null}
           </Box>
 
           <Grid container spacing={2}>
@@ -481,7 +203,6 @@ const ProductAdminPage: FC<Props> = () => {
             <Grid item xs={12} sm={6}>
               <TextField
                 label="Título"
-                defaultValue={product.titulo}
                 variant="outlined"
                 fullWidth
                 sx={{ mb: 1 }}
@@ -672,39 +393,33 @@ const ProductAdminPage: FC<Props> = () => {
 // You should use getServerSideProps when:
 // - Only if you need to pre-render a page whose data must be fetched at request time
 
-// export const getServerSideProps: GetServerSideProps = async ({ query }) => {
-//   const { slug = "" } = query;
+export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+  let prod: any | null;
 
-//   let prod: any | null;
+  // crear un producto
+  const tempProduct = JSON.parse(JSON.stringify(new Product()));
+  delete tempProduct._id;
+  tempProduct.images = [];
+  tempProduct.categoria = "";
+  tempProduct.nuevo = "nuevo";
+  prod = tempProduct;
 
-//   if (slug === "new") {
-//     // crear un producto
-//     const tempProduct = JSON.parse(JSON.stringify(new Product()));
-//     delete tempProduct._id;
-//     tempProduct.images = [];
-//     tempProduct.categoria = "";
-//     tempProduct.nuevo = "nuevo";
-//     prod = tempProduct;
-//   } else {
-//     prod = await dbProducts.getProductBySlug(slug.toString());
-//   }
+  if (!prod) {
+    return {
+      redirect: {
+        destination: "/admin/products",
+        permanent: false,
+      },
+    };
+  }
 
-//   if (!prod) {
-//     return {
-//       redirect: {
-//         destination: "/admin/products",
-//         permanent: false,
-//       },
-//     };
-//   }
+  //console.log(product);
 
-//   //console.log(product);
-
-//   return {
-//     props: {
-//       prod,
-//     },
-//   };
-// };
+  return {
+    props: {
+      prod,
+    },
+  };
+};
 
 export default ProductAdminPage;
