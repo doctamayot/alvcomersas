@@ -49,7 +49,7 @@ const columns: GridColDef[] = [
 
 interface Props {
   product: any;
-  idver: string;
+  idver: any;
 }
 
 const MovProdTable: FC<Props> = ({ product, idver }) => {

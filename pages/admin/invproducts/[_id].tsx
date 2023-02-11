@@ -20,7 +20,7 @@ interface Props {
   idver: string;
 }
 
-const InvProductAdminPage: FC<Props> = ({ part, idver }) => {
+const InvProductAdminPage: FC<Props> = ({ part }) => {
   const [product, setProducto] = useState<any>();
   const router = useRouter();
 
@@ -47,8 +47,8 @@ const InvProductAdminPage: FC<Props> = ({ part, idver }) => {
       title={"Producto"}
       description={`Editando: ${product.titulo}`}
     >
-      <PartsTable product={product} part={part} idver={idver} />
-      <MovProdTable product={product} idver={idver} />
+      <PartsTable product={product} part={part} idver={router.query._id} />
+      <MovProdTable product={product} idver={router.query._id} />
     </PrincipalLayout>
   );
 };
@@ -56,7 +56,6 @@ const InvProductAdminPage: FC<Props> = ({ part, idver }) => {
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const { _id = "" } = query;
 
-  let product: IInventory | null;
   let part: IInventory | null;
   // if (_id === "new") {
   //   // crear un producto
@@ -90,11 +89,8 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 
   part = tempPart;
 
-  const idver = _id;
-
   return {
     props: {
-      idver,
       part,
     },
   };
