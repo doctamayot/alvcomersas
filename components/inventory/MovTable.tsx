@@ -51,7 +51,7 @@ const columns: GridColDef[] = [
 
 interface Props {
   product: any;
-  idver: string;
+  idver: any;
   parte: string;
 }
 

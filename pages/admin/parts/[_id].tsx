@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 import { GetServerSideProps, GetStaticPaths, GetStaticProps } from "next";
 
 import { useForm } from "react-hook-form";
@@ -11,6 +11,8 @@ import { Movimiento } from "../../../models";
 
 import MovTable from "../../../components/inventory/MovTable";
 import { Loading } from "../../../components/ui";
+import { useRouter } from "next/router";
+import { tesloApi } from "../../../axios";
 
 interface FormData {
   _id?: string;
@@ -26,7 +28,18 @@ interface Props {
   idver: string;
 }
 
-const InvPartAdminPage: FC<Props> = ({ product, idver, mov }) => {
+const InvPartAdminPage: FC<Props> = () => {
+  const [product, setProducto] = useState<any>();
+  const router = useRouter();
+
+  const part = {
+    images: [],
+    movimientos: [],
+    tags: [],
+  };
+
+  const mov = {};
+
   const {
     register,
     handleSubmit,
@@ -48,6 +61,22 @@ const InvPartAdminPage: FC<Props> = ({ product, idver, mov }) => {
     defaultValues: mov,
   });
 
+  const hugo = async () => {
+    try {
+      const { data } = await tesloApi({
+        url: "/admin/serversideinvprod",
+        method: "PUT", // si tenemos un _id, entonces actualizar, si no crear
+        data: { _id: router.query._id },
+      });
+      setProducto(data);
+      //reset(data);
+    } catch (error) {}
+  };
+
+  useEffect(() => {
+    hugo();
+  }, [part]);
+
   if (!product) return <Loading />;
 
   return (
@@ -57,7 +86,11 @@ const InvPartAdminPage: FC<Props> = ({ product, idver, mov }) => {
     >
       {/* {idver !== "new" ? <PartsTable product={product} /> : null} */}
 
-      <MovTable product={product} idver={idver} parte={product.titulo} />
+      <MovTable
+        product={product}
+        idver={router.query._id}
+        parte={product.titulo}
+      />
     </PrincipalLayout>
   );
 };
@@ -65,44 +98,44 @@ const InvPartAdminPage: FC<Props> = ({ product, idver, mov }) => {
 // You should use getServerSideProps when:
 // - Only if you need to pre-render a page whose data must be fetched at request time
 
-export const getServerSideProps: GetServerSideProps = async ({ query }) => {
-  const { _id = "" } = query;
+// export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+//   const { _id = "" } = query;
 
-  let product: any | null;
-  let mov: any | null;
-  if (_id === "new") {
-    // crear un producto
-    const tempProduct = JSON.parse(JSON.stringify(new Movimiento()));
-    delete tempProduct._id;
+//   let product: any | null;
+//   let mov: any | null;
+//   if (_id === "new") {
+//     // crear un producto
+//     const tempProduct = JSON.parse(JSON.stringify(new Movimiento()));
+//     delete tempProduct._id;
 
-    product = tempProduct;
-  } else {
-    product = await dbInventory.getPartBySlug(_id.toString());
-  }
+//     product = tempProduct;
+//   } else {
+//     product = await dbInventory.getPartBySlug(_id.toString());
+//   }
 
-  if (!product) {
-    return {
-      redirect: {
-        destination: "/admin/invproducts",
-        permanent: false,
-      },
-    };
-  }
+//   if (!product) {
+//     return {
+//       redirect: {
+//         destination: "/admin/invproducts",
+//         permanent: false,
+//       },
+//     };
+//   }
 
-  const tempPart = JSON.parse(JSON.stringify(new Movimiento()));
-  delete tempPart._id;
+//   const tempPart = JSON.parse(JSON.stringify(new Movimiento()));
+//   delete tempPart._id;
 
-  mov = tempPart;
+//   mov = tempPart;
 
-  const idver = _id;
+//   const idver = _id;
 
-  return {
-    props: {
-      product,
-      idver,
-      mov,
-    },
-  };
-};
+//   return {
+//     props: {
+//       product,
+//       idver,
+//       mov,
+//     },
+//   };
+// };
 
 export default InvPartAdminPage;
