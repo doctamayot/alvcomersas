@@ -43,7 +43,7 @@ interface FormData {
 const columns: GridColDef[] = [
   { field: "title", headerName: "Titulo", flex: 1 },
   { field: "tipo", headerName: "Tipo", flex: 1 },
-  { field: "valor", headerName: "Valor", flex: 1 },
+  { field: "valor", headerName: "Cantidad", flex: 1 },
   { field: "creado", headerName: "Creado", flex: 1.3 },
 ];
 

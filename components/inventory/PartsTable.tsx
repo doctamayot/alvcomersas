@@ -446,6 +446,7 @@ const PartsTable: FC<Props> = ({ product, part, idver }) => {
                       label="Cantidad"
                       type="number"
                       variant="outlined"
+                      disabled
                       fullWidth
                       sx={{ mb: 1 }}
                       {...register2("cantidad", {

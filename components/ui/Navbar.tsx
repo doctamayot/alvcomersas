@@ -36,7 +36,7 @@ import logo from "../../public/static/images/logo.png";
 import { UiContext } from "../../context";
 
 export const Navbar = () => {
-  const { push } = useRouter();
+  const { push, route } = useRouter();
   const { toggleSideMenu } = useContext(UiContext);
   const [searchTerm, setSearchTerm] = useState("");
   const [isSearchVisible, setIsSearchVisible] = useState(false);
@@ -96,15 +96,21 @@ export const Navbar = () => {
           <NextLink href="/#historia" passHref>
             <Link>
               <Button
-                variant="text"
                 sx={{
-                  fontFamily: "Roboto Condensed, sans-serif",
-                  fontWeight: "700",
-                  fontSize: "20.2px",
-                  color: "#fff",
+                  backgroundColor: "transparent",
                 }}
               >
-                Alvcomer
+                <Typography
+                  sx={{
+                    backgroundColor: "transparent",
+                    color: "#fff",
+                    fontFamily: "Roboto Condensed, sans-serif",
+                    fontWeight: "700",
+                    fontSize: "20.2px",
+                  }}
+                >
+                  Alvcomer
+                </Typography>
               </Button>
             </Link>
           </NextLink>

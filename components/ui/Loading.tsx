@@ -17,14 +17,14 @@ export const Loading = () => {
         }}
         textAlign="center"
       >
-        <Typography
+        {/* <Typography
           sx={{ fontFamily: "Montserrat, sans-serif", color: "#000000" }}
           variant="h6"
           fontSize={30}
           fontWeight="200"
         >
           Cargando....
-        </Typography>
+        </Typography> */}
         <CircularProgress
           sx={{ marginTop: "30px", color: "#000000" }}
           thickness={2}
