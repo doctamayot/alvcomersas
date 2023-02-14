@@ -393,33 +393,33 @@ const ProductAdminPage: FC<Props> = ({ prod }) => {
 // You should use getServerSideProps when:
 // - Only if you need to pre-render a page whose data must be fetched at request time
 
-export const getServerSideProps: GetServerSideProps = async ({ query }) => {
-  let prod: any | null;
+// export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+//   let prod: any | null;
 
-  // crear un producto
-  const tempProduct = JSON.parse(JSON.stringify(new Product()));
-  delete tempProduct._id;
-  tempProduct.images = [];
-  tempProduct.categoria = "";
-  tempProduct.nuevo = "nuevo";
-  prod = tempProduct;
+//   // crear un producto
+//   const tempProduct = JSON.parse(JSON.stringify(new Product()));
+//   delete tempProduct._id;
+//   tempProduct.images = [];
+//   tempProduct.categoria = "";
+//   tempProduct.nuevo = "nuevo";
+//   prod = tempProduct;
 
-  if (!prod) {
-    return {
-      redirect: {
-        destination: "/admin/products",
-        permanent: false,
-      },
-    };
-  }
+//   if (!prod) {
+//     return {
+//       redirect: {
+//         destination: "/admin/products",
+//         permanent: false,
+//       },
+//     };
+//   }
 
-  //console.log(product);
+//   //console.log(product);
 
-  return {
-    props: {
-      prod,
-    },
-  };
-};
+//   return {
+//     props: {
+//       prod,
+//     },
+//   };
+// };
 
 export default ProductAdminPage;
