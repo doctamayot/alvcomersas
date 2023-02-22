@@ -53,17 +53,29 @@ interface FormData {
   categoria: string;
 }
 
-interface Props {
-  prod: IProducto;
+interface Producto {
+  images: string[];
+  categoria: string;
+  nuevo: string;
+  titulo: string;
+  tags: string[];
 }
 
-const ProductAdminPage: FC<Props> = ({ prod }) => {
+// interface Props {
+//   prod: IProducto;
+
+const ProductAdminPage: FC = () => {
   const router = useRouter();
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [newTagValue, setNewTagValue] = useState("");
   const [isSaving, setIsSaving] = useState(false);
-
-  console.log(prod);
+  const [producto, setProducto] = useState({
+    images: [],
+    categoria: "",
+    nuevo: "nuevo",
+    titulo: "",
+    tags: [],
+  });
 
   const Swal = require("sweetalert2");
 
@@ -76,7 +88,7 @@ const ProductAdminPage: FC<Props> = ({ prod }) => {
     watch,
     reset,
   } = useForm<FormData>({
-    defaultValues: prod,
+    defaultValues: producto,
   });
 
   //const producto = dbProducts.getProductBySlug("marmita");
@@ -120,7 +132,6 @@ const ProductAdminPage: FC<Props> = ({ prod }) => {
     }
 
     try {
-      console.log(target.files);
       for (const file of target.files) {
         const formData = new FormData();
         formData.append("file", file);

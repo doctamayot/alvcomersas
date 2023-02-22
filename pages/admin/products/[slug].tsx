@@ -78,6 +78,7 @@ const ProductAdminPage: FC<Props> = () => {
     defaultValues: product,
   });
 
+  console.log(getValues("tags"));
   const hugo = async () => {
     try {
       const { data } = await tesloApi({
