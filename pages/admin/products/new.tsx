@@ -78,7 +78,7 @@ const ProductAdminPage: FC = () => {
   });
 
   const Swal = require("sweetalert2");
-
+//ss
   const {
     register,
     handleSubmit,
